@@ -32,4 +32,15 @@ int si_siiPDO(uint16 slave, uint8 t, int mapoffset, int bitoffset);
 
 char* SDO2string(uint16 slave, uint16 index, uint8 subidx, uint16 dtype);
 
-char* dtype2string(uint16 dtype);
+char* dtype2string(uint16 dtype, uint16 bitlen);
+
+char* otype2string(uint16 otype);
+
+char* access2string(uint16 access);
+
+void save_sdo_pdo_to_file(const char* output) ;
+
+
+
+
+

@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SDO and PDO Display</title>
+    <style>
+        /* General styling */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            height: 100vh;
+        }
+
+        /* Left and Right container styles */
+        .container {
+            flex: 1;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+
+        .left-container {
+            background-color: #f0f0f0;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .right-container {
+            background-color: #e0e0e0;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        /* Top and bottom parts in the left container */
+        .pdo-content {
+            flex: 1;
+            margin-bottom: 20px;
+            overflow-y: auto;
+            border: 1px solid #ccc;
+            padding: 10px;
+            background-color: #fff;
+        }
+
+        .pdo-form {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            border: 1px solid #ccc;
+            padding: 10px;
+            background-color: #fff;
+        }
+
+        /* SDO section styling */
+        .sdo-content {
+            overflow-y: auto;
+            border: 1px solid #ccc;
+            padding: 10px;
+            background-color: #fff;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Left Container -->
+    <div class="container left-container">
+        <!-- PDO Content -->
+        <div id="pdoSection" class="pdo-content">
+            <h2>PDO Info</h2>
+            <pre id="pdoText"></pre>
+        </div>
+
+        <!-- Form Section -->
+        <div id="pdoForm" class="pdo-form">
+            <h3>PDO Adjustment</h3>
+            <form>
+                <!-- Example form elements -->
+                <label for="input1">Field 1:</label>
+                <input type="text" id="input1" name="input1"><br><br>
+
+                <label for="input2">Field 2:</label>
+                <input type="text" id="input2" name="input2"><br><br>
+
+                <button type="submit">Submit</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Right Container -->
+    <div class="container right-container">
+        <!-- SDO Content -->
+        <div id="sdoSection" class="sdo-content">
+            <h2>SDO Info</h2>
+            <pre id="sdoText"></pre>
+        </div>
+    </div>
+
+    <!-- Script to load text files -->
+    <script>
+        // Function to load text from a file and display it in an element
+        function loadText(file, elementId) {
+            fetch(file)
+                .then(response => response.text())
+                .then(text => {
+                    document.getElementById(elementId).textContent = text;
+                })
+                .catch(error => console.error('Error loading text:', error));
+        }
+
+        // Load PDO and SDO content on page load
+        window.onload = function() {
+            loadText('pdo.txt', 'pdoText');
+            loadText('sdo.txt', 'sdoText');
+        }
+    </script>
+</body>
+</html>

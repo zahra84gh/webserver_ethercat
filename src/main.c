@@ -2,29 +2,86 @@
 // #include "ethercat.h"
 #include <string.h>
 
-static enum MHD_Result answer_to_connection(void *cls, struct MHD_Connection *connection,
-                                            const char *url, const char *method,
-                                            const char *version, const char *upload_data,
-                                            size_t *upload_data_size, void **con_cls)
+static enum MHD_Result answer_to_connection(void *cls,
+                                struct MHD_Connection *connection,
+                                const char *url,
+                                const char *method,
+                                const char *version,
+                                const char *upload_data,
+                                size_t *upload_data_size,
+                                void **con_cls)
 {
-    const char *page = "<html><body>Hello, browser!</body></html>";
+    const char *file_path;
     struct MHD_Response *response;
-    enum MHD_Result ret;
-    (void)cls;              /* Unused. Silent compiler warning. */
-    (void)url;              /* Unused. Silent compiler warning. */
-    (void)method;           /* Unused. Silent compiler warning. */
-    (void)version;          /* Unused. Silent compiler warning. */
-    (void)upload_data;      /* Unused. Silent compiler warning. */
-    (void)upload_data_size; /* Unused. Silent compiler warning. */
-    (void)con_cls;          /* Unused. Silent compiler warning. */
+    FILE *file;
+    char *file_content;
+    long file_size;
+    int ret;
 
-    response =
-        MHD_create_response_from_buffer(strlen(page), (void *)page,
-                                        MHD_RESPMEM_PERSISTENT);
-    ret = MHD_queue_response(connection, MHD_HTTP_OK, response);
-    MHD_destroy_response(response);
+    if (0 == strcmp(method, "GET"))
+    {
+        if (strcmp(url, "/") == 0)
+        {
+            file_path = "src/index.html";
+        }
+        else if (strcmp(url, "/pdo.txt") == 0)
+        {
+            file_path = "pdo.txt";
+        }
+        else if (strcmp(url, "/sdo.txt") == 0)
+        {
+            file_path = "sdo.txt";
+        }
+        else
+        {
+            file_path = NULL;
+        }
 
-    return ret;
+        if (file_path)
+        {
+            file = fopen(file_path, "r");
+            if (file)
+            {
+                fseek(file, 0, SEEK_END);
+                file_size = ftell(file);
+                fseek(file, 0, SEEK_SET);
+                file_content = malloc(file_size + 1);
+                if (file_content)
+                {
+                    fread(file_content, 1, file_size, file);
+                    file_content[file_size] = '\0'; // Null-terminate the string
+                    fclose(file);
+
+                    response = MHD_create_response_from_buffer(file_size, file_content, MHD_RESPMEM_MUST_FREE);
+                    ret = MHD_queue_response(connection, MHD_HTTP_OK, response);
+                    MHD_destroy_response(response);
+                }
+                else
+                {
+                    const char *error_message = "Memory allocation failed";
+                    response = MHD_create_response_from_buffer(strlen(error_message), (void *)error_message, MHD_RESPMEM_PERSISTENT);
+                    ret = MHD_queue_response(connection, MHD_HTTP_INTERNAL_SERVER_ERROR, response);
+                    MHD_destroy_response(response);
+                }
+            }
+            else
+            {
+                const char *error_message = "File not found";
+                response = MHD_create_response_from_buffer(strlen(error_message), (void *)error_message, MHD_RESPMEM_PERSISTENT);
+                ret = MHD_queue_response(connection, MHD_HTTP_NOT_FOUND, response);
+                MHD_destroy_response(response);
+            }
+            return ret;
+        }
+
+        const char *error_message = "Invalid request";
+        response = MHD_create_response_from_buffer(strlen(error_message), (void *)error_message, MHD_RESPMEM_PERSISTENT);
+        ret = MHD_queue_response(connection, MHD_HTTP_NOT_FOUND, response);
+        MHD_destroy_response(response);
+        return ret;
+    }
+
+    return MHD_YES;
 }
 
 char ifbuf[1024];
@@ -38,16 +95,41 @@ int main(void)
                               PORT, NULL, NULL,
                               &answer_to_connection, NULL, MHD_OPTION_END);
 
-    if (1)
+    if (TRUE)
     {
         printf("SOEM (Simple Open EtherCAT Master)\nSimple test\n");
         osal_thread_create(&thread1, 128000, &ecatcheck, NULL);
         initialize_ethercat("enp0s31f6");
 
+        const char *output_file_name = "output.txt";
+        FILE *output_file = fopen(output_file_name, "w");
+        if (output_file == NULL)
+        {
+            perror("Failed to open file");
+            return 1;
+        }
+
+        // Redirect stdout to the output.txt file
+        int saved_stdout = dup(fileno(stdout));
+        if (dup2(fileno(output_file), fileno(stdout)) == -1)
+        {
+            perror("Failed to redirect stdout");
+            return 1;
+        }
+
         printf("SOEM (Simple Open EtherCAT Master)\nSlaveinfo\n");
         slaveinfo("enp0s31f6");
 
-        ethercat_loop();
+        // Restore the original stdout
+        fflush(stdout);
+        dup2(saved_stdout, fileno(stdout));
+        close(saved_stdout);
+
+        fclose(output_file);
+
+        save_sdo_pdo_to_file(output_file_name);
+
+        // ethercat_loop();
     }
     else
     {
@@ -63,7 +145,6 @@ int main(void)
         }
         ec_free_adapters(adapter);
     }
-
 
     if (NULL == daemon)
         return 1;
