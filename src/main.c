@@ -37,6 +37,7 @@ static enum MHD_Result answer_to_connection(void *cls,
             file_path = NULL;
         }
 
+
         if (file_path)
         {
             file = fopen(file_path, "r");
@@ -53,24 +54,23 @@ static enum MHD_Result answer_to_connection(void *cls,
                     fclose(file);
 
                     response = MHD_create_response_from_buffer(file_size, file_content, MHD_RESPMEM_MUST_FREE);
+
+
+
+if (strcmp(url, "/index.html") == 0 || strcmp(url, "/adjustment.html") == 0) {
+        MHD_add_response_header(response, "Content-Type", "text/html");
+    } else if (strstr(url, ".txt")) {
+        MHD_add_response_header(response, "Content-Type", "text/plain");
+    }
+
+
+
                     ret = MHD_queue_response(connection, MHD_HTTP_OK, response);
                     MHD_destroy_response(response);
                 }
-                else
-                {
-                    const char *error_message = "Memory allocation failed";
-                    response = MHD_create_response_from_buffer(strlen(error_message), (void *)error_message, MHD_RESPMEM_PERSISTENT);
-                    ret = MHD_queue_response(connection, MHD_HTTP_INTERNAL_SERVER_ERROR, response);
-                    MHD_destroy_response(response);
-                }
+               
             }
-            else
-            {
-                const char *error_message = "File not found";
-                response = MHD_create_response_from_buffer(strlen(error_message), (void *)error_message, MHD_RESPMEM_PERSISTENT);
-                ret = MHD_queue_response(connection, MHD_HTTP_NOT_FOUND, response);
-                MHD_destroy_response(response);
-            }
+         
             return ret;
         }
 

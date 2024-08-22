@@ -19,7 +19,7 @@
     0x01      "Local Error Reaction"                        [UNSIGNED32       RWRWRW]      0x00000001 1
     0x02      "Sync Error Counter Limit"                    [UNSIGNED16       RWRWRW]      0x0004 4
 0x10f8      "Timestamp Object"                            [VAR]
-    0x00      "Timestamp Object"                            [UNSIGNED64       RWRWRW]      0x0acab53e873e7615 777633165836449301
+    0x00      "Timestamp Object"                            [UNSIGNED64       RWRWRW]      0x0acac07a294cb13d 777645516586266941
 0x1600      "Output mapping 0"                            [RECORD  maxsub(0x36 / 54)]
     0x00      "SubIndex 000"                                [UNSIGNED8        R_R_R_]      0x36 54
     0x01      "SubIndex 001"                                [UNSIGNED32       R_R_R_]      0x70000110 1879048464

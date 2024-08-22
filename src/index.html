@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -12,93 +13,136 @@
             padding: 0;
             display: flex;
             height: 100vh;
+            overflow: hidden;
+            /* Prevents scrolling of body */
         }
 
-        /* Left and Right container styles */
-        .container {
+        /* Main container styles */
+        .main-container {
+            display: flex;
+            width: 100%;
+            height: 100%;
+        }
+
+        /* Left side styles */
+        .left-container {
+            flex: 2;
+            display: flex;
+            flex-direction: column;
+            margin-right: 20px;
+            background-color: #f0f0f0;
+        }
+
+        .top-section {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            overflow-y: auto;
+            padding: 20px;
+            border: 1px solid #ccc;
+            background-color: #fff;
+        }
+
+        .bottom-section {
+            flex: 2;
+            display: flex;
+            overflow-y: auto;
+            padding: 20px;
+            border: 1px solid #ccc;
+            background-color: #fff;
+        }
+
+        /* Bottom section sub-container styles */
+        .pdo-adjustment {
+            display: flex;
+            flex: 1;
+            gap: 20px;
+        }
+
+        .pdo-output, .pdo-input {
+            flex: 1;
+            border: 1px solid #ccc;
+            padding: 10px;
+            background-color: #fff;
+            overflow-y: auto;
+        }
+
+        /* Right side styles */
+        .right-container {
             flex: 1;
             padding: 20px;
-            box-sizing: border-box;
-        }
-
-        .left-container {
-            background-color: #f0f0f0;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-        }
-
-        .right-container {
+            overflow-y: auto;
+            border: 1px solid #ccc;
             background-color: #e0e0e0;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
         }
 
-        /* Top and bottom parts in the left container */
-        .pdo-content {
-            flex: 1;
-            margin-bottom: 20px;
-            overflow-y: auto;
-            border: 1px solid #ccc;
-            padding: 10px;
-            background-color: #fff;
+        /* Form styling */
+        .pdo-section label {
+            display: block;
+            margin: 5px 0;
         }
 
-        .pdo-form {
-            flex: 1;
-            display: flex;
-            flex-direction: column;
-            border: 1px solid #ccc;
-            padding: 10px;
-            background-color: #fff;
-        }
+        .form-group {
+        margin-bottom: 20px; /* Space below each form group */
+    }
 
-        /* SDO section styling */
-        .sdo-content {
-            overflow-y: auto;
-            border: 1px solid #ccc;
-            padding: 10px;
-            background-color: #fff;
-        }
+    .form-label {
+        display: block; /* Make label a block-level element */
+        margin-bottom: 5px; /* Space between label and input box */
+
+    }
+
+    .form-input {
+        display: block; /* Make input a block-level element */
+        width: 50%; /* Full width to fit the container */
+    }
     </style>
 </head>
+
 <body>
 
-    <!-- Left Container -->
-    <div class="container left-container">
-        <!-- PDO Content -->
-        <div id="pdoSection" class="pdo-content">
-            <h2>PDO Info</h2>
-            <pre id="pdoText"></pre>
+    <div class="main-container">
+        <!-- Left Container -->
+        <div class="left-container">
+            <!-- Top Section (PDO Info) -->
+            <div id="pdoSection" class="top-section">
+                <h2>PDO Info</h2>
+                <pre id="pdoText"></pre>
+            </div>
+
+            <!-- Bottom Section (PDO Adjustment) -->
+            <div class="bottom-section">
+                <div class="pdo-adjustment">
+                    <!-- PDO Output -->
+                    <div id="pdoOutputSection" class="pdo-output">
+                        <h4>PDO Output</h4>
+                        <form id="pdoOutputForm">
+                            <!-- PDO Output fields will be inserted here -->
+                        </form>
+                    </div>
+
+                    <!-- PDO Input -->
+                    <div id="pdoInputSection" class="pdo-input">
+                        <h4>PDO Input</h4>
+                        <form id="pdoInputForm">
+                            <!-- PDO Input fields will be inserted here -->
+                        </form>
+                    </div>
+                </div>
+            </div>
         </div>
 
-        <!-- Form Section -->
-        <div id="pdoForm" class="pdo-form">
-            <h3>PDO Adjustment</h3>
-            <form>
-                <!-- Example form elements -->
-                <label for="input1">Field 1:</label>
-                <input type="text" id="input1" name="input1"><br><br>
-
-                <label for="input2">Field 2:</label>
-                <input type="text" id="input2" name="input2"><br><br>
-
-                <button type="submit">Submit</button>
-            </form>
+        <!-- Right Container -->
+        <div class="right-container">
+            <!-- SDO Content -->
+            <div id="sdoSection">
+                <h2>SDO Info</h2>
+                <pre id="sdoText"></pre>
+            </div>
         </div>
     </div>
 
-    <!-- Right Container -->
-    <div class="container right-container">
-        <!-- SDO Content -->
-        <div id="sdoSection" class="sdo-content">
-            <h2>SDO Info</h2>
-            <pre id="sdoText"></pre>
-        </div>
-    </div>
-
-    <!-- Script to load text files -->
+    <!-- Script to load and parse text files -->
     <script>
         // Function to load text from a file and display it in an element
         function loadText(file, elementId) {
@@ -106,15 +150,102 @@
                 .then(response => response.text())
                 .then(text => {
                     document.getElementById(elementId).textContent = text;
+                    if (file === 'pdo.txt') {
+                        parsePDOText(text);
+                    }
                 })
                 .catch(error => console.error('Error loading text:', error));
         }
 
+        // Function to parse PDO text and create form fields
+        function parsePDOText(text) {
+            const lines = text.split('\n');
+            const outputForm = document.getElementById('pdoOutputForm');
+            const inputForm = document.getElementById('pdoInputForm');
+
+            let inOutputSection = false;
+            let inInputSection = false;
+
+            lines.forEach(line => {
+                if (!line.trim() || line.includes('addr b') || line.includes('index: sub bitl')) {
+                return;
+            }
+                if (line.includes('SM2 outputs')) {
+                    inOutputSection = true;
+                    inInputSection = false;
+                    return;
+                }
+                if (line.includes('SM3 inputs')) {
+                    inOutputSection = false;
+                    inInputSection = true;
+                    return;
+                }
+                if (inOutputSection || inInputSection) {
+                    const parts = line.trim().split(/\s+/);
+                    if (parts.length > 4) {
+                        const name = parts[4];
+                        const dataType = parts[3];
+
+                        // Create the form element based on dataType
+                        const createInput = (form, name, dataType) => {
+
+                            const container = document.createElement('div');
+                            container.className = 'form-group';
+                            
+                            
+                            const label = document.createElement('label');
+                            label.textContent = name;
+                            label.className = 'form-label'; 
+
+                           
+                            const input = document.createElement('input');
+                            input.id = name;
+                            input.name = name;
+                            input.className = 'form-input';
+
+                      
+
+                            // Determine input type based on dataType
+                            switch (dataType) {
+                                case 'UNSIGNED8':
+                                    input.type = 'UNSIGNED8';
+                                    input.min = 0;
+                                    input.max = 255;
+                                    break;
+                                case 'UNSIGNED16':
+                                    input.type = 'UNSIGNED16';
+                                    input.min = 0;
+                                    input.max = 65535;
+                                    break;
+                                case 'UNSIGNED32':
+                                    input.type = 'UNSIGNED32';
+                                    input.min = 0;
+                                    input.max = 4294967295;
+                                    break;
+                            }
+                            form.appendChild(label);
+                            form.appendChild(input);
+                            form.appendChild(document.createElement('br'));
+
+                        };
+
+                        if (inOutputSection) {
+                            createInput(outputForm, name, dataType);
+                        }
+                        if (inInputSection) {
+                            createInput(inputForm, name, dataType);
+                        }
+                    }
+                }
+            });
+        }
+
         // Load PDO and SDO content on page load
-        window.onload = function() {
+        window.onload = function () {
             loadText('pdo.txt', 'pdoText');
             loadText('sdo.txt', 'sdoText');
         }
     </script>
 </body>
+
 </html>
