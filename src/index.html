@@ -59,7 +59,8 @@
             gap: 20px;
         }
 
-        .pdo-output, .pdo-input {
+        .pdo-output,
+        .pdo-input {
             flex: 1;
             border: 1px solid #ccc;
             padding: 10px;
@@ -83,19 +84,52 @@
         }
 
         .form-group {
-        margin-bottom: 20px; /* Space below each form group */
-    }
+            margin-bottom: 20px;
+            /* Space below each form group */
+        }
 
-    .form-label {
-        display: block; /* Make label a block-level element */
-        margin-bottom: 5px; /* Space between label and input box */
+        .form-label {
+            display: block;
+            /* Make label a block-level element */
+            margin-bottom: 5px;
+            /* Space between label and input box */
 
-    }
+        }
 
-    .form-input {
-        display: block; /* Make input a block-level element */
-        width: 50%; /* Full width to fit the container */
-    }
+        .form-input {
+            display: block;
+            /* Make input a block-level element */
+            width: 50%;
+            /* Full width to fit the container */
+        }
+
+        .update-button {
+            background-color: #007bff;
+            /* Blue background */
+            color: white;
+            /* White text */
+            border: none;
+            /* No border */
+            padding: 10px 20px;
+            /* Some padding */
+            text-align: center;
+            /* Center text */
+            text-decoration: none;
+            /* No underline */
+            display: inline-block;
+            /* Inline block element */
+            font-size: 16px;
+            /* Font size */
+            cursor: pointer;
+            /* Pointer cursor on hover */
+            margin-top: 10px;
+            /* Space above the button */
+        }
+
+        .update-button:hover {
+            background-color: #0056b3;
+            /* Darker blue on hover */
+        }
     </style>
 </head>
 
@@ -116,8 +150,12 @@
                     <!-- PDO Output -->
                     <div id="pdoOutputSection" class="pdo-output">
                         <h4>PDO Output</h4>
-                        <form id="pdoOutputForm">
+                        <form id="pdoOutputForm" method="POST" action="/update">
                             <!-- PDO Output fields will be inserted here -->
+                            <!-- Update Button -->
+                            <div class="form-group">
+                                <input type="submit" class="update-button" value="Update">
+                            </div>
                         </form>
                     </div>
 
@@ -130,7 +168,7 @@
                     </div>
                 </div>
             </div>
-        </div>
+        </div> <!-- Closing the left-container div -->
 
         <!-- Right Container -->
         <div class="right-container">
@@ -157,7 +195,7 @@
                 .catch(error => console.error('Error loading text:', error));
         }
 
-        // Function to parse PDO text and create form fields
+        // Function to parse PDO text and create form elements
         function parsePDOText(text) {
             const lines = text.split('\n');
             const outputForm = document.getElementById('pdoOutputForm');
@@ -168,8 +206,8 @@
 
             lines.forEach(line => {
                 if (!line.trim() || line.includes('addr b') || line.includes('index: sub bitl')) {
-                return;
-            }
+                    return;
+                }
                 if (line.includes('SM2 outputs')) {
                     inOutputSection = true;
                     inInputSection = false;
@@ -191,19 +229,19 @@
 
                             const container = document.createElement('div');
                             container.className = 'form-group';
-                            
-                            
+
+
                             const label = document.createElement('label');
                             label.textContent = name;
-                            label.className = 'form-label'; 
+                            label.className = 'form-label';
 
-                           
+
                             const input = document.createElement('input');
                             input.id = name;
                             input.name = name;
                             input.className = 'form-input';
 
-                      
+
 
                             // Determine input type based on dataType
                             switch (dataType) {

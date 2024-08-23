@@ -1,15 +1,16 @@
 #include "include/main.h"
 // #include "ethercat.h"
 #include <string.h>
+#include "include/io_116e.h"
 
 static enum MHD_Result answer_to_connection(void *cls,
-                                struct MHD_Connection *connection,
-                                const char *url,
-                                const char *method,
-                                const char *version,
-                                const char *upload_data,
-                                size_t *upload_data_size,
-                                void **con_cls)
+                                            struct MHD_Connection *connection,
+                                            const char *url,
+                                            const char *method,
+                                            const char *version,
+                                            const char *upload_data,
+                                            size_t *upload_data_size,
+                                            void **con_cls)
 {
     const char *file_path;
     struct MHD_Response *response;
@@ -37,7 +38,6 @@ static enum MHD_Result answer_to_connection(void *cls,
             file_path = NULL;
         }
 
-
         if (file_path)
         {
             file = fopen(file_path, "r");
@@ -55,22 +55,20 @@ static enum MHD_Result answer_to_connection(void *cls,
 
                     response = MHD_create_response_from_buffer(file_size, file_content, MHD_RESPMEM_MUST_FREE);
 
+                    if (strcmp(url, "/index.html") == 0)
+                    {
+                        MHD_add_response_header(response, "Content-Type", "text/html");   // set the response type
+                    }
+                    else if (strstr(url, ".txt"))
+                    {
+                        MHD_add_response_header(response, "Content-Type", "text/plain");
+                    }
 
-
-if (strcmp(url, "/index.html") == 0 || strcmp(url, "/adjustment.html") == 0) {
-        MHD_add_response_header(response, "Content-Type", "text/html");
-    } else if (strstr(url, ".txt")) {
-        MHD_add_response_header(response, "Content-Type", "text/plain");
-    }
-
-
-
-                    ret = MHD_queue_response(connection, MHD_HTTP_OK, response);
+                    ret = MHD_queue_response(connection, MHD_HTTP_OK, response);   //send response to web browser
                     MHD_destroy_response(response);
                 }
-               
             }
-         
+
             return ret;
         }
 
