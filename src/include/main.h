@@ -11,11 +11,15 @@
 #include "slaveinfo.h"
 #include <stdlib.h>
 #include <stdbool.h>
+#include "io_116e.h"
+#include <ctype.h>
+
+
 
 
 #define PORT 8000
 
-
+io_116e_outputs* io_116e_outputs_ptr = NULL;
 
 
 static enum MHD_Result answer_to_connection(void *cls,
@@ -29,3 +33,9 @@ static enum MHD_Result answer_to_connection(void *cls,
 
 
 
+static enum MHD_Result handle_get_request(struct MHD_Connection *connection, const char *url);
+static enum MHD_Result handle_post_request(struct MHD_Connection *connection, const char *upload_data, size_t *upload_data_size);
+static void parse_post_data(const char *post_data);
+char *trim_whitespace(char *str);
+int parse_value_or_default(const char *value, int default_value);
+void parse_key_value(const char *key, const char *value);

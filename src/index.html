@@ -221,42 +221,50 @@
                 if (inOutputSection || inInputSection) {
                     const parts = line.trim().split(/\s+/);
                     if (parts.length > 4) {
+                        const index = parts[1].split(':')[0];             // Extract index:sub (e.g., 0x7000:0x01)
                         const name = parts[4];
                         const dataType = parts[3];
 
+
+                          // Create a unique identifier combining name with address and index:sub
+                const distinctName = `${name}_${index}`;
+
+
+
                         // Create the form element based on dataType
-                        const createInput = (form, name, dataType) => {
+                        const createInput = (form, distinctName, dataType) => {
 
                             const container = document.createElement('div');
                             container.className = 'form-group';
 
 
                             const label = document.createElement('label');
-                            label.textContent = name;
+                            label.textContent = distinctName;
                             label.className = 'form-label';
 
 
                             const input = document.createElement('input');
-                            input.id = name;
-                            input.name = name;
+                            input.id = distinctName;
+                            input.name = distinctName;
                             input.className = 'form-input';
 
-
+                            // Set default value to 0
+                            input.value = 0;
 
                             // Determine input type based on dataType
                             switch (dataType) {
                                 case 'UNSIGNED8':
-                                    input.type = 'UNSIGNED8';
+                                    input.type = 'number';
                                     input.min = 0;
                                     input.max = 255;
                                     break;
                                 case 'UNSIGNED16':
-                                    input.type = 'UNSIGNED16';
+                                    input.type = 'number';
                                     input.min = 0;
                                     input.max = 65535;
                                     break;
                                 case 'UNSIGNED32':
-                                    input.type = 'UNSIGNED32';
+                                    input.type = 'number';
                                     input.min = 0;
                                     input.max = 4294967295;
                                     break;
@@ -268,15 +276,36 @@
                         };
 
                         if (inOutputSection) {
-                            createInput(outputForm, name, dataType);
+                            createInput(outputForm, distinctName, dataType);
                         }
                         if (inInputSection) {
-                            createInput(inputForm, name, dataType);
+                            createInput(inputForm, distinctName, dataType);
                         }
                     }
                 }
             });
         }
+        /* 
+                    // Add event listener for AJAX form submission
+                    document.getElementById('pdoOutputForm').addEventListener('submit', function (event) {
+                        event.preventDefault(); // Prevent default form submissio
+        
+                        const form = event.target;
+                        const formData = new FormData(form);
+        
+                        fetch(form.action, {
+                            method: 'POST',
+                            body: formData
+                        })
+                            .then(response => response.text())
+                            .then(result => {
+                                console.log('Success:', result);
+                            })
+                            .catch(error => console.error('Error:', error));
+                    });
+                } */
+
+
 
         // Load PDO and SDO content on page load
         window.onload = function () {
