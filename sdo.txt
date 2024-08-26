@@ -1,198 +1,216 @@
-0x1000      "Device type"                                 [VAR]
-    0x00      "Device type"                                 [UNSIGNED32       R_R_R_]      0x00001389 5001
-0x1001      "Error register"                              [VAR]
-    0x00      "Error register"                              [UNSIGNED8        R_R_R_]      0x00 0
-0x1008      "Device name"                                 [VAR]
-    0x00      "Device name"                                 [VISIBLE_STR(48)  R_R_R_]      PAN355
-0x1009      "Hardware version"                            [VAR]
-    0x00      "Hardware version"                            [VISIBLE_STR(24)  R_R_R_]      N/A
-0x100a      "Software version"                            [VAR]
-    0x00      "Software version"                            [VISIBLE_STR(24)  R_R_R_]      N/A
-0x1018      "Identity"                                    [RECORD  maxsub(0x04 / 4)]
-    0x00      "SubIndex 000"                                [UNSIGNED8        R_R_R_]      0x04 4
-    0x01      "Vendor ID"                                   [UNSIGNED32       R_R_R_]      0x00bada55 12245589
-    0x02      "Product code"                                [UNSIGNED32       R_R_R_]      0x00008001 32769
-    0x03      "Revision"                                    [UNSIGNED32       R_R_R_]      0x00000000 0
-    0x04      "Serial number"                               [UNSIGNED32       R_R_R_]      0x00000000 0
-0x10f1      "Error Settings"                              [RECORD  maxsub(0x02 / 2)]
-    0x00      "SubIndex 000"                                [UNSIGNED8        R_R_R_]      0x02 2
-    0x01      "Local Error Reaction"                        [UNSIGNED32       RWRWRW]      0x00000001 1
-    0x02      "Sync Error Counter Limit"                    [UNSIGNED16       RWRWRW]      0x0004 4
-0x10f8      "Timestamp Object"                            [VAR]
-    0x00      "Timestamp Object"                            [UNSIGNED64       RWRWRW]      0x0acbea7e8a839c5c 777973189862202460
-0x1601      "STP0_OUT process data mapping"               [RECORD  maxsub(0x05 / 5)]
-    0x00      "SubIndex 000"                                [UNSIGNED8        R_R_R_]      0x05 5
-    0x01      "SubIndex 001"                                [UNSIGNED32       R_R_R_]      0x70100108 1880097032
-    0x02      "SubIndex 002"                                [UNSIGNED32       R_R_R_]      0x00000008 8
-    0x03      "SubIndex 003"                                [UNSIGNED32       R_R_R_]      0x70100310 1880097552
-    0x04      "SubIndex 004"                                [UNSIGNED32       R_R_R_]      0x70100410 1880097808
-    0x05      "SubIndex 005"                                [UNSIGNED32       R_R_R_]      0x70100520 1880098080
-0x1602      "STP1_OUT process data mapping"               [RECORD  maxsub(0x05 / 5)]
-    0x00      "SubIndex 000"                                [UNSIGNED8        R_R_R_]      0x05 5
-    0x01      "SubIndex 001"                                [UNSIGNED32       R_R_R_]      0x70200108 1881145608
-    0x02      "SubIndex 002"                                [UNSIGNED32       R_R_R_]      0x00000008 8
-    0x03      "SubIndex 003"                                [UNSIGNED32       R_R_R_]      0x70200310 1881146128
-    0x04      "SubIndex 004"                                [UNSIGNED32       R_R_R_]      0x70200410 1881146384
-    0x05      "SubIndex 005"                                [UNSIGNED32       R_R_R_]      0x70200520 1881146656
-0x1a00      "GENERIC_PDO_IN process data mapping"         [RECORD  maxsub(0x02 / 2)]
-    0x00      "SubIndex 000"                                [UNSIGNED8        R_R_R_]      0x02 2
-    0x01      "SubIndex 001"                                [UNSIGNED32       R_R_R_]      0x60000108 1610613000
-    0x02      "SubIndex 002"                                [UNSIGNED32       R_R_R_]      0x60000208 1610613256
-0x1a01      "STP0_IN process data mapping"                [RECORD  maxsub(0x08 / 8)]
-    0x00      "SubIndex 000"                                [UNSIGNED8        R_R_R_]      0x08 8
-    0x01      "SubIndex 001"                                [UNSIGNED32       R_R_R_]      0x60100108 1611661576
-    0x02      "SubIndex 002"                                [UNSIGNED32       R_R_R_]      0x60100208 1611661832
-    0x03      "SubIndex 003"                                [UNSIGNED32       R_R_R_]      0x60100308 1611662088
-    0x04      "SubIndex 004"                                [UNSIGNED32       R_R_R_]      0x00000008 8
-    0x05      "SubIndex 005"                                [UNSIGNED32       R_R_R_]      0x60100510 1611662608
-    0x06      "SubIndex 006"                                [UNSIGNED32       R_R_R_]      0x60100610 1611662864
-    0x07      "SubIndex 007"                                [UNSIGNED32       R_R_R_]      0x60100720 1611663136
-    0x08      "SubIndex 008"                                [UNSIGNED32       R_R_R_]      0x60100820 1611663392
-0x1a02      "STP1_IN process data mapping"                [RECORD  maxsub(0x08 / 8)]
-    0x00      "SubIndex 000"                                [UNSIGNED8        R_R_R_]      0x08 8
-    0x01      "SubIndex 001"                                [UNSIGNED32       R_R_R_]      0x60200108 1612710152
-    0x02      "SubIndex 002"                                [UNSIGNED32       R_R_R_]      0x60200208 1612710408
-    0x03      "SubIndex 003"                                [UNSIGNED32       R_R_R_]      0x60200308 1612710664
-    0x04      "SubIndex 004"                                [UNSIGNED32       R_R_R_]      0x00000008 8
-    0x05      "SubIndex 005"                                [UNSIGNED32       R_R_R_]      0x60200510 1612711184
-    0x06      "SubIndex 006"                                [UNSIGNED32       R_R_R_]      0x60200610 1612711440
-    0x07      "SubIndex 007"                                [UNSIGNED32       R_R_R_]      0x60200720 1612711712
-    0x08      "SubIndex 008"                                [UNSIGNED32       R_R_R_]      0x60200820 1612711968
-0x1a03      "ADC_DATA process data mapping"               [RECORD  maxsub(0x02 / 2)]
-    0x00      "SubIndex 000"                                [UNSIGNED8        R_R_R_]      0x02 2
-    0x01      "SubIndex 001"                                [UNSIGNED32       R_R_R_]      0x60300110 1613758736
-    0x02      "SubIndex 002"                                [UNSIGNED32       R_R_R_]      0x60300220 1613759008
-0x1c00      "Sync manager type"                           [ARRAY  maxsub(0x04 / 4)]
-    0x00      "SubIndex 000"                                [UNSIGNED8        R_R_R_]      0x04 4
-    0x01      "SubIndex 001"                                [UNSIGNED8        R_R_R_]      0x01 1
-    0x02      "SubIndex 002"                                [UNSIGNED8        R_R_R_]      0x02 2
-    0x03      "SubIndex 003"                                [UNSIGNED8        R_R_R_]      0x03 3
-    0x04      "SubIndex 004"                                [UNSIGNED8        R_R_R_]      0x04 4
-0x1c12      "SyncManager 2 assignment"                    [ARRAY  maxsub(0x02 / 2)]
-    0x00      "SubIndex 000"                                [UNSIGNED8        R_R_R_]      0x02 2
-    0x01      "SubIndex 001"                                [UNSIGNED16       R_R_R_]      0x1601 5633
-    0x02      "SubIndex 002"                                [UNSIGNED16       R_R_R_]      0x1602 5634
-0x1c13      "SyncManager 3 assignment"                    [ARRAY  maxsub(0x04 / 4)]
-    0x00      "SubIndex 000"                                [UNSIGNED8        R_R_R_]      0x04 4
-    0x01      "SubIndex 001"                                [UNSIGNED16       R_R_R_]      0x1a00 6656
-    0x02      "SubIndex 002"                                [UNSIGNED16       R_R_R_]      0x1a01 6657
-    0x03      "SubIndex 003"                                [UNSIGNED16       R_R_R_]      0x1a02 6658
-    0x04      "SubIndex 004"                                [UNSIGNED16       R_R_R_]      0x1a03 6659
-0x1c32      "SM output parameter"                         [RECORD  maxsub(0x20 / 32)]
-    0x00      "SubIndex 000"                                [UNSIGNED8        R_R_R_]      0x20 32
-    0x01      "Synchronization Type"                        [UNSIGNED16       RWR_R_]      0x0001 1
-    0x02      "Cycle Time"                                  [UNSIGNED32       R_R_R_]      0x00000000 0
-    0x04      "Synchronization Types supported"             [UNSIGNED16       R_R_R_]      0x401f 16415
-    0x05      "Minimum Cycle Time"                          [UNSIGNED32       R_R_R_]      0x0001e848 125000
-    0x06      "Calc and Copy Time"                          [UNSIGNED32       R_R_R_]      0x00000000 0
-    0x08      "Get Cycle Time"                              [UNSIGNED16       RWRWRW]      0x0000 0
-    0x09      "Delay Time"                                  [UNSIGNED32       R_R_R_]      0x00000000 0
-    0x0a      "Sync0 Cycle Time"                            [UNSIGNED32       RWRWRW]      0x00000000 0
-    0x0b      "SM-Event Missed"                             [UNSIGNED16       R_R_R_]      0x0000 0
-    0x0c      "Cycle Time Too Small"                        [UNSIGNED16       R_R_R_]      0x0000 0
-    0x20      "Sync Error"                                  [BOOLEAN          R_R_R_]      FALSE
-0x1c33      "SM input parameter"                          [RECORD  maxsub(0x20 / 32)]
-    0x00      "SubIndex 000"                                [UNSIGNED8        R_R_R_]      0x20 32
-    0x01      "Synchronization Type"                        [UNSIGNED16       RWR_R_]      0x0022 34
-    0x02      "Cycle Time"                                  [UNSIGNED32       R_R_R_]      0x00000000 0
-    0x04      "Synchronization Types supported"             [UNSIGNED16       R_R_R_]      0x401f 16415
-    0x05      "Minimum Cycle Time"                          [UNSIGNED32       R_R_R_]      0x0001e848 125000
-    0x06      "Calc and Copy Time"                          [UNSIGNED32       R_R_R_]      0x00000000 0
-    0x08      "Get Cycle Time"                              [UNSIGNED16       RWRWRW]      0x0000 0
-    0x09      "Delay Time"                                  [UNSIGNED32       R_R_R_]      0x00000000 0
-    0x0a      "Sync0 Cycle Time"                            [UNSIGNED32       RWRWRW]      0x00000000 0
-    0x0b      "SM-Event Missed"                             [UNSIGNED16       R_R_R_]      0x0000 0
-    0x0c      "Cycle Time Too Small"                        [UNSIGNED16       R_R_R_]      0x0000 0
-    0x20      "Sync Error"                                  [BOOLEAN          R_R_R_]      FALSE
-0x2000      "GENERIC_SDO_IN"                              [RECORD  maxsub(0x09 / 9)]
-    0x00      "SubIndex 000"                                [UNSIGNED8        R_R_R_]      0x08 8
-    0x01      "UID_0"                                       [UNSIGNED32       R_R_R_]      0x148b0101 344654081
-    0x02      "UID_1"                                       [UNSIGNED32       R_R_R_]      0x28816015 679567381
-    0x03      "UID_2"                                       [UNSIGNED32       R_R_R_]      0x20000401 536871937
-    0x04      "UID_3"                                       [UNSIGNED32       R_R_R_]      0x0000000b 11
-    0x05      "HW_VERSION"                                  [UNSIGNED16       R_R_R_]      0x0040 64
-    0x06      "FW_VERSION"                                  [UNSIGNED16       R_R_R_]      0x0203 515
-    0x07      "FW_CRC"                                      [UNSIGNED32       R_R_R_]      0x3933e681 959702657
-    0x08      "CPU_TEMPERATURE"                             [UNSIGNED8        R_R_R_]      0x00 0
-0x2010      "STP0_DATA"                                   [RECORD  maxsub(0x04 / 4)]
-    0x00      "SubIndex 000"                                [UNSIGNED8        R_R_R_]      0x04 4
-    0x01      "STP_HW_VERSION"                              [UNSIGNED16       R_R_R_]      0x0044 68
-    0x02      "STP_TEMPERATURE"                             [INTEGER16        R_R_R_]      0x0018 24
-    0x03      "STP_RAW_ENCODER_VALUE"                       [UNSIGNED16       R_R_R_]      0x0387 903
-    0x04      "STP_HOME_OFFSET"                             [UNSIGNED16       R_R_R_]      0x0000 0
-0x2020      "STP1_DATA"                                   [RECORD  maxsub(0x04 / 4)]
-    0x00      "SubIndex 000"                                [UNSIGNED8        R_R_R_]      0x04 4
-    0x01      "STP_HW_VERSION"                              [UNSIGNED16       R_R_R_]      0x0000 0
-    0x02      "STP_TEMPERATURE"                             [INTEGER16        R_R_R_]      0x0000 0
-    0x03      "STP_RAW_ENCODER_VALUE"                       [UNSIGNED16       R_R_R_]      0x0000 0
-    0x04      "STP_HOME_OFFSET"                             [UNSIGNED16       R_R_R_]      0x0000 0
-0x3000      "GENERIC_SDO_OUT"                             [RECORD  maxsub(0x02 / 2)]
+0x1000      "Device Type"                                 [VAR]
+    0x00      "Device Type"                                 [UNSIGNED32       R_R_R_]      0x00010192 65938
+0x1001      "Error Register"                              [VAR]
+    0x00      "Error Register"                              [UNSIGNED8        R_R_R_]      0x00 0
+0x1008      "Manufacturer Device Name"                    [VAR]
+    0x00      "Manufacturer Device Name"                    [VISIBLE_STR(160) R_R_R_]      3G3AX-MX2-ECT       
+0x1009      "Manufacturer Hardware Version"               [VAR]
+    0x00      "Manufacturer Hardware Version"               [VISIBLE_STR(160) R_R_R_]      V1.00               
+0x100a      "Manufacturer Software Version"               [VAR]
+    0x00      "Manufacturer Software Version"               [VISIBLE_STR(160) R_R_R_]      V1.10               
+0x1010      "Store Parameters"                            [ARRAY  maxsub(0x01 / 1)]
     0x00      "SubIndex 000"                                [UNSIGNED8        R_R_R_]      0x01 1
-    0x01      "LEDS"                                        [UNSIGNED8        RWRWRW]      0x00 0
-0x3005      "PDO_COM_TIMEOUT_CONFIGURATION"               [RECORD  maxsub(0x03 / 3)]
+    0x01      "Store Parameters"                            [UNSIGNED32       RWRWRW]      0x00000001 1
+0x1011      "Restore Default Parameters"                  [ARRAY  maxsub(0x01 / 1)]
+    0x00      "SubIndex 000"                                [UNSIGNED8        R_R_R_]      0x01 1
+    0x01      "Restore Default Parameters"                  [UNSIGNED32       RWRWRW]      0x00000001 1
+0x1018      "Identity Object"                             [RECORD  maxsub(0x04 / 4)]
+    0x00      "Identity Object"                             [UNSIGNED8        R_R_R_]      0x04 4
+    0x01      "Vendor ID"                                   [UNSIGNED32       R_R_R_]      0x00000083 131
+    0x02      "Product Code"                                [UNSIGNED32       R_R_R_]      0x00000053 83
+    0x03      "Revision Number"                             [UNSIGNED32       R_R_R_]      0x00010001 65537
+    0x04      "Serial Number"                               [UNSIGNED32       R_R_R_]      0x00005cb6 23734
+0x10e0      "Node Address Reload"                         [RECORD  maxsub(0x03 / 3)]
     0x00      "SubIndex 000"                                [UNSIGNED8        R_R_R_]      0x03 3
-    0x01      "TIMEOUT"                                     [UNSIGNED16       RWRWRW]      0x0000 0
-    0x02      "STP0_ACTION"                                 [UNSIGNED8        RWRWRW]      0x00 0
-    0x03      "STP1_ACTION"                                 [UNSIGNED8        RWRWRW]      0x00 0
-0x3010      "STP0_CONFIGURATION"                          [RECORD  maxsub(0x09 / 9)]
-    0x00      "SubIndex 000"                                [UNSIGNED8        R_R_R_]      0x09 9
-    0x01      "STP_PULSE_DIV"                               [UNSIGNED8        RWRWRW]      0x00 0
-    0x02      "STP_RAMP_DIV"                                [UNSIGNED8        RWRWRW]      0x00 0
-    0x03      "STP_I_HOLD"                                  [UNSIGNED8        RWRWRW]      0x00 0
-    0x04      "STP_I_RUN"                                   [UNSIGNED8        RWRWRW]      0x00 0
-    0x05      "STP_MAX_POSITION_ERROR"                      [UNSIGNED32       RWRWRW]      0x00000000 0
-    0x06      "STP_RUN_CURRENT_TIMEOUT"                     [UNSIGNED32       RWRWRW]      0x00000000 0
-    0x07      "STP_MICROSTEP_SETTING"                       [UNSIGNED8        RWRWRW]      0x07 7
-    0x08      "STP_INVERT_MOTOR_DIRECTION"                  [UNSIGNED8        RWRWRW]      0x00 0
-    0x09      "STP_MAX_HOMING_POSITION_ERROR"               [UNSIGNED16       RWRWRW]      0x0000 0
-0x3020      "STP1_CONFIGURATION"                          [RECORD  maxsub(0x09 / 9)]
-    0x00      "SubIndex 000"                                [UNSIGNED8        R_R_R_]      0x09 9
-    0x01      "STP_PULSE_DIV"                               [UNSIGNED8        RWRWRW]      0x00 0
-    0x02      "STP_RAMP_DIV"                                [UNSIGNED8        RWRWRW]      0x00 0
-    0x03      "STP_I_HOLD"                                  [UNSIGNED8        RWRWRW]      0x00 0
-    0x04      "STP_I_RUN"                                   [UNSIGNED8        RWRWRW]      0x00 0
-    0x05      "STP_MAX_POSITION_ERROR"                      [UNSIGNED32       RWRWRW]      0x00000000 0
-    0x06      "STP_RUN_CURRENT_TIMEOUT"                     [UNSIGNED32       RWRWRW]      0x00000000 0
-    0x07      "STP_MICROSTEP_SETTING"                       [UNSIGNED8        RWRWRW]      0x07 7
-    0x08      "STP_INVERT_MOTOR_DIRECTION"                  [UNSIGNED8        RWRWRW]      0x00 0
-    0x09      "STP_MAX_HOMING_POSITION_ERROR"               [UNSIGNED16       RWRWRW]      0x0000 0
-0x6000      "GENERIC_PDO_IN"                              [RECORD  maxsub(0x02 / 2)]
+    0x01      "Configured Station Alias Register Value"      [UNSIGNED16       RWR_R_]      0x0000 0
+    0x03      "Reload ID Selector Value"                    [UNSIGNED16       RWR_R_]      0x0000 0
+0x10f3      "Diagnosis History"                           [RECORD  maxsub(0x0d / 13)]
+    0x00      "SubIndex 000"                                [UNSIGNED8        R_R_R_]      0x0d 13
+    0x01      "Maximum Messages"                            [UNSIGNED8        R_R_R_]      0x08 8
+    0x02      "Newest Message"                              [UNSIGNED8        R_R_R_]      0x0d 13
+    0x05      "Flags"                                       [UNSIGNED16       RWRWRW]      0x0000 0
+    0x06      "Diagnosis Message 1"                         [OCTET_STR(184)   R_R_R_]      0x00 0xffffffe8 0x41 0x63 0x04 0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x10 0x00 0x00 0x00 0xfffffff0 0x34 
+    0x07      "Diagnosis Message 2"                         [OCTET_STR(184)   R_R_R_]      0x00 0xffffffe8 0x41 0x63 0x04 0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x10 0x00 0x00 0x00 0xfffffff0 0x34 
+    0x08      "Diagnosis Message 3"                         [OCTET_STR(184)   R_R_R_]      0x00 0xffffffe8 0x41 0x63 0x04 0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x10 0x00 0x00 0x00 0xfffffff0 0x34 
+    0x09      "Diagnosis Message 4"                         [OCTET_STR(184)   R_R_R_]      0x00 0xffffffe8 0x00 0xffffffff 0x04 0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x10 0x00 0x00 0x00 0xffffffbb 0x04 
+    0x0a      "Diagnosis Message 5"                         [OCTET_STR(184)   R_R_R_]      0x00 0xffffffe8 0x00 0xffffffff 0x04 0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x10 0x00 0x00 0x00 0xffffffbb 0x04 
+    0x0b      "Diagnosis Message 6"                         [OCTET_STR(184)   R_R_R_]      0x00 0xffffffe8 0x00 0xffffffff 0x04 0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x10 0x00 0x00 0x00 0xffffffbb 0x04 
+    0x0c      "Diagnosis Message 7"                         [OCTET_STR(184)   R_R_R_]      0x00 0xffffffe8 0x00 0xffffffff 0x04 0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x10 0x00 0x00 0x00 0xffffffbb 0x04 
+    0x0d      "Diagnosis Message 8"                         [OCTET_STR(184)   R_R_R_]      0x00 0xffffffe8 0x00 0xffffffff 0x04 0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x10 0x00 0x00 0x00 0xffffffbb 0x04 
+0x1c00      "Sync Manager Communication Type"             [ARRAY  maxsub(0x04 / 4)]
+    0x00      "Sync Manager Communication Type"             [UNSIGNED8        R_R_R_]      0x04 4
+    0x01      "Communication Type Sync Manager 0"           [UNSIGNED8        R_R_R_]      0x01 1
+    0x02      "Communication Type Sync Manager 1"           [UNSIGNED8        R_R_R_]      0x02 2
+    0x03      "Communication Type Sync Manager 2"           [UNSIGNED8        R_R_R_]      0x03 3
+    0x04      "Communication Type Sync Manager 3"           [UNSIGNED8        R_R_R_]      0x04 4
+0x1c10      "Sync Manager 0 PDO Assignment"               [ARRAY  maxsub(0x00 / 0)]
+    0x00      "Sync Manager 0 PDO Assignment"               [UNSIGNED8        R_R_R_]      0x00 0
+0x1c11      "Sync Manager 1 PDO Assignment"               [ARRAY  maxsub(0x00 / 0)]
+    0x00      "Sync Manager 1 PDO Assignment"               [UNSIGNED8        R_R_R_]      0x00 0
+0x1c12      "Sync Manager 2 PDO Assignment"               [ARRAY  maxsub(0x05 / 5)]
+    0x00      "SubIndex 000"                                [UNSIGNED8        RWR_R_]      0x01 1
+    0x01      "1st PDO Mapping object index of assigned"      [UNSIGNED16       RWR_R_]      0x1701 5889
+0x1c13      "Sync Manager 3 PDO Assignment"               [ARRAY  maxsub(0x05 / 5)]
+    0x00      "SubIndex 000"                                [UNSIGNED8        RWR_R_]      0x01 1
+    0x01      "1st PDO Mapping object index of assigned"      [UNSIGNED16       RWR_R_]      0x1b01 6913
+0x1c32      "Sync Manager 2 Synchronization"              [RECORD  maxsub(0x20 / 32)]
+    0x00      "Sync Manager 2 Synchronization"              [UNSIGNED8        R_R_R_]      0x20 32
+    0x01      "Synchronization Type"                        [UNSIGNED16       RWRWRW]      0x0000 0
+    0x02      "Cycle Time"                                  [UNSIGNED32       R_R_R_]      0x00000000 0
+    0x04      "Synchronization Types supported"             [UNSIGNED16       R_R_R_]      0x0001 1
+    0x05      "Minimum Cycle Time"                          [UNSIGNED32       R_R_R_]      0x00000000 0
+0x1c33      "Sync Manager 3 Synchronization"              [RECORD  maxsub(0x20 / 32)]
+    0x00      "Sync Manager 3 Synchronization"              [UNSIGNED8        R_R_R_]      0x20 32
+    0x01      "Synchronization Type"                        [UNSIGNED16       RWRWRW]      0x0000 0
+    0x02      "Cycle Time"                                  [UNSIGNED32       R_R_R_]      0x00000000 0
+    0x04      "Synchronization Types supported"             [UNSIGNED16       R_R_R_]      0x0001 1
+    0x05      "Minimum Cycle Time"                          [UNSIGNED32       R_R_R_]      0x00000000 0
+0x2f41      "Protocol software version"                   [VAR]
+    0x00      "Protocol software version"                   [VISIBLE_STR(80)  R_R_R_]      V1.04_DB05
+0x1600      "1st receive PDO mapping"                     [ARRAY  maxsub(0x02 / 2)]
+    0x00      "SubIndex 000"                                [UNSIGNED8        RWR_R_]      0x00 0
+0x1601      "2nd receive PDO mapping"                     [ARRAY  maxsub(0x02 / 2)]
+    0x00      "SubIndex 000"                                [UNSIGNED8        RWR_R_]      0x00 0
+0x1602      "3rd receive PDO mapping"                     [ARRAY  maxsub(0x02 / 2)]
+    0x00      "SubIndex 000"                                [UNSIGNED8        RWR_R_]      0x00 0
+0x1603      "4th receive PDO mapping"                     [ARRAY  maxsub(0x02 / 2)]
+    0x00      "SubIndex 000"                                [UNSIGNED8        RWR_R_]      0x00 0
+0x1604      "5th receive PDO mapping"                     [ARRAY  maxsub(0x02 / 2)]
+    0x00      "SubIndex 000"                                [UNSIGNED8        RWR_R_]      0x00 0
+0x1700      "257th receive PDO Mapping"                   [ARRAY  maxsub(0x02 / 2)]
     0x00      "SubIndex 000"                                [UNSIGNED8        R_R_R_]      0x02 2
-    0x01      "STATUS"                                      [UNSIGNED8        R_R_R_]      0x01 1
-    0x02      "ERROR"                                       [UNSIGNED8        R_R_R_]      0x00 0
-0x6010      "STP0_IN"                                     [RECORD  maxsub(0x08 / 8)]
-    0x00      "SubIndex 000"                                [UNSIGNED8        R_R_R_]      0x08 8
-    0x01      "STP_ACTUAL_OPMODE"                           [UNSIGNED8        R_R_R_]      0x00 0
-    0x02      "STP_ERROR"                                   [UNSIGNED8        R_R_R_]      0x00 0
-    0x03      "STP_STATUS"                                  [UNSIGNED8        R_R_R_]      0x02 2
-    0x05      "STP_ACTUAL_ACCELERATION"                     [INTEGER16        R_R_R_]      0x0000 0
-    0x06      "STP_ACTUAL_VELOCITY"                         [INTEGER16        R_R_R_]      0x0000 0
-    0x07      "STP_ACTUAL_POSITION"                         [INTEGER32        R_R_R_]      0x00000000 0
-    0x08      "STP_ACTUAL_POSITION_ERROR"                   [INTEGER32        R_R_R_]      0xffffffce -50
-0x6020      "STP1_IN"                                     [RECORD  maxsub(0x08 / 8)]
-    0x00      "SubIndex 000"                                [UNSIGNED8        R_R_R_]      0x08 8
-    0x01      "STP_ACTUAL_OPMODE"                           [UNSIGNED8        R_R_R_]      0xfe 254
-    0x02      "STP_ERROR"                                   [UNSIGNED8        R_R_R_]      0x00 0
-    0x03      "STP_STATUS"                                  [UNSIGNED8        R_R_R_]      0x00 0
-    0x05      "STP_ACTUAL_ACCELERATION"                     [INTEGER16        R_R_R_]      0x0000 0
-    0x06      "STP_ACTUAL_VELOCITY"                         [INTEGER16        R_R_R_]      0x0000 0
-    0x07      "STP_ACTUAL_POSITION"                         [INTEGER32        R_R_R_]      0x00000000 0
-    0x08      "STP_ACTUAL_POSITION_ERROR"                   [INTEGER32        R_R_R_]      0x00000000 0
-0x6030      "ADC_DATA"                                    [RECORD  maxsub(0x02 / 2)]
+    0x01      "1st Output Object to be mapped"              [UNSIGNED32       R_R_R_]      0x60400010 1614807056
+    0x02      "2nd Output Object to be mapped"              [UNSIGNED32       R_R_R_]      0x60420010 1614938128
+0x1701      "258th receive PDO Mapping"                   [ARRAY  maxsub(0x02 / 2)]
     0x00      "SubIndex 000"                                [UNSIGNED8        R_R_R_]      0x02 2
-    0x01      "ADC_STATUS"                                  [UNSIGNED16       R_R_R_]      0x0002 2
-    0x02      "ADC_VALUE"                                   [UNSIGNED32       R_R_R_]      0x000d2627 861735
-0x7000      "GENERIC_PDO_OUT"                             [RECORD  maxsub(0x00 / 0)]
+    0x01      "1st Output Object to be mapped"              [UNSIGNED32       R_R_R_]      0x50000010 1342177296
+    0x02      "2nd Output Object to be mapped"              [UNSIGNED32       R_R_R_]      0x50100010 1343225872
+0x1a00      "1st transmit PDO mapping"                    [ARRAY  maxsub(0x02 / 2)]
+    0x00      "SubIndex 000"                                [UNSIGNED8        RWR_R_]      0x00 0
+0x1a01      "2nd transmit PDO mapping"                    [ARRAY  maxsub(0x02 / 2)]
+    0x00      "SubIndex 000"                                [UNSIGNED8        RWR_R_]      0x00 0
+0x1a02      "3rd transmit PDO mapping"                    [ARRAY  maxsub(0x02 / 2)]
+    0x00      "SubIndex 000"                                [UNSIGNED8        RWR_R_]      0x00 0
+0x1a03      "4th transmit PDO mapping"                    [ARRAY  maxsub(0x02 / 2)]
+    0x00      "SubIndex 000"                                [UNSIGNED8        RWR_R_]      0x00 0
+0x1a04      "5th transmit PDO mapping"                    [ARRAY  maxsub(0x02 / 2)]
+    0x00      "SubIndex 000"                                [UNSIGNED8        RWR_R_]      0x00 0
+0x1b00      "257th transmit PDO Mapping"                  [ARRAY  maxsub(0x02 / 2)]
+    0x00      "SubIndex 000"                                [UNSIGNED8        R_R_R_]      0x02 2
+    0x01      "1st Output Object to be mapped"              [UNSIGNED32       R_R_R_]      0x60410010 1614872592
+    0x02      "2nd Output Object to be mapped"              [UNSIGNED32       R_R_R_]      0x60430010 1615003664
+0x1b01      "258th transmit PDO Mapping"                  [ARRAY  maxsub(0x02 / 2)]
+    0x00      "SubIndex 000"                                [UNSIGNED8        R_R_R_]      0x02 2
+    0x01      "1st Output Object to be mapped"              [UNSIGNED32       R_R_R_]      0x51000010 1358954512
+    0x02      "2nd Output Object to be mapped"              [UNSIGNED32       R_R_R_]      0x51100010 1360003088
+0x1bff      "512th transmit PDO Mapping"                  [ARRAY  maxsub(0x01 / 1)]
+    0x00      "SubIndex 000"                                [UNSIGNED8        R_R_R_]      0x01 1
+    0x01      "1st Input Object to be mapped"               [UNSIGNED32       R_R_R_]      0x20020108 537002248
+0x2002      "SYSMAC Error Status"                         [RECORD  maxsub(0x02 / 2)]
+    0x00      "SubIndex 000"                                [UNSIGNED8        R_R_R_]      0x02 2
+    0x01      "SYSMAC Error Status"                         [UNSIGNED8        R_R_R_]      0x00 0
+    0x02      "SYSMAC Error Status Clear"                   [UNSIGNED8        RWRWRW]      0x00 0
+0x2003      "SYSMAC Observation"                          [ARRAY  maxsub(0x05 / 5)]
     0x00      "SubIndex 000"                                [UNSIGNED8        R_R_R_]      0x00 0
-0x7010      "STP0_OUT"                                    [RECORD  maxsub(0x05 / 5)]
-    0x00      "SubIndex 000"                                [UNSIGNED8        R_R_R_]      0x05 5
-    0x01      "STP_REQUESTED_OPMODE"                        [UNSIGNED8        RWRWRW]      0x00 0
-    0x03      "STP_TARGET_ACCELERATION"                     [UNSIGNED16       RWRWRW]      0x0000 0
-    0x04      "STP_TARGET_VELOCITY"                         [INTEGER16        RWRWRW]      0x0000 0
-    0x05      "STP_TARGET_POSITION"                         [INTEGER32        RWRWRW]      0x00000000 0
-0x7020      "STP1_OUT"                                    [RECORD  maxsub(0x05 / 5)]
-    0x00      "SubIndex 000"                                [UNSIGNED8        R_R_R_]      0x05 5
-    0x01      "STP_REQUESTED_OPMODE"                        [UNSIGNED8        RWRWRW]      0x00 0
-    0x03      "STP_TARGET_ACCELERATION"                     [UNSIGNED16       RWRWRW]      0x0000 0
-    0x04      "STP_TARGET_VELOCITY"                         [INTEGER16        RWRWRW]      0x0000 0
-    0x05      "STP_TARGET_POSITION"                         [INTEGER32        RWRWRW]      0x00000000 0
+0x2004      "SYSMAC Minor Fault"                          [ARRAY  maxsub(0x05 / 5)]
+    0x00      "SubIndex 000"                                [UNSIGNED8        R_R_R_]      0x00 0
+0x2100      "Error History Clear"                         [VAR]
+    0x00      "Error History Clear"                         [UNSIGNED32       RWRWRW]      0x00000000 0
+0x2f30      "Reserved"                                    [VAR]
+    0x00      "Reserved"                                    [UNSIGNED32       RWRWRW]      0x00000000 0
+0x2f40      "Application Software Version"                [VAR]
+    0x00      "Application Software Version"                [VISIBLE_STR(256) R_R_R_]      V1.10   V1.2    4413    00840374
+0x2f42      "ROM SUM"                                     [VAR]
+    0x00      "ROM SUM"                                     [UNSIGNED16       R_R_R_]      0x45c5 17861
+0x2ff0      "Reserved"                                    [RECORD  maxsub(0x02 / 2)]
+    0x00      "SubIndex 000"                                [UNSIGNED8        R_R_R_]      0x02 2
+    0x01      "SubIndex 001"                                [OCTET_STR(1024)  R_R_R_]      Time:1724665102.989 PACKET slave:1 index:2ff0.01 error:3
+
+    0x02      "SubIndex 002"                                [UNSIGNED32       RWRWRW]      
+0x2fff      "Reserved"                                    [RECORD  maxsub(0x03 / 3)]
+    0x00      "SubIndex 000"                                [UNSIGNED8        R_R_R_]      0x03 3
+    0x01      "SubIndex 001"                                [OCTET_STR(64)    RWRWRW]      0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x00 
+    0x02      "SubIndex 002"                                [OCTET_STR(320)   R_R_R_]      0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x00 
+    0x03      "SubIndex 003"                                [OCTET_STR(320)   RWRWRW]      0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x00 
+0x5000      "Command"                                     [VAR]
+    0x00      "Command"                                     [INTEGER16        RWRWRW]      0x0000 0
+0x5010      "Frequency reference"                         [VAR]
+    0x00      "Frequency reference"                         [UNSIGNED16       RWRWRW]      0x0000 0
+0x5100      "Status"                                      [VAR]
+    0x00      "Status"                                      [INTEGER16        R_R_R_]      0x0200 512
+0x5110      "Output frequency monitor"                    [VAR]
+    0x00      "Output frequency monitor"                    [UNSIGNED16       R_R_R_]      0x0000 0
+0x5200      "PDO mapping error history"                   [RECORD  maxsub(0x0a / 10)]
+    0x00      "SubIndex 000"                                [UNSIGNED8        R_R_R_]      0x0a 10
+    0x01      "Newest PDO mapping error code"               [UNSIGNED16       R_R_R_]      0xffff 65535
+    0x02      "Reserved"                                    [UNSIGNED8        R_R_R_]      0x00 0
+    0x03      "Reserved"                                    [UNSIGNED8        R_R_R_]      0x00 0
+    0x04      "Number of error message"                     [UNSIGNED16       R_R_R_]      0x0000 0
+    0x05      "PDO mapping error message1"                  [UNSIGNED16       R_R_R_]      0x0000 0
+    0x06      "PDO mapping error message2"                  [UNSIGNED16       R_R_R_]      0x0000 0
+    0x07      "PDO mapping error message3"                  [UNSIGNED16       R_R_R_]      0x0000 0
+    0x08      "PDO mapping error message4"                  [UNSIGNED16       R_R_R_]      0x0000 0
+    0x09      "PDO mapping error message5"                  [UNSIGNED16       R_R_R_]      0x0000 0
+    0x0a      "PDO mapping error message6"                  [UNSIGNED16       R_R_R_]      0x0000 0
+0x5f01      "Reserved"                                    [RECORD  maxsub(0x0b / 11)]
+    0x00      "SubIndex 000"                                [UNSIGNED8        R_R_R_]      0x0b 11
+    0x01      "SubIndex 001"                                [UNSIGNED8        R_R_R_]      0x01 1
+    0x02      "SubIndex 002"                                [INTEGER8         R_R_R_]      0x51 81
+    0x03      "SubIndex 003"                                [INTEGER8         R_R_R_]      0x01 1
+    0x04      "SubIndex 004"                                [INTEGER8         R_R_R_]      0x02 2
+    0x05      "SubIndex 005"                                [INTEGER8         R_R_R_]      0x00 0
+    0x06      "SubIndex 006"                                [INTEGER8         R_R_R_]      0x00 0
+    0x07      "SubIndex 007"                                [INTEGER16        R_R_R_]      0x113d 4413
+    0x08      "SubIndex 008"                                [INTEGER16        R_R_R_]      0x4004 16388
+    0x09      "SubIndex 009"                                [INTEGER8         R_R_R_]      0x12 18
+    0x0a      "SubIndex 010"                                [INTEGER16        R_R_R_]      0x012c 300
+    0x0b      "SubIndex 011"                                [INTEGER8         R_R_R_]      0x00 0
+0x5f02      "Reserved"                                    [RECORD  maxsub(0x02 / 2)]
+    0x00      "SubIndex 000"                                [UNSIGNED8        R_R_R_]      0x02 2
+    0x01      "SubIndex 001"                                [UNSIGNED8        R_R_R_]      0x01 1
+    0x02      "SubIndex 002"                                [UNSIGNED32       RWRWRW]      0x00000000 0
+0x5f03      "Reserved"                                    [RECORD  maxsub(0x03 / 3)]
+    0x00      "SubIndex 000"                                [UNSIGNED8        R_R_R_]      0x03 3
+    0x01      "SubIndex 001"                                [UNSIGNED8        R_R_R_]      0x00 0
+    0x02      "SubIndex 002"                                [UNSIGNED8        R_R_R_]      0x01 1
+    0x03      "SubIndex 003"                                [UNSIGNED32       RWRWRW]      0x00000000 0
+0x5f04      "Reserved"                                    [VAR]
+    0x00      "Reserved"                                    [INTEGER16        RWRWRW]      0x0000 0
+0x5f05      "Reserved"                                    [VAR]
+    0x00      "Reserved"                                    [UNSIGNED16       RWRWRW]      0x0000 0
+0x603f      "Error code"                                  [VAR]
+    0x00      "Error code"                                  [UNSIGNED16       R_R_R_]      0x0000 0
+0x6040      "Control word"                                [VAR]
+    0x00      "Control word"                                [UNSIGNED16       RWRWRW]      0x0000 0
+0x6041      "Status word"                                 [VAR]
+    0x00      "Status word"                                 [UNSIGNED16       R_R_R_]      0x0250 592
+0x6042      "vl target velocity"                          [VAR]
+    0x00      "vl target velocity"                          [INTEGER16        RWRWRW]      0x0000 0
+0x6043      "vl velocity demand"                          [VAR]
+    0x00      "vl velocity demand"                          [INTEGER16        R_R_R_]      0x0000 0
+0x6044      "vl velocity actual value"                    [VAR]
+    0x00      "vl velocity actual value"                    [INTEGER16        R_R_R_]      0x0000 0
+0x6046      "vl velocity min max amount"                  [ARRAY  maxsub(0x02 / 2)]
+    0x00      "SubIndex 000"                                [INTEGER8         R_R_R_]      0x02 2
+    0x01      "vl velocity min amount"                      [UNSIGNED32       RWRWRW]      0x0000000a 10
+    0x02      "vl velocity max amount"                      [UNSIGNED32       RWRWRW]      0x000007d0 2000
+0x6048      "vl velocity acceleration"                    [RECORD  maxsub(0x02 / 2)]
+    0x00      "SubIndex 000"                                [INTEGER8         R_R_R_]      0x02 2
+    0x01      "Delta speed"                                 [UNSIGNED32       R_R_R_]      0x000007d0 2000
+    0x02      "Delta time"                                  [UNSIGNED16       RWRWRW]      0x0000 0
+0x6049      "vl velocity deceleration"                    [RECORD  maxsub(0x02 / 2)]
+    0x00      "SubIndex 000"                                [INTEGER8         R_R_R_]      0x02 2
+    0x01      "Delta speed"                                 [UNSIGNED32       R_R_R_]      0x000007d0 2000
+    0x02      "Delta time"                                  [UNSIGNED16       RWRWRW]      0x0000 0
+0x605b      "Shutdown option code"                        [VAR]
+    0x00      "Shutdown option code"                        [INTEGER16        RWRWRW]      0x0001 1
+0x605c      "Disable operation option code"               [VAR]
+    0x00      "Disable operation option code"               [INTEGER16        RWRWRW]      0x0001 1
+0x605e      "Fault reaction option code"                  [VAR]
+    0x00      "Fault reaction option code"                  [INTEGER16        RWRWRW]      0x0001 1
+0x6060      "Modes of operation"                          [VAR]
+    0x00      "Modes of operation"                          [INTEGER8         RWRWRW]      0x02 2
+0x6061      "Modes of operation display"                  [VAR]
+    0x00      "Modes of operation display"                  [INTEGER8         R_R_R_]      0x02 2
+0x6502      "Supported drive modes"                       [VAR]
+    0x00      "Supported drive modes"                       [UNSIGNED32       R_R_R_]      0x00000002 2

@@ -182,9 +182,9 @@
 
     <!-- Script to load and parse text files -->
     <script>
-        // Function to load text from a file and display it in an element
+        // load text from a file and display it in an element
         function loadText(file, elementId) {
-            fetch(file)
+            fetch(file)   //initiates an HTTP GET request to fetch the file 
                 .then(response => response.text())
                 .then(text => {
                     document.getElementById(elementId).textContent = text;
@@ -195,7 +195,7 @@
                 .catch(error => console.error('Error loading text:', error));
         }
 
-        // Function to parse PDO text and create form elements
+        //  parse PDO text and create form elements
         function parsePDOText(text) {
             const lines = text.split('\n');
             const outputForm = document.getElementById('pdoOutputForm');
@@ -205,7 +205,7 @@
             let inInputSection = false;
 
             lines.forEach(line => {
-                if (!line.trim() || line.includes('addr b') || line.includes('index: sub bitl')) {
+                if (!line.trim() || line.includes('addr b') || line.includes('index: sub bitl')) {   // remove empty line ans spaces from start and end of the line
                     return;
                 }
                 if (line.includes('SM2 outputs')) {
@@ -221,13 +221,13 @@
                 if (inOutputSection || inInputSection) {
                     const parts = line.trim().split(/\s+/);
                     if (parts.length > 4) {
-                        const index = parts[1].split(':')[0];             // Extract index:sub (e.g., 0x7000:0x01)
+                        const index = parts[1].split(':')[0];
                         const name = parts[4];
                         const dataType = parts[3];
 
 
-                          // Create a unique identifier combining name with address and index:sub
-                const distinctName = `${name}_${index}`;
+                        // Create a unique identifier combining name with address and index:sub
+                        const distinctName = `${name}_${index}`;
 
 
 
@@ -268,6 +268,22 @@
                                     input.min = 0;
                                     input.max = 4294967295;
                                     break;
+                                case 'INTEGER8':
+                                    input.type = 'number';
+                                    input.min = -128;
+                                    input.max = 127;
+                                    break;
+                                case 'INTEGER16':
+                                    input.type = 'number';
+                                    input.min = -32768;
+                                    input.max = 32767;
+                                    break;
+                                case 'INTEGER32':
+                                    input.type = 'number';
+                                    input.min = -2147483648;
+                                    input.max = 2147483647;
+                                    break;
+
                             }
                             form.appendChild(label);
                             form.appendChild(input);
@@ -285,27 +301,6 @@
                 }
             });
         }
-        /* 
-                    // Add event listener for AJAX form submission
-                    document.getElementById('pdoOutputForm').addEventListener('submit', function (event) {
-                        event.preventDefault(); // Prevent default form submissio
-        
-                        const form = event.target;
-                        const formData = new FormData(form);
-        
-                        fetch(form.action, {
-                            method: 'POST',
-                            body: formData
-                        })
-                            .then(response => response.text())
-                            .then(result => {
-                                console.log('Success:', result);
-                            })
-                            .catch(error => console.error('Error:', error));
-                    });
-                } */
-
-
 
         // Load PDO and SDO content on page load
         window.onload = function () {

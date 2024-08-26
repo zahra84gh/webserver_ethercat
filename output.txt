@@ -6,259 +6,531 @@ ec_init on enp0s31f6 succeeded.
 Calculated workcounter 3
 
 Slave:1
- Name:NEWTEC_DEVICES
- Output size: 160bits
- Input size: 320bits
+ Name:3G3AX-MX2-ECT
+ Output size: 32bits
+ Input size: 32bits
  State: 4
  Delay: 0[ns]
  Has DC: 1
  DCParentport:0
- Activeports:0.1.0.0
+ Activeports:1.0.0.0
  Configured address: 1001
- Man: 00bada55 ID: 00008001 Rev: 00000000
- SM0 A:1000 L: 128 F:00010026 Type:1
- SM1 A:1080 L: 128 F:00010022 Type:2
- SM2 A:1100 L:  20 F:00010064 Type:3
- SM3 A:1400 L:  40 F:00010020 Type:4
- FMMU0 Ls:00000000 Ll:  20 Lsb:0 Leb:7 Ps:1100 Psb:0 Ty:02 Act:01
- FMMU1 Ls:00000014 Ll:  40 Lsb:0 Leb:7 Ps:1400 Psb:0 Ty:01 Act:01
- FMMUfunc 0:1 1:2 2:3 3:0
- MBX length wr: 128 rd: 128 MBX protocols : 04
- CoE details: 23 FoE details: 00 EoE details: 00 SoE details: 00
+ Man: 00000083 ID: 00000053 Rev: 00010001
+ SM0 A:1800 L: 272 F:00010026 Type:1
+ SM1 A:1c00 L: 272 F:00010022 Type:2
+ SM2 A:1100 L:   4 F:00010064 Type:3
+ SM3 A:1200 L:   4 F:00010020 Type:4
+ FMMU0 Ls:00000000 Ll:   4 Lsb:0 Leb:7 Ps:1100 Psb:0 Ty:02 Act:01
+ FMMU1 Ls:00000004 Ll:   4 Lsb:0 Leb:7 Ps:1200 Psb:0 Ty:01 Act:01
+ FMMUfunc 0:1 1:2 2:0 3:0
+ MBX length wr: 272 rd: 272 MBX protocols : 04
+ CoE details: 0f FoE details: 00 EoE details: 00 SoE details: 00
  Ebus current: 0[mA]
  only LRD/LWR:0
- CoE Object Description found, 33 entries.
-0x1000      "Device type"                                 [VAR]
-    0x00      "Device type"                                 [UNSIGNED32       R_R_R_]      0x00001389 5001
-0x1001      "Error register"                              [VAR]
-    0x00      "Error register"                              [UNSIGNED8        R_R_R_]      0x00 0
-0x1008      "Device name"                                 [VAR]
-    0x00      "Device name"                                 [VISIBLE_STR(48)  R_R_R_]      PAN355
-0x1009      "Hardware version"                            [VAR]
-    0x00      "Hardware version"                            [VISIBLE_STR(24)  R_R_R_]      N/A
-0x100a      "Software version"                            [VAR]
-    0x00      "Software version"                            [VISIBLE_STR(24)  R_R_R_]      N/A
-0x1018      "Identity"                                    [RECORD  maxsub(0x04 / 4)]
-    0x00      "SubIndex 000"                                [UNSIGNED8        R_R_R_]      0x04 4
-    0x01      "Vendor ID"                                   [UNSIGNED32       R_R_R_]      0x00bada55 12245589
-    0x02      "Product code"                                [UNSIGNED32       R_R_R_]      0x00008001 32769
-    0x03      "Revision"                                    [UNSIGNED32       R_R_R_]      0x00000000 0
-    0x04      "Serial number"                               [UNSIGNED32       R_R_R_]      0x00000000 0
-0x10f1      "Error Settings"                              [RECORD  maxsub(0x02 / 2)]
-    0x00      "SubIndex 000"                                [UNSIGNED8        R_R_R_]      0x02 2
-    0x01      "Local Error Reaction"                        [UNSIGNED32       RWRWRW]      0x00000001 1
-    0x02      "Sync Error Counter Limit"                    [UNSIGNED16       RWRWRW]      0x0004 4
-0x10f8      "Timestamp Object"                            [VAR]
-    0x00      "Timestamp Object"                            [UNSIGNED64       RWRWRW]      0x0acbea7e8a839c5c 777973189862202460
-0x1601      "STP0_OUT process data mapping"               [RECORD  maxsub(0x05 / 5)]
-    0x00      "SubIndex 000"                                [UNSIGNED8        R_R_R_]      0x05 5
-    0x01      "SubIndex 001"                                [UNSIGNED32       R_R_R_]      0x70100108 1880097032
-    0x02      "SubIndex 002"                                [UNSIGNED32       R_R_R_]      0x00000008 8
-    0x03      "SubIndex 003"                                [UNSIGNED32       R_R_R_]      0x70100310 1880097552
-    0x04      "SubIndex 004"                                [UNSIGNED32       R_R_R_]      0x70100410 1880097808
-    0x05      "SubIndex 005"                                [UNSIGNED32       R_R_R_]      0x70100520 1880098080
-0x1602      "STP1_OUT process data mapping"               [RECORD  maxsub(0x05 / 5)]
-    0x00      "SubIndex 000"                                [UNSIGNED8        R_R_R_]      0x05 5
-    0x01      "SubIndex 001"                                [UNSIGNED32       R_R_R_]      0x70200108 1881145608
-    0x02      "SubIndex 002"                                [UNSIGNED32       R_R_R_]      0x00000008 8
-    0x03      "SubIndex 003"                                [UNSIGNED32       R_R_R_]      0x70200310 1881146128
-    0x04      "SubIndex 004"                                [UNSIGNED32       R_R_R_]      0x70200410 1881146384
-    0x05      "SubIndex 005"                                [UNSIGNED32       R_R_R_]      0x70200520 1881146656
-0x1a00      "GENERIC_PDO_IN process data mapping"         [RECORD  maxsub(0x02 / 2)]
-    0x00      "SubIndex 000"                                [UNSIGNED8        R_R_R_]      0x02 2
-    0x01      "SubIndex 001"                                [UNSIGNED32       R_R_R_]      0x60000108 1610613000
-    0x02      "SubIndex 002"                                [UNSIGNED32       R_R_R_]      0x60000208 1610613256
-0x1a01      "STP0_IN process data mapping"                [RECORD  maxsub(0x08 / 8)]
-    0x00      "SubIndex 000"                                [UNSIGNED8        R_R_R_]      0x08 8
-    0x01      "SubIndex 001"                                [UNSIGNED32       R_R_R_]      0x60100108 1611661576
-    0x02      "SubIndex 002"                                [UNSIGNED32       R_R_R_]      0x60100208 1611661832
-    0x03      "SubIndex 003"                                [UNSIGNED32       R_R_R_]      0x60100308 1611662088
-    0x04      "SubIndex 004"                                [UNSIGNED32       R_R_R_]      0x00000008 8
-    0x05      "SubIndex 005"                                [UNSIGNED32       R_R_R_]      0x60100510 1611662608
-    0x06      "SubIndex 006"                                [UNSIGNED32       R_R_R_]      0x60100610 1611662864
-    0x07      "SubIndex 007"                                [UNSIGNED32       R_R_R_]      0x60100720 1611663136
-    0x08      "SubIndex 008"                                [UNSIGNED32       R_R_R_]      0x60100820 1611663392
-0x1a02      "STP1_IN process data mapping"                [RECORD  maxsub(0x08 / 8)]
-    0x00      "SubIndex 000"                                [UNSIGNED8        R_R_R_]      0x08 8
-    0x01      "SubIndex 001"                                [UNSIGNED32       R_R_R_]      0x60200108 1612710152
-    0x02      "SubIndex 002"                                [UNSIGNED32       R_R_R_]      0x60200208 1612710408
-    0x03      "SubIndex 003"                                [UNSIGNED32       R_R_R_]      0x60200308 1612710664
-    0x04      "SubIndex 004"                                [UNSIGNED32       R_R_R_]      0x00000008 8
-    0x05      "SubIndex 005"                                [UNSIGNED32       R_R_R_]      0x60200510 1612711184
-    0x06      "SubIndex 006"                                [UNSIGNED32       R_R_R_]      0x60200610 1612711440
-    0x07      "SubIndex 007"                                [UNSIGNED32       R_R_R_]      0x60200720 1612711712
-    0x08      "SubIndex 008"                                [UNSIGNED32       R_R_R_]      0x60200820 1612711968
-0x1a03      "ADC_DATA process data mapping"               [RECORD  maxsub(0x02 / 2)]
-    0x00      "SubIndex 000"                                [UNSIGNED8        R_R_R_]      0x02 2
-    0x01      "SubIndex 001"                                [UNSIGNED32       R_R_R_]      0x60300110 1613758736
-    0x02      "SubIndex 002"                                [UNSIGNED32       R_R_R_]      0x60300220 1613759008
-0x1c00      "Sync manager type"                           [ARRAY  maxsub(0x04 / 4)]
-    0x00      "SubIndex 000"                                [UNSIGNED8        R_R_R_]      0x04 4
-    0x01      "SubIndex 001"                                [UNSIGNED8        R_R_R_]      0x01 1
-    0x02      "SubIndex 002"                                [UNSIGNED8        R_R_R_]      0x02 2
-    0x03      "SubIndex 003"                                [UNSIGNED8        R_R_R_]      0x03 3
-    0x04      "SubIndex 004"                                [UNSIGNED8        R_R_R_]      0x04 4
-0x1c12      "SyncManager 2 assignment"                    [ARRAY  maxsub(0x02 / 2)]
-    0x00      "SubIndex 000"                                [UNSIGNED8        R_R_R_]      0x02 2
-    0x01      "SubIndex 001"                                [UNSIGNED16       R_R_R_]      0x1601 5633
-    0x02      "SubIndex 002"                                [UNSIGNED16       R_R_R_]      0x1602 5634
-0x1c13      "SyncManager 3 assignment"                    [ARRAY  maxsub(0x04 / 4)]
-    0x00      "SubIndex 000"                                [UNSIGNED8        R_R_R_]      0x04 4
-    0x01      "SubIndex 001"                                [UNSIGNED16       R_R_R_]      0x1a00 6656
-    0x02      "SubIndex 002"                                [UNSIGNED16       R_R_R_]      0x1a01 6657
-    0x03      "SubIndex 003"                                [UNSIGNED16       R_R_R_]      0x1a02 6658
-    0x04      "SubIndex 004"                                [UNSIGNED16       R_R_R_]      0x1a03 6659
-0x1c32      "SM output parameter"                         [RECORD  maxsub(0x20 / 32)]
-    0x00      "SubIndex 000"                                [UNSIGNED8        R_R_R_]      0x20 32
-    0x01      "Synchronization Type"                        [UNSIGNED16       RWR_R_]      0x0001 1
-    0x02      "Cycle Time"                                  [UNSIGNED32       R_R_R_]      0x00000000 0
-    0x04      "Synchronization Types supported"             [UNSIGNED16       R_R_R_]      0x401f 16415
-    0x05      "Minimum Cycle Time"                          [UNSIGNED32       R_R_R_]      0x0001e848 125000
-    0x06      "Calc and Copy Time"                          [UNSIGNED32       R_R_R_]      0x00000000 0
-    0x08      "Get Cycle Time"                              [UNSIGNED16       RWRWRW]      0x0000 0
-    0x09      "Delay Time"                                  [UNSIGNED32       R_R_R_]      0x00000000 0
-    0x0a      "Sync0 Cycle Time"                            [UNSIGNED32       RWRWRW]      0x00000000 0
-    0x0b      "SM-Event Missed"                             [UNSIGNED16       R_R_R_]      0x0000 0
-    0x0c      "Cycle Time Too Small"                        [UNSIGNED16       R_R_R_]      0x0000 0
-    0x20      "Sync Error"                                  [BOOLEAN          R_R_R_]      FALSE
-0x1c33      "SM input parameter"                          [RECORD  maxsub(0x20 / 32)]
-    0x00      "SubIndex 000"                                [UNSIGNED8        R_R_R_]      0x20 32
-    0x01      "Synchronization Type"                        [UNSIGNED16       RWR_R_]      0x0022 34
-    0x02      "Cycle Time"                                  [UNSIGNED32       R_R_R_]      0x00000000 0
-    0x04      "Synchronization Types supported"             [UNSIGNED16       R_R_R_]      0x401f 16415
-    0x05      "Minimum Cycle Time"                          [UNSIGNED32       R_R_R_]      0x0001e848 125000
-    0x06      "Calc and Copy Time"                          [UNSIGNED32       R_R_R_]      0x00000000 0
-    0x08      "Get Cycle Time"                              [UNSIGNED16       RWRWRW]      0x0000 0
-    0x09      "Delay Time"                                  [UNSIGNED32       R_R_R_]      0x00000000 0
-    0x0a      "Sync0 Cycle Time"                            [UNSIGNED32       RWRWRW]      0x00000000 0
-    0x0b      "SM-Event Missed"                             [UNSIGNED16       R_R_R_]      0x0000 0
-    0x0c      "Cycle Time Too Small"                        [UNSIGNED16       R_R_R_]      0x0000 0
-    0x20      "Sync Error"                                  [BOOLEAN          R_R_R_]      FALSE
-0x2000      "GENERIC_SDO_IN"                              [RECORD  maxsub(0x09 / 9)]
-    0x00      "SubIndex 000"                                [UNSIGNED8        R_R_R_]      0x08 8
-    0x01      "UID_0"                                       [UNSIGNED32       R_R_R_]      0x148b0101 344654081
-    0x02      "UID_1"                                       [UNSIGNED32       R_R_R_]      0x28816015 679567381
-    0x03      "UID_2"                                       [UNSIGNED32       R_R_R_]      0x20000401 536871937
-    0x04      "UID_3"                                       [UNSIGNED32       R_R_R_]      0x0000000b 11
-    0x05      "HW_VERSION"                                  [UNSIGNED16       R_R_R_]      0x0040 64
-    0x06      "FW_VERSION"                                  [UNSIGNED16       R_R_R_]      0x0203 515
-    0x07      "FW_CRC"                                      [UNSIGNED32       R_R_R_]      0x3933e681 959702657
-    0x08      "CPU_TEMPERATURE"                             [UNSIGNED8        R_R_R_]      0x00 0
-0x2010      "STP0_DATA"                                   [RECORD  maxsub(0x04 / 4)]
-    0x00      "SubIndex 000"                                [UNSIGNED8        R_R_R_]      0x04 4
-    0x01      "STP_HW_VERSION"                              [UNSIGNED16       R_R_R_]      0x0044 68
-    0x02      "STP_TEMPERATURE"                             [INTEGER16        R_R_R_]      0x0018 24
-    0x03      "STP_RAW_ENCODER_VALUE"                       [UNSIGNED16       R_R_R_]      0x0387 903
-    0x04      "STP_HOME_OFFSET"                             [UNSIGNED16       R_R_R_]      0x0000 0
-0x2020      "STP1_DATA"                                   [RECORD  maxsub(0x04 / 4)]
-    0x00      "SubIndex 000"                                [UNSIGNED8        R_R_R_]      0x04 4
-    0x01      "STP_HW_VERSION"                              [UNSIGNED16       R_R_R_]      0x0000 0
-    0x02      "STP_TEMPERATURE"                             [INTEGER16        R_R_R_]      0x0000 0
-    0x03      "STP_RAW_ENCODER_VALUE"                       [UNSIGNED16       R_R_R_]      0x0000 0
-    0x04      "STP_HOME_OFFSET"                             [UNSIGNED16       R_R_R_]      0x0000 0
-0x3000      "GENERIC_SDO_OUT"                             [RECORD  maxsub(0x02 / 2)]
+ CoE Object Description found, 67 entries.
+0x1000      "Device Type"                                 [VAR]
+    0x00      "Device Type"                                 [UNSIGNED32       R_R_R_]      0x00010192 65938
+0x1001      "Error Register"                              [VAR]
+    0x00      "Error Register"                              [UNSIGNED8        R_R_R_]      0x00 0
+ - Time:1724669374.143 PACKET slave:1 index:1008.00 error:1
+
+ - 
+0x1008      ""                                            [ot:0x0000  maxsub(0x00 / 0)]
+- Time:1724669374.145 PACKET slave:1 index:1008.00 error:1
+
+- 
+ - Time:1724669374.148 PACKET slave:1 index:1008.00 error:1
+
+ - Time:1724669374.150 PACKET slave:1 index:1009.00 error:1
+
+ - 
+0x1009      ""                                            [ot:0x0000  maxsub(0x00 / 0)]
+ - Time:1724669374.162 PACKET slave:1 index:1009.00 error:3
+
+ - 
+0x100a      "Manufacturer Software Version"               [VAR]
+    0x00      "Manufacturer Software Version"               [VISIBLE_STR(160) R_R_R_]      V1.10               
+0x1010      "Store Parameters"                            [ARRAY  maxsub(0x01 / 1)]
     0x00      "SubIndex 000"                                [UNSIGNED8        R_R_R_]      0x01 1
-    0x01      "LEDS"                                        [UNSIGNED8        RWRWRW]      0x00 0
-0x3005      "PDO_COM_TIMEOUT_CONFIGURATION"               [RECORD  maxsub(0x03 / 3)]
-    0x00      "SubIndex 000"                                [UNSIGNED8        R_R_R_]      0x03 3
-    0x01      "TIMEOUT"                                     [UNSIGNED16       RWRWRW]      0x0000 0
-    0x02      "STP0_ACTION"                                 [UNSIGNED8        RWRWRW]      0x00 0
-    0x03      "STP1_ACTION"                                 [UNSIGNED8        RWRWRW]      0x00 0
-0x3010      "STP0_CONFIGURATION"                          [RECORD  maxsub(0x09 / 9)]
-    0x00      "SubIndex 000"                                [UNSIGNED8        R_R_R_]      0x09 9
-    0x01      "STP_PULSE_DIV"                               [UNSIGNED8        RWRWRW]      0x00 0
-    0x02      "STP_RAMP_DIV"                                [UNSIGNED8        RWRWRW]      0x00 0
-    0x03      "STP_I_HOLD"                                  [UNSIGNED8        RWRWRW]      0x00 0
-    0x04      "STP_I_RUN"                                   [UNSIGNED8        RWRWRW]      0x00 0
-    0x05      "STP_MAX_POSITION_ERROR"                      [UNSIGNED32       RWRWRW]      0x00000000 0
-    0x06      "STP_RUN_CURRENT_TIMEOUT"                     [UNSIGNED32       RWRWRW]      0x00000000 0
-    0x07      "STP_MICROSTEP_SETTING"                       [UNSIGNED8        RWRWRW]      0x07 7
-    0x08      "STP_INVERT_MOTOR_DIRECTION"                  [UNSIGNED8        RWRWRW]      0x00 0
-    0x09      "STP_MAX_HOMING_POSITION_ERROR"               [UNSIGNED16       RWRWRW]      0x0000 0
-0x3020      "STP1_CONFIGURATION"                          [RECORD  maxsub(0x09 / 9)]
-    0x00      "SubIndex 000"                                [UNSIGNED8        R_R_R_]      0x09 9
-    0x01      "STP_PULSE_DIV"                               [UNSIGNED8        RWRWRW]      0x00 0
-    0x02      "STP_RAMP_DIV"                                [UNSIGNED8        RWRWRW]      0x00 0
-    0x03      "STP_I_HOLD"                                  [UNSIGNED8        RWRWRW]      0x00 0
-    0x04      "STP_I_RUN"                                   [UNSIGNED8        RWRWRW]      0x00 0
-    0x05      "STP_MAX_POSITION_ERROR"                      [UNSIGNED32       RWRWRW]      0x00000000 0
-    0x06      "STP_RUN_CURRENT_TIMEOUT"                     [UNSIGNED32       RWRWRW]      0x00000000 0
-    0x07      "STP_MICROSTEP_SETTING"                       [UNSIGNED8        RWRWRW]      0x07 7
-    0x08      "STP_INVERT_MOTOR_DIRECTION"                  [UNSIGNED8        RWRWRW]      0x00 0
-    0x09      "STP_MAX_HOMING_POSITION_ERROR"               [UNSIGNED16       RWRWRW]      0x0000 0
-0x6000      "GENERIC_PDO_IN"                              [RECORD  maxsub(0x02 / 2)]
-    0x00      "SubIndex 000"                                [UNSIGNED8        R_R_R_]      0x02 2
-    0x01      "STATUS"                                      [UNSIGNED8        R_R_R_]      0x01 1
-    0x02      "ERROR"                                       [UNSIGNED8        R_R_R_]      0x00 0
-0x6010      "STP0_IN"                                     [RECORD  maxsub(0x08 / 8)]
-    0x00      "SubIndex 000"                                [UNSIGNED8        R_R_R_]      0x08 8
-    0x01      "STP_ACTUAL_OPMODE"                           [UNSIGNED8        R_R_R_]      0x00 0
-    0x02      "STP_ERROR"                                   [UNSIGNED8        R_R_R_]      0x00 0
-    0x03      "STP_STATUS"                                  [UNSIGNED8        R_R_R_]      0x02 2
-    0x05      "STP_ACTUAL_ACCELERATION"                     [INTEGER16        R_R_R_]      0x0000 0
-    0x06      "STP_ACTUAL_VELOCITY"                         [INTEGER16        R_R_R_]      0x0000 0
-    0x07      "STP_ACTUAL_POSITION"                         [INTEGER32        R_R_R_]      0x00000000 0
-    0x08      "STP_ACTUAL_POSITION_ERROR"                   [INTEGER32        R_R_R_]      0xffffffce -50
-0x6020      "STP1_IN"                                     [RECORD  maxsub(0x08 / 8)]
-    0x00      "SubIndex 000"                                [UNSIGNED8        R_R_R_]      0x08 8
-    0x01      "STP_ACTUAL_OPMODE"                           [UNSIGNED8        R_R_R_]      0xfe 254
-    0x02      "STP_ERROR"                                   [UNSIGNED8        R_R_R_]      0x00 0
-    0x03      "STP_STATUS"                                  [UNSIGNED8        R_R_R_]      0x00 0
-    0x05      "STP_ACTUAL_ACCELERATION"                     [INTEGER16        R_R_R_]      0x0000 0
-    0x06      "STP_ACTUAL_VELOCITY"                         [INTEGER16        R_R_R_]      0x0000 0
-    0x07      "STP_ACTUAL_POSITION"                         [INTEGER32        R_R_R_]      0x00000000 0
-    0x08      "STP_ACTUAL_POSITION_ERROR"                   [INTEGER32        R_R_R_]      0x00000000 0
-0x6030      "ADC_DATA"                                    [RECORD  maxsub(0x02 / 2)]
-    0x00      "SubIndex 000"                                [UNSIGNED8        R_R_R_]      0x02 2
-    0x01      "ADC_STATUS"                                  [UNSIGNED16       R_R_R_]      0x0002 2
-    0x02      "ADC_VALUE"                                   [UNSIGNED32       R_R_R_]      0x000d2627 861735
-0x7000      "GENERIC_PDO_OUT"                             [RECORD  maxsub(0x00 / 0)]
-    0x00      "SubIndex 000"                                [UNSIGNED8        R_R_R_]      0x00 0
-0x7010      "STP0_OUT"                                    [RECORD  maxsub(0x05 / 5)]
-    0x00      "SubIndex 000"                                [UNSIGNED8        R_R_R_]      0x05 5
-    0x01      "STP_REQUESTED_OPMODE"                        [UNSIGNED8        RWRWRW]      0x00 0
-    0x03      "STP_TARGET_ACCELERATION"                     [UNSIGNED16       RWRWRW]      0x0000 0
-    0x04      "STP_TARGET_VELOCITY"                         [INTEGER16        RWRWRW]      0x0000 0
-    0x05      "STP_TARGET_POSITION"                         [INTEGER32        RWRWRW]      0x00000000 0
-0x7020      "STP1_OUT"                                    [RECORD  maxsub(0x05 / 5)]
-    0x00      "SubIndex 000"                                [UNSIGNED8        R_R_R_]      0x05 5
-    0x01      "STP_REQUESTED_OPMODE"                        [UNSIGNED8        RWRWRW]      0x00 0
-    0x03      "STP_TARGET_ACCELERATION"                     [UNSIGNED16       RWRWRW]      0x0000 0
-    0x04      "STP_TARGET_VELOCITY"                         [INTEGER16        RWRWRW]      0x0000 0
-    0x05      "STP_TARGET_POSITION"                         [INTEGER32        RWRWRW]      0x00000000 0
+    0x01      "Store Parameters"                            [UNSIGNED32       RWRWRW]      0x00000001 1
+ - Time:1724669374.207 PACKET slave:1 index:1011.00 error:1
+
+ - 
+0x1011      ""                                            [ot:0x0000  maxsub(0x00 / 0)]
+- Time:1724669374.209 PACKET slave:1 index:1011.00 error:1
+
+- 
+ - Time:1724669374.211 PACKET slave:1 index:1011.00 error:1
+
+ - Time:1724669374.214 PACKET slave:1 index:1018.00 error:1
+
+ - 
+0x1018      ""                                            [ot:0x0000  maxsub(0x00 / 0)]
+- Time:1724669374.216 PACKET slave:1 index:1018.00 error:1
+
+- 
+ - Time:1724669374.221 PACKET slave:1 index:1018.00 error:1
+
+ - 
+0x10e0      ""                                            [ot:0x0000  maxsub(0x00 / 0)]
+    0x00      "SubIndex 000"                                [UNSIGNED8        R_R_R_]      Time:1724669374.240 PACKET slave:1 index:10e0.00 error:1
+
+ - Time:1724669374.245 PACKET slave:1 index:10f3.00 error:1
+
+ - 
+0x10f3      ""                                            [ot:0x0000  maxsub(0x00 / 0)]
+- Time:1724669374.250 PACKET slave:1 index:10f3.00 error:1
+
+- 
+ - Time:1724669374.253 PACKET slave:1 index:10f3.00 error:1
+
+ - Time:1724669374.260 PACKET slave:1 index:1c00.00 error:1
+
+ - 
+0x1c00      ""                                            [ot:0x0000  maxsub(0x00 / 0)]
+ - Time:1724669374.283 PACKET slave:1 index:1c00.00 error:1
+
+ - Time:1724669374.286 PACKET slave:1 index:1c10.00 error:1
+
+ - 
+0x1c10      ""                                            [ot:0x0000  maxsub(0x00 / 0)]
+- Time:1724669374.291 PACKET slave:1 index:1c10.00 error:1
+
+- 
+ - Time:1724669374.297 PACKET slave:1 index:1c10.00 error:1
+
+ - Time:1724669374.299 PACKET slave:1 index:1c11.00 error:1
+
+ - 
+0x1c11      ""                                            [ot:0x0000  maxsub(0x00 / 0)]
+- Time:1724669374.301 PACKET slave:1 index:1c11.00 error:1
+
+- 
+ - Time:1724669374.302 PACKET slave:1 index:1c11.00 error:1
+
+ - Time:1724669374.307 PACKET slave:1 index:1c12.00 error:1
+
+ - 
+0x1c12      ""                                            [ot:0x0000  maxsub(0x00 / 0)]
+- Time:1724669374.310 PACKET slave:1 index:1c12.00 error:1
+
+- 
+ - Time:1724669374.312 PACKET slave:1 index:1c12.00 error:1
+
+ - Time:1724669374.313 PACKET slave:1 index:1c13.00 error:1
+
+ - 
+0x1c13      ""                                            [ot:0x0000  maxsub(0x00 / 0)]
+- Time:1724669374.326 PACKET slave:1 index:1c13.00 error:1
+
+- 
+0x1c32      "Sync Manager 3 PDO Assignment"               [ARRAY  maxsub(0x05 / 5)]
+- Time:1724669374.383 PACKET slave:1 index:1c32.01 error:1
+
+- 
+ - Time:1724669374.400 PACKET slave:1 index:1c32.00 error:1
+
+ - Time:1724669374.402 PACKET slave:1 index:1c33.00 error:1
+
+ - 
+0x1c33      ""                                            [ot:0x0000  maxsub(0x00 / 0)]
+- Time:1724669374.404 PACKET slave:1 index:1c33.00 error:1
+
+- 
+ - Time:1724669374.407 PACKET slave:1 index:1c33.00 error:1
+
+ - Time:1724669374.416 PACKET slave:1 index:2f41.00 error:1
+
+ - 
+0x2f41      ""                                            [ot:0x0000  maxsub(0x00 / 0)]
+- Time:1724669374.417 PACKET slave:1 index:2f41.00 error:1
+
+- 
+ - Time:1724669374.429 PACKET slave:1 index:2f41.00 error:1
+
+ - 
+0x1600      ""                                            [ot:0x0000  maxsub(0x00 / 0)]
+- Time:1724669374.454 PACKET slave:1 index:1600.00 error:1
+
+- 
+ - Time:1724669374.465 PACKET slave:1 index:1600.00 error:1
+
+ - 
+0x1601      ""                                            [ot:0x0000  maxsub(0x00 / 0)]
+- Time:1724669374.489 PACKET slave:1 index:1601.00 error:1
+
+- 
+ - Time:1724669374.498 PACKET slave:1 index:1601.00 error:1
+
+ - Time:1724669374.505 PACKET slave:1 index:1602.00 error:1
+
+ - 
+0x1602      ""                                            [ot:0x0000  maxsub(0x00 / 0)]
+- Time:1724669374.506 PACKET slave:1 index:1602.00 error:1
+
+- 
+ - Time:1724669374.508 PACKET slave:1 index:1602.00 error:1
+
+ - Time:1724669374.517 PACKET slave:1 index:1603.00 error:1
+
+ - 
+0x1603      ""                                            [ot:0x0000  maxsub(0x00 / 0)]
+- Time:1724669374.522 PACKET slave:1 index:1603.00 error:1
+
+- 
+ - Time:1724669374.525 PACKET slave:1 index:1603.00 error:1
+
+ - Time:1724669374.527 PACKET slave:1 index:1604.00 error:1
+
+ - 
+0x1604      ""                                            [ot:0x0000  maxsub(0x00 / 0)]
+- Time:1724669374.530 PACKET slave:1 index:1604.00 error:1
+
+- 
+ - Time:1724669374.535 PACKET slave:1 index:1604.00 error:1
+
+ - Time:1724669374.541 PACKET slave:1 index:1700.00 error:1
+
+ - 
+0x1700      ""                                            [ot:0x0000  maxsub(0x00 / 0)]
+- Time:1724669374.546 PACKET slave:1 index:1700.00 error:1
+
+- 
+ - Time:1724669374.549 PACKET slave:1 index:1700.00 error:1
+
+ - Time:1724669374.551 PACKET slave:1 index:1701.00 error:1
+
+ - 
+0x1701      ""                                            [ot:0x0000  maxsub(0x00 / 0)]
+- Time:1724669374.560 PACKET slave:1 index:1701.00 error:1
+
+- 
+ - Time:1724669374.562 PACKET slave:1 index:1701.00 error:1
+
+ - Time:1724669374.564 PACKET slave:1 index:1a00.00 error:1
+
+ - 
+0x1a00      ""                                            [ot:0x0000  maxsub(0x00 / 0)]
+- Time:1724669374.569 PACKET slave:1 index:1a00.00 error:1
+
+- 
+ - Time:1724669374.582 PACKET slave:1 index:1a00.00 error:1
+
+ - 
+0x1a01      ""                                            [ot:0x0000  maxsub(0x00 / 0)]
+- Time:1724669374.605 PACKET slave:1 index:1a01.00 error:1
+
+- 
+ - Time:1724669374.608 PACKET slave:1 index:1a01.00 error:1
+
+ - Time:1724669374.610 PACKET slave:1 index:1a02.00 error:1
+
+ - 
+0x1a02      ""                                            [ot:0x0000  maxsub(0x00 / 0)]
+- Time:1724669374.612 PACKET slave:1 index:1a02.00 error:1
+
+- 
+ - Time:1724669374.614 PACKET slave:1 index:1a02.00 error:1
+
+ - Time:1724669374.615 PACKET slave:1 index:1a03.00 error:1
+
+ - 
+0x1a03      ""                                            [ot:0x0000  maxsub(0x00 / 0)]
+- Time:1724669374.617 PACKET slave:1 index:1a03.00 error:1
+
+- 
+ - Time:1724669374.619 PACKET slave:1 index:1a03.00 error:1
+
+ - Time:1724669374.627 PACKET slave:1 index:1a04.00 error:1
+
+ - 
+0x1a04      ""                                            [ot:0x0000  maxsub(0x00 / 0)]
+- Time:1724669374.635 PACKET slave:1 index:1a04.00 error:1
+
+- 
+ - Time:1724669374.640 PACKET slave:1 index:1a04.00 error:1
+
+ - Time:1724669374.646 PACKET slave:1 index:1b00.00 error:1
+
+ - 
+0x1b00      ""                                            [ot:0x0000  maxsub(0x00 / 0)]
+- Time:1724669374.648 PACKET slave:1 index:1b00.00 error:1
+
+- 
+ - Time:1724669374.650 PACKET slave:1 index:1b00.00 error:1
+
+ - Time:1724669374.652 PACKET slave:1 index:1b01.00 error:1
+
+ - 
+0x1b01      ""                                            [ot:0x0000  maxsub(0x00 / 0)]
+- Time:1724669374.658 PACKET slave:1 index:1b01.00 error:1
+
+- 
+ - Time:1724669374.660 PACKET slave:1 index:1b01.00 error:1
+
+ - Time:1724669374.662 PACKET slave:1 index:1bff.00 error:1
+
+ - 
+0x1bff      ""                                            [ot:0x0000  maxsub(0x00 / 0)]
+- Time:1724669374.664 PACKET slave:1 index:1bff.00 error:1
+
+- 
+ - Time:1724669374.667 PACKET slave:1 index:1bff.00 error:1
+
+ - Time:1724669374.669 PACKET slave:1 index:2002.00 error:1
+
+ - 
+0x2002      ""                                            [ot:0x0000  maxsub(0x00 / 0)]
+- Time:1724669374.671 PACKET slave:1 index:2002.00 error:1
+
+- 
+ - Time:1724669374.673 PACKET slave:1 index:2002.00 error:1
+
+ - Time:1724669374.674 PACKET slave:1 index:2003.00 error:1
+
+ - 
+0x2003      ""                                            [ot:0x0000  maxsub(0x00 / 0)]
+- Time:1724669374.680 PACKET slave:1 index:2003.00 error:1
+
+- 
+ - Time:1724669374.688 PACKET slave:1 index:2003.00 error:1
+
+ - Time:1724669374.690 PACKET slave:1 index:2004.00 error:1
+
+ - 
+0x2004      ""                                            [ot:0x0000  maxsub(0x00 / 0)]
+- Time:1724669374.692 PACKET slave:1 index:2004.00 error:1
+
+- 
+ - Time:1724669374.694 PACKET slave:1 index:2004.00 error:1
+
+ - Time:1724669374.696 PACKET slave:1 index:2100.00 error:1
+
+ - 
+0x2100      ""                                            [ot:0x0000  maxsub(0x00 / 0)]
+- Time:1724669374.699 PACKET slave:1 index:2100.00 error:1
+
+- 
+ - Time:1724669374.705 PACKET slave:1 index:2100.00 error:1
+
+ - Time:1724669374.707 PACKET slave:1 index:2f30.00 error:1
+
+ - 
+0x2f30      ""                                            [ot:0x0000  maxsub(0x00 / 0)]
+- Time:1724669374.709 PACKET slave:1 index:2f30.00 error:1
+
+- 
+ - Time:1724669374.710 PACKET slave:1 index:2f30.00 error:1
+
+ - Time:1724669374.712 PACKET slave:1 index:2f40.00 error:1
+
+ - 
+0x2f40      ""                                            [ot:0x0000  maxsub(0x00 / 0)]
+- Time:1724669374.714 PACKET slave:1 index:2f40.00 error:1
+
+- 
+ - Time:1724669374.716 PACKET slave:1 index:2f40.00 error:1
+
+ - Time:1724669374.719 PACKET slave:1 index:2f42.00 error:1
+
+ - 
+0x2f42      ""                                            [ot:0x0000  maxsub(0x00 / 0)]
+- Time:1724669374.726 PACKET slave:1 index:2f42.00 error:1
+
+- 
+ - Time:1724669374.750 PACKET slave:1 index:2ff0.00 error:1
+
+ - 
+0x2ff0      ""                                            [ot:0x0000  maxsub(0x00 / 0)]
+- Time:1724669374.752 PACKET slave:1 index:2ff0.00 error:1
+
+- 
+ - Time:1724669374.753 PACKET slave:1 index:2ff0.00 error:1
+
+ - Time:1724669374.764 PACKET slave:1 index:2fff.00 error:1
+
+ - 
+0x2fff      ""                                            [ot:0x0000  maxsub(0x00 / 0)]
+ - Time:1724669374.790 PACKET slave:1 index:2fff.00 error:1
+
+ - Time:1724669374.795 PACKET slave:1 index:5000.00 error:1
+
+ - 
+0x5000      ""                                            [ot:0x0000  maxsub(0x00 / 0)]
+- Time:1724669374.797 PACKET slave:1 index:5000.00 error:1
+
+- 
+ - Time:1724669374.799 PACKET slave:1 index:5000.00 error:1
+
+ - Time:1724669374.805 PACKET slave:1 index:5010.00 error:1
+
+ - 
+0x5010      ""                                            [ot:0x0000  maxsub(0x00 / 0)]
+- Time:1724669374.808 PACKET slave:1 index:5010.00 error:1
+
+- 
+ - Time:1724669374.810 PACKET slave:1 index:5010.00 error:1
+
+ - Time:1724669374.812 PACKET slave:1 index:5100.00 error:1
+
+ - 
+0x5100      ""                                            [ot:0x0000  maxsub(0x00 / 0)]
+- Time:1724669374.813 PACKET slave:1 index:5100.00 error:1
+
+- 
+ - Time:1724669374.815 PACKET slave:1 index:5100.00 error:1
+
+ - 
+0x5110      "Output frequency monitor"                    [VAR]
+    0x00      "Output frequency monitor"                    [UNSIGNED16       R_R_R_]      Time:1724669374.836 PACKET slave:1 index:5110.00 error:1
+
+ - 
+0x5200      ""                                            [ot:0x0000  maxsub(0x00 / 0)]
+- Time:1724669374.867 PACKET slave:1 index:5200.00 error:1
+
+- 
+ - Time:1724669374.869 PACKET slave:1 index:5200.00 error:1
+
+ - Time:1724669374.870 PACKET slave:1 index:5f01.00 error:1
+
+ - 
+0x5f01      ""                                            [ot:0x0000  maxsub(0x00 / 0)]
+- Time:1724669374.876 PACKET slave:1 index:5f01.00 error:1
+
+- 
+ - Time:1724669374.881 PACKET slave:1 index:5f01.00 error:1
+
+ - Time:1724669374.887 PACKET slave:1 index:5f02.00 error:1
+
+ - 
+0x5f02      ""                                            [ot:0x0000  maxsub(0x00 / 0)]
+- Time:1724669374.889 PACKET slave:1 index:5f02.00 error:1
+
+- 
+ - Time:1724669374.895 PACKET slave:1 index:5f02.00 error:1
+
+ - Time:1724669374.897 PACKET slave:1 index:5f03.00 error:1
+
+ - 
+0x5f03      ""                                            [ot:0x0000  maxsub(0x00 / 0)]
+- Time:1724669374.898 PACKET slave:1 index:5f03.00 error:1
+
+- 
+ - Time:1724669374.901 PACKET slave:1 index:5f03.00 error:1
+
+ - Time:1724669374.904 PACKET slave:1 index:5f04.00 error:1
+
+ - 
+0x5f04      ""                                            [ot:0x0000  maxsub(0x00 / 0)]
+- Time:1724669374.914 PACKET slave:1 index:5f04.00 error:1
+
+- 
+ - Time:1724669374.915 PACKET slave:1 index:5f04.00 error:1
+
+ - Time:1724669374.918 PACKET slave:1 index:5f05.00 error:1
+
+ - 
+0x5f05      ""                                            [ot:0x0000  maxsub(0x00 / 0)]
+- Time:1724669374.919 PACKET slave:1 index:5f05.00 error:1
+
+- 
+ - Time:1724669374.921 PACKET slave:1 index:5f05.00 error:1
+
+ - Time:1724669374.923 PACKET slave:1 index:603f.00 error:1
+
+ - 
+0x603f      ""                                            [ot:0x0000  maxsub(0x00 / 0)]
+- Time:1724669374.926 PACKET slave:1 index:603f.00 error:1
+
+- 
+ - Time:1724669374.928 PACKET slave:1 index:603f.00 error:1
+
+ - Time:1724669374.933 PACKET slave:1 index:6040.00 error:1
+
+ - 
+0x6040      ""                                            [ot:0x0000  maxsub(0x00 / 0)]
+- Time:1724669374.939 PACKET slave:1 index:6040.00 error:1
+
+- 
+ - Time:1724669374.941 PACKET slave:1 index:6040.00 error:1
+
+ - Time:1724669374.947 PACKET slave:1 index:6041.00 error:1
+
+ - 
+0x6041      ""                                            [ot:0x0000  maxsub(0x00 / 0)]
+- Time:1724669374.953 PACKET slave:1 index:6041.00 error:1
+
+- 
+ - Time:1724669374.954 PACKET slave:1 index:6041.00 error:1
+
+ - Time:1724669374.956 PACKET slave:1 index:6042.00 error:1
+
+ - 
+0x6042      ""                                            [ot:0x0000  maxsub(0x00 / 0)]
+- Time:1724669374.964 PACKET slave:1 index:6042.00 error:1
+
+- 
+ - Time:1724669374.990 PACKET slave:1 index:6043.00 error:1
+
+ - 
+0x6043      ""                                            [ot:0x0000  maxsub(0x00 / 0)]
+0x6044      "vl velocity demand"                          [VAR]
+0x6046      "vl velocity actual value"                    [VAR]
+- Time:1724669375.751 PACKET slave:1 index:6046.00 error:1
+
+- 
+0x6048      "vl velocity min max amount"                  [ARRAY  maxsub(0x02 / 2)]
+- Time:1724669375.785 PACKET slave:1 index:6048.01 error:1
+
+- 
+ - Time:1724669375.789 PACKET slave:1 index:6048.00 error:1
+
+ - Time:1724669375.798 PACKET slave:1 index:6049.00 error:1
+
+ - 
+0x6049      ""                                            [ot:0x0000  maxsub(0x00 / 0)]
+- Time:1724669375.800 PACKET slave:1 index:6049.00 error:1
+
+- 
+ - Time:1724669375.802 PACKET slave:1 index:6049.00 error:1
+
+ - Time:1724669375.808 PACKET slave:1 index:605b.00 error:1
+
+ - 
+0x605b      ""                                            [ot:0x0000  maxsub(0x00 / 0)]
+- Time:1724669375.810 PACKET slave:1 index:605b.00 error:1
+
+- 
+ - Time:1724669375.815 PACKET slave:1 index:605b.00 error:1
+
+ - Time:1724669375.822 PACKET slave:1 index:605c.00 error:1
+
+ - 
+0x605c      ""                                            [ot:0x0000  maxsub(0x00 / 0)]
+ - Time:1724669375.846 PACKET slave:1 index:605c.00 error:1
+
+ - Time:1724669375.848 PACKET slave:1 index:605e.00 error:1
+
+ - 
+0x605e      ""                                            [ot:0x0000  maxsub(0x00 / 0)]
+- Time:1724669375.849 PACKET slave:1 index:605e.00 error:1
+
+- 
+ - Time:1724669375.895 PACKET slave:1 index:605e.00 error:3
+
+ - 
+0x6060      "Modes of operation"                          [VAR]
+    0x00      "Modes of operation"                          [INTEGER8         RWRWRW]      0x02 2
+ - Time:1724669375.918 PACKET slave:1 index:6061.00 error:1
+
+ - 
+0x6061      ""                                            [ot:0x0000  maxsub(0x00 / 0)]
+    0x00      "Modes of operation display"                  [INTEGER8         R_R_R_]      0x02 2
+0x6502      "Supported drive modes"                       [VAR]
+    0x00      "Supported drive modes"                       [UNSIGNED32       R_R_R_]      0x00000000 0
 PDO mapping according to CoE :
   SM2 outputs
      addr b   index: sub bitl data_type    name
-  [0x0000.0] 0x7010:0x01 0x08 UNSIGNED8    STP_REQUESTED_OPMODE
-  [0x0001.0] 0x0000:0x00 0x08
-  [0x0002.0] 0x7010:0x03 0x10 UNSIGNED16   STP_TARGET_ACCELERATION
-  [0x0004.0] 0x7010:0x04 0x10 INTEGER16    STP_TARGET_VELOCITY
-  [0x0006.0] 0x7010:0x05 0x20 INTEGER32    STP_TARGET_POSITION
-  [0x000A.0] 0x7020:0x01 0x08 UNSIGNED8    STP_REQUESTED_OPMODE
-  [0x000B.0] 0x0000:0x00 0x08
-  [0x000C.0] 0x7020:0x03 0x10 UNSIGNED16   STP_TARGET_ACCELERATION
-  [0x000E.0] 0x7020:0x04 0x10 INTEGER16    STP_TARGET_VELOCITY
-  [0x0010.0] 0x7020:0x05 0x20 INTEGER32    STP_TARGET_POSITION
-  SM3 inputs
-     addr b   index: sub bitl data_type    name
-  [0x0014.0] 0x6000:0x01 0x08 UNSIGNED8    STATUS
-  [0x0015.0] 0x6000:0x02 0x08 UNSIGNED8    ERROR
-  [0x0016.0] 0x6010:0x01 0x08 UNSIGNED8    STP_ACTUAL_OPMODE
-  [0x0017.0] 0x6010:0x02 0x08 UNSIGNED8    STP_ERROR
-  [0x0018.0] 0x6010:0x03 0x08 UNSIGNED8    STP_STATUS
-  [0x0019.0] 0x0000:0x00 0x08
-  [0x001A.0] 0x6010:0x05 0x10 INTEGER16    STP_ACTUAL_ACCELERATION
-  [0x001C.0] 0x6010:0x06 0x10 INTEGER16    STP_ACTUAL_VELOCITY
-  [0x001E.0] 0x6010:0x07 0x20 INTEGER32    STP_ACTUAL_POSITION
-  [0x0022.0] 0x6010:0x08 0x20 INTEGER32    STP_ACTUAL_POSITION_ERROR
-  [0x0026.0] 0x6020:0x01 0x08 UNSIGNED8    STP_ACTUAL_OPMODE
-  [0x0027.0] 0x6020:0x02 0x08 UNSIGNED8    STP_ERROR
-  [0x0028.0] 0x6020:0x03 0x08 UNSIGNED8    STP_STATUS
-  [0x0029.0] 0x0000:0x00 0x08
-  [0x002A.0] 0x6020:0x05 0x10 INTEGER16    STP_ACTUAL_ACCELERATION
-  [0x002C.0] 0x6020:0x06 0x10 INTEGER16    STP_ACTUAL_VELOCITY
-  [0x002E.0] 0x6020:0x07 0x20 INTEGER32    STP_ACTUAL_POSITION
-  [0x0032.0] 0x6020:0x08 0x20 INTEGER32    STP_ACTUAL_POSITION_ERROR
-  [0x0036.0] 0x6030:0x01 0x10 UNSIGNED16   ADC_STATUS
-  [0x0038.0] 0x6030:0x02 0x20 UNSIGNED32   ADC_VALUE
+  [0x0000.0] 0x5000:0x00 0x10 INTEGER16    Command
+  [0x0002.0] 0x5010:0x00 0x10 UNSIGNED16   Frequency reference
 End slaveinfo, close socket

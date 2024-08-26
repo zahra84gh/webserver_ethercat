@@ -2,7 +2,6 @@
 // #include "ethercat.h"
 #include <string.h>
 
-
 char ifbuf[1024];
 OSAL_THREAD_HANDLE thread1;
 
@@ -37,9 +36,9 @@ static enum MHD_Result handle_get_request(struct MHD_Connection *connection, con
         file = fopen(file_path, "r");
         if (file)
         {
-            fseek(file, 0, SEEK_END);
+            fseek(file, 0, SEEK_END); // moves the file position indicator to the end of the file
             file_size = ftell(file);
-            fseek(file, 0, SEEK_SET);
+            fseek(file, 0, SEEK_SET); // moves the file position indicator back to the beginning of the file.
             file_content = malloc(file_size + 1);
             if (file_content)
             {
@@ -72,7 +71,6 @@ static enum MHD_Result handle_get_request(struct MHD_Connection *connection, con
     return ret;
 }
 
-
 static enum MHD_Result handle_post_request(struct MHD_Connection *connection, const char *upload_data, size_t *upload_data_size)
 {
     static char *post_data = NULL;
@@ -88,7 +86,7 @@ static enum MHD_Result handle_post_request(struct MHD_Connection *connection, co
         {
             return MHD_NO;
         }
-        memcpy(post_data + post_data_size, upload_data, *upload_data_size);
+        memcpy(post_data + post_data_size, upload_data, *upload_data_size); // copy the block memeory (upload-data to post_data)
         post_data_size += *upload_data_size;
         *upload_data_size = 0;
         return MHD_YES;
@@ -139,7 +137,6 @@ char *trim_whitespace(char *str)
     return str;
 }
 
-
 int parse_value_or_default(const char *value, int default_value)
 {
     if (value && *value != '\0')
@@ -149,10 +146,10 @@ int parse_value_or_default(const char *value, int default_value)
     return default_value;
 }
 
-
-//update pdo value in c code
-void parse_key_value(const char *key, const char *value) {
-    if (key && value) {
+/*void parse_key_value_io_116e(const char *key, const char *value)
+{
+    if (key && value)
+    {
         // Trim whitespace
         char trimmed_key[256];
         char trimmed_value[256];
@@ -162,126 +159,144 @@ void parse_key_value(const char *key, const char *value) {
         trim_whitespace(trimmed_value);
 
         // Map keys to structure fields
-       if (strcmp(trimmed_key, "OUTPUT_CMD_0x7000") == 0)
-                io_116e_outputs_ptr->output_cmd = parse_value_or_default(trimmed_value, 0);
-            else if (strcmp(trimmed_key, "OUT_PRESCALE_0_0x7001") == 0)
-                io_116e_outputs_ptr->out_prescale_0 = parse_value_or_default(trimmed_value, 0);
-            else if (strcmp(trimmed_key, "OUT_PRESCALE_1_0x7001") == 0)
-                io_116e_outputs_ptr->out_prescale_1 = parse_value_or_default(trimmed_value, 0);
-            else if (strcmp(trimmed_key, "OUT_PRESCALE_2_0x7001") == 0)
-                io_116e_outputs_ptr->out_prescale_2 = parse_value_or_default(trimmed_value, 0);
-            else if (strcmp(trimmed_key, "OUT_PRESCALE_3_0x7001") == 0)
-                io_116e_outputs_ptr->out_prescale_3 = parse_value_or_default(trimmed_value, 0);
+        if (strcmp(trimmed_key, "OUTPUT_CMD_0x7000") == 0)
+            io_116e_outputs_ptr->output_cmd = parse_value_or_default(trimmed_value, 0);
+        else if (strcmp(trimmed_key, "OUT_PRESCALE_0_0x7001") == 0)
+            io_116e_outputs_ptr->out_prescale_0 = parse_value_or_default(trimmed_value, 0);
+        else if (strcmp(trimmed_key, "OUT_PRESCALE_1_0x7001") == 0)
+            io_116e_outputs_ptr->out_prescale_1 = parse_value_or_default(trimmed_value, 0);
+        else if (strcmp(trimmed_key, "OUT_PRESCALE_2_0x7001") == 0)
+            io_116e_outputs_ptr->out_prescale_2 = parse_value_or_default(trimmed_value, 0);
+        else if (strcmp(trimmed_key, "OUT_PRESCALE_3_0x7001") == 0)
+            io_116e_outputs_ptr->out_prescale_3 = parse_value_or_default(trimmed_value, 0);
 
-            else if (strcmp(trimmed_key, "OUT_UPDATED_0x7001") == 0)
-                io_116e_outputs_ptr->out_update = parse_value_or_default(trimmed_value, 0);
-            else if (strcmp(trimmed_key, "IN_PRESCALE_0_0x7001") == 0)
-                io_116e_outputs_ptr->in_prescale_0 = parse_value_or_default(trimmed_value, 0);
-            else if (strcmp(trimmed_key, "IN_PRESCALE_1_0x7001") == 0)
-                io_116e_outputs_ptr->in_prescale_1 = parse_value_or_default(trimmed_value, 0);
-            else if (strcmp(trimmed_key, "IN_PRESCALE_2_0x7001") == 0)
-                io_116e_outputs_ptr->in_prescale_2 = parse_value_or_default(trimmed_value, 0);
-            else if (strcmp(trimmed_key, "IN_PRESCALE_3_0x7001") == 0)
-                io_116e_outputs_ptr->in_prescale_3 = parse_value_or_default(trimmed_value, 0);
-            else if (strcmp(trimmed_key, "IN_PRESCALE_4_0x7001") == 0)
-                io_116e_outputs_ptr->in_prescale_4 = parse_value_or_default(trimmed_value, 0);
-            else if (strcmp(trimmed_key, "IN_PRESCALE_5_0x7001") == 0)
-                io_116e_outputs_ptr->in_prescale_5 = parse_value_or_default(trimmed_value, 0);
-            else if (strcmp(trimmed_key, "IN_PRESCALE_6_0x7001") == 0)
-                io_116e_outputs_ptr->in_prescale_6 = parse_value_or_default(trimmed_value, 0);
-            else if (strcmp(trimmed_key, "IN_PRESCALE_7_0x7001") == 0)
-                io_116e_outputs_ptr->in_prescale_7 = parse_value_or_default(trimmed_value, 0);
+        else if (strcmp(trimmed_key, "OUT_UPDATED_0x7001") == 0)
+            io_116e_outputs_ptr->out_update = parse_value_or_default(trimmed_value, 0);
+        else if (strcmp(trimmed_key, "IN_PRESCALE_0_0x7001") == 0)
+            io_116e_outputs_ptr->in_prescale_0 = parse_value_or_default(trimmed_value, 0);
+        else if (strcmp(trimmed_key, "IN_PRESCALE_1_0x7001") == 0)
+            io_116e_outputs_ptr->in_prescale_1 = parse_value_or_default(trimmed_value, 0);
+        else if (strcmp(trimmed_key, "IN_PRESCALE_2_0x7001") == 0)
+            io_116e_outputs_ptr->in_prescale_2 = parse_value_or_default(trimmed_value, 0);
+        else if (strcmp(trimmed_key, "IN_PRESCALE_3_0x7001") == 0)
+            io_116e_outputs_ptr->in_prescale_3 = parse_value_or_default(trimmed_value, 0);
+        else if (strcmp(trimmed_key, "IN_PRESCALE_4_0x7001") == 0)
+            io_116e_outputs_ptr->in_prescale_4 = parse_value_or_default(trimmed_value, 0);
+        else if (strcmp(trimmed_key, "IN_PRESCALE_5_0x7001") == 0)
+            io_116e_outputs_ptr->in_prescale_5 = parse_value_or_default(trimmed_value, 0);
+        else if (strcmp(trimmed_key, "IN_PRESCALE_6_0x7001") == 0)
+            io_116e_outputs_ptr->in_prescale_6 = parse_value_or_default(trimmed_value, 0);
+        else if (strcmp(trimmed_key, "IN_PRESCALE_7_0x7001") == 0)
+            io_116e_outputs_ptr->in_prescale_7 = parse_value_or_default(trimmed_value, 0);
 
-            else if (strcmp(trimmed_key, "IN_UPDATED_0x7001") == 0)
-                io_116e_outputs_ptr->in_update = parse_value_or_default(trimmed_value, 0);
-            else if (strcmp(trimmed_key, "IN_FILTER_0x7001") == 0)
-                io_116e_outputs_ptr->in_filter = parse_value_or_default(trimmed_value, 0);
-            else if (strcmp(trimmed_key, "IN_FILTER_ENABLED_0x7001") == 0)
-                io_116e_outputs_ptr->in_filter_enabled = parse_value_or_default(trimmed_value, 0);
-            else if (strcmp(trimmed_key, "DUTY_CYCLE_0_0x7002") == 0)
-                io_116e_outputs_ptr->duty_cycle_0 = parse_value_or_default(trimmed_value, 0);
-            else if (strcmp(trimmed_key, "DUTY_CYCLE_1_0x7002") == 0)
-                io_116e_outputs_ptr->duty_cycle_1 = parse_value_or_default(trimmed_value, 0);
-            else if (strcmp(trimmed_key, "DUTY_CYCLE_2_0x7002") == 0)
-                io_116e_outputs_ptr->duty_cycle_2 = parse_value_or_default(trimmed_value, 0);
-            else if (strcmp(trimmed_key, "DUTY_CYCLE_3_0x7002") == 0)
-                io_116e_outputs_ptr->duty_cycle_3 = parse_value_or_default(trimmed_value, 0);
+        else if (strcmp(trimmed_key, "IN_UPDATED_0x7001") == 0)
+            io_116e_outputs_ptr->in_update = parse_value_or_default(trimmed_value, 0);
+        else if (strcmp(trimmed_key, "IN_FILTER_0x7001") == 0)
+            io_116e_outputs_ptr->in_filter = parse_value_or_default(trimmed_value, 0);
+        else if (strcmp(trimmed_key, "IN_FILTER_ENABLED_0x7001") == 0)
+            io_116e_outputs_ptr->in_filter_enabled = parse_value_or_default(trimmed_value, 0);
+        else if (strcmp(trimmed_key, "DUTY_CYCLE_0_0x7002") == 0)
+            io_116e_outputs_ptr->duty_cycle_0 = parse_value_or_default(trimmed_value, 0);
+        else if (strcmp(trimmed_key, "DUTY_CYCLE_1_0x7002") == 0)
+            io_116e_outputs_ptr->duty_cycle_1 = parse_value_or_default(trimmed_value, 0);
+        else if (strcmp(trimmed_key, "DUTY_CYCLE_2_0x7002") == 0)
+            io_116e_outputs_ptr->duty_cycle_2 = parse_value_or_default(trimmed_value, 0);
+        else if (strcmp(trimmed_key, "DUTY_CYCLE_3_0x7002") == 0)
+            io_116e_outputs_ptr->duty_cycle_3 = parse_value_or_default(trimmed_value, 0);
 
-            else if (strcmp(trimmed_key, "OFFSET_0_0x7002") == 0)
-                io_116e_outputs_ptr->offset_0 = parse_value_or_default(trimmed_value, 0);
-            else if (strcmp(trimmed_key, "OFFSET_1_0x7002") == 0)
-                io_116e_outputs_ptr->offset_1 = parse_value_or_default(trimmed_value, 0);
-            else if (strcmp(trimmed_key, "COUNT_0_0x7002") == 0)
-                io_116e_outputs_ptr->pulse_count_0 = parse_value_or_default(trimmed_value, 0);
-            else if (strcmp(trimmed_key, "COUNT_1_0x7002") == 0)
-                io_116e_outputs_ptr->pulse_count_1 = parse_value_or_default(trimmed_value, 0);
-            else if (strcmp(trimmed_key, "COUNT_2_0x7002") == 0)
-                io_116e_outputs_ptr->pulse_count_2 = parse_value_or_default(trimmed_value, 0);
-            else if (strcmp(trimmed_key, "COUNT_3_0x7002") == 0)
-                io_116e_outputs_ptr->pulse_count_3 = parse_value_or_default(trimmed_value, 0);
+        else if (strcmp(trimmed_key, "OFFSET_0_0x7002") == 0)
+            io_116e_outputs_ptr->offset_0 = parse_value_or_default(trimmed_value, 0);
+        else if (strcmp(trimmed_key, "OFFSET_1_0x7002") == 0)
+            io_116e_outputs_ptr->offset_1 = parse_value_or_default(trimmed_value, 0);
+        else if (strcmp(trimmed_key, "COUNT_0_0x7002") == 0)
+            io_116e_outputs_ptr->pulse_count_0 = parse_value_or_default(trimmed_value, 0);
+        else if (strcmp(trimmed_key, "COUNT_1_0x7002") == 0)
+            io_116e_outputs_ptr->pulse_count_1 = parse_value_or_default(trimmed_value, 0);
+        else if (strcmp(trimmed_key, "COUNT_2_0x7002") == 0)
+            io_116e_outputs_ptr->pulse_count_2 = parse_value_or_default(trimmed_value, 0);
+        else if (strcmp(trimmed_key, "COUNT_3_0x7002") == 0)
+            io_116e_outputs_ptr->pulse_count_3 = parse_value_or_default(trimmed_value, 0);
 
-            else if (strcmp(trimmed_key, "UPDATED_0x7002") == 0)
-                io_116e_outputs_ptr->pulse_updated = parse_value_or_default(trimmed_value, 0);
-            else if (strcmp(trimmed_key, "ENABLED_0x7003") == 0)
-                io_116e_outputs_ptr->enable = parse_value_or_default(trimmed_value, 0);
-            else if (strcmp(trimmed_key, "COUNT_0_0x7003") == 0)
-                io_116e_outputs_ptr->trigger_count_0 = parse_value_or_default(trimmed_value, 0);
-            else if (strcmp(trimmed_key, "COUNT_1_0x7003") == 0)
-                io_116e_outputs_ptr->trigger_count_1 = parse_value_or_default(trimmed_value, 0);
-            else if (strcmp(trimmed_key, "COUNT_2_0x7003") == 0)
-                io_116e_outputs_ptr->trigger_count_2 = parse_value_or_default(trimmed_value, 0);
-            else if (strcmp(trimmed_key, "COUNT_3_0x7003") == 0)
-                io_116e_outputs_ptr->trigger_count_3 = parse_value_or_default(trimmed_value, 0);
-            else if (strcmp(trimmed_key, "COUNT_4_0x7003") == 0)
-                io_116e_outputs_ptr->trigger_count_4 = parse_value_or_default(trimmed_value, 0);
-            else if (strcmp(trimmed_key, "COUNT_5_0x7003") == 0)
-                io_116e_outputs_ptr->trigger_count_5 = parse_value_or_default(trimmed_value, 0);
-            else if (strcmp(trimmed_key, "COUNT_6_0x7003") == 0)
-                io_116e_outputs_ptr->trigger_count_6 = parse_value_or_default(trimmed_value, 0);
-            else if (strcmp(trimmed_key, "COUNT_7_0x7003") == 0)
-                io_116e_outputs_ptr->trigger_count_7 = parse_value_or_default(trimmed_value, 0);
-            else if (strcmp(trimmed_key, "COUNT_8_0x7003") == 0)
-                io_116e_outputs_ptr->trigger_count_8 = parse_value_or_default(trimmed_value, 0);
-            else if (strcmp(trimmed_key, "COUNT_9_0x7003") == 0)
-                io_116e_outputs_ptr->trigger_count_9 = parse_value_or_default(trimmed_value, 0);
-            else if (strcmp(trimmed_key, "COUNT_10_0x7003") == 0)
-                io_116e_outputs_ptr->trigger_count_10 = parse_value_or_default(trimmed_value, 0);
-            else if (strcmp(trimmed_key, "COUNT_11_0x7003") == 0)
-                io_116e_outputs_ptr->trigger_count_11 = parse_value_or_default(trimmed_value, 0);
-            else if (strcmp(trimmed_key, "COUNT_12_0x7003") == 0)
-                io_116e_outputs_ptr->trigger_count_12 = parse_value_or_default(trimmed_value, 0);
-            else if (strcmp(trimmed_key, "COUNT_13_0x7003") == 0)
-                io_116e_outputs_ptr->trigger_count_13 = parse_value_or_default(trimmed_value, 0);
-            else if (strcmp(trimmed_key, "COUNT_14_0x7003") == 0)
-                io_116e_outputs_ptr->trigger_count_14 = parse_value_or_default(trimmed_value, 0);
-            else if (strcmp(trimmed_key, "COUNT_15_0x7003") == 0)
-                io_116e_outputs_ptr->trigger_count_15 = parse_value_or_default(trimmed_value, 0);
+        else if (strcmp(trimmed_key, "UPDATED_0x7002") == 0)
+            io_116e_outputs_ptr->pulse_updated = parse_value_or_default(trimmed_value, 0);
+        else if (strcmp(trimmed_key, "ENABLED_0x7003") == 0)
+            io_116e_outputs_ptr->enable = parse_value_or_default(trimmed_value, 0);
+        else if (strcmp(trimmed_key, "COUNT_0_0x7003") == 0)
+            io_116e_outputs_ptr->trigger_count_0 = parse_value_or_default(trimmed_value, 0);
+        else if (strcmp(trimmed_key, "COUNT_1_0x7003") == 0)
+            io_116e_outputs_ptr->trigger_count_1 = parse_value_or_default(trimmed_value, 0);
+        else if (strcmp(trimmed_key, "COUNT_2_0x7003") == 0)
+            io_116e_outputs_ptr->trigger_count_2 = parse_value_or_default(trimmed_value, 0);
+        else if (strcmp(trimmed_key, "COUNT_3_0x7003") == 0)
+            io_116e_outputs_ptr->trigger_count_3 = parse_value_or_default(trimmed_value, 0);
+        else if (strcmp(trimmed_key, "COUNT_4_0x7003") == 0)
+            io_116e_outputs_ptr->trigger_count_4 = parse_value_or_default(trimmed_value, 0);
+        else if (strcmp(trimmed_key, "COUNT_5_0x7003") == 0)
+            io_116e_outputs_ptr->trigger_count_5 = parse_value_or_default(trimmed_value, 0);
+        else if (strcmp(trimmed_key, "COUNT_6_0x7003") == 0)
+            io_116e_outputs_ptr->trigger_count_6 = parse_value_or_default(trimmed_value, 0);
+        else if (strcmp(trimmed_key, "COUNT_7_0x7003") == 0)
+            io_116e_outputs_ptr->trigger_count_7 = parse_value_or_default(trimmed_value, 0);
+        else if (strcmp(trimmed_key, "COUNT_8_0x7003") == 0)
+            io_116e_outputs_ptr->trigger_count_8 = parse_value_or_default(trimmed_value, 0);
+        else if (strcmp(trimmed_key, "COUNT_9_0x7003") == 0)
+            io_116e_outputs_ptr->trigger_count_9 = parse_value_or_default(trimmed_value, 0);
+        else if (strcmp(trimmed_key, "COUNT_10_0x7003") == 0)
+            io_116e_outputs_ptr->trigger_count_10 = parse_value_or_default(trimmed_value, 0);
+        else if (strcmp(trimmed_key, "COUNT_11_0x7003") == 0)
+            io_116e_outputs_ptr->trigger_count_11 = parse_value_or_default(trimmed_value, 0);
+        else if (strcmp(trimmed_key, "COUNT_12_0x7003") == 0)
+            io_116e_outputs_ptr->trigger_count_12 = parse_value_or_default(trimmed_value, 0);
+        else if (strcmp(trimmed_key, "COUNT_13_0x7003") == 0)
+            io_116e_outputs_ptr->trigger_count_13 = parse_value_or_default(trimmed_value, 0);
+        else if (strcmp(trimmed_key, "COUNT_14_0x7003") == 0)
+            io_116e_outputs_ptr->trigger_count_14 = parse_value_or_default(trimmed_value, 0);
+        else if (strcmp(trimmed_key, "COUNT_15_0x7003") == 0)
+            io_116e_outputs_ptr->trigger_count_15 = parse_value_or_default(trimmed_value, 0);
 
-            else if (strcmp(trimmed_key, "UPDATED_0x7003") == 0)
-                io_116e_outputs_ptr->trigger_updated = parse_value_or_default(trimmed_value, 0);
-            else if (strcmp(trimmed_key, "COMMAND_0x7004") == 0)
-                io_116e_outputs_ptr->in_count_command = parse_value_or_default(trimmed_value, 0);
-            else if (strcmp(trimmed_key, "COMMAND_0x7005") == 0)
-                io_116e_outputs_ptr->in_count_latch_command = parse_value_or_default(trimmed_value, 0);
-            else if (strcmp(trimmed_key, "UPDATED_0x7005") == 0)
-                io_116e_outputs_ptr->in_count_latch_updated = parse_value_or_default(trimmed_value, 0);
-            else if (strcmp(trimmed_key, "LEDS_0x7006") == 0)
-                io_116e_outputs_ptr->leds = parse_value_or_default(trimmed_value, 0);
-        
+        else if (strcmp(trimmed_key, "UPDATED_0x7003") == 0)
+            io_116e_outputs_ptr->trigger_updated = parse_value_or_default(trimmed_value, 0);
+        else if (strcmp(trimmed_key, "COMMAND_0x7004") == 0)
+            io_116e_outputs_ptr->in_count_command = parse_value_or_default(trimmed_value, 0);
+        else if (strcmp(trimmed_key, "COMMAND_0x7005") == 0)
+            io_116e_outputs_ptr->in_count_latch_command = parse_value_or_default(trimmed_value, 0);
+        else if (strcmp(trimmed_key, "UPDATED_0x7005") == 0)
+            io_116e_outputs_ptr->in_count_latch_updated = parse_value_or_default(trimmed_value, 0);
+        else if (strcmp(trimmed_key, "LEDS_0x7006") == 0)
+            io_116e_outputs_ptr->leds = parse_value_or_default(trimmed_value, 0);
+
         else
-        
-            fprintf(stderr, "Unknown key: %s\n", trimmed_key);
-        } 
-     
-}
 
+            fprintf(stderr, "Unknown key: %s\n", trimmed_key);
+    }
+}*/
+
+void parse_key_value_mx2_inverter(const char *key, const char *value)
+{
+    if (key && value)
+    {
+        // Trim whitespace
+        char trimmed_key[256];
+        char trimmed_value[256];
+        strncpy(trimmed_key, key, sizeof(trimmed_key));
+        strncpy(trimmed_value, value, sizeof(trimmed_value));
+        trim_whitespace(trimmed_key);
+        trim_whitespace(trimmed_value);
+
+        // Map keys to structure fields
+        if (strcmp(trimmed_key, "Command_0x5000") == 0)
+            mx2_outputs_ptr->command = parse_value_or_default(trimmed_value, 0);
+        else if (strcmp(trimmed_key, "Frequency_0x5010") == 0)
+            mx2_outputs_ptr->frequency_reference = parse_value_or_default(trimmed_value, 0);
+    }
+}
 
 static void parse_post_data(const char *post_data)
 {
 
     printf("POST Data: %s\n", post_data);
 
-    // Create a mutable copy of post_data
+    // Create a copy of post_data
     char *data = strdup(post_data);
     if (data == NULL)
     {
@@ -289,21 +304,23 @@ static void parse_post_data(const char *post_data)
         return;
     }
 
-    // Zero-initialize the structure using memset
-    memset(io_116e_outputs_ptr, 0, sizeof(*io_116e_outputs_ptr));
-
+    // zero initialize of elements in c code
+    // memset(io_116e_outputs_ptr, 0, sizeof(*io_116e_outputs_ptr));
+    /// memset(mx2_outputs_ptr, 0, sizeof(*mx2_outputs_ptr));
 
     // Parse key-value pairs
     char *pair = data;
-    while (pair != NULL) {
+    while (pair != NULL)
+    {
         // Find the position of the '=' character
-        char *equals = strchr(pair, '=');
-        if (equals == NULL) break;
+        char *equals = strchr(pair, '='); // pointer to the first occurrence of the character '=' in the string pair
+        if (equals == NULL)
+            break;
 
         // Extract the key
-        size_t key_len = equals - pair;
+        size_t key_len = equals - pair; // pair points to the beginning of the string
         char key[key_len + 1];
-        strncpy(key, pair, key_len);
+        strncpy(key, pair, key_len); // copy the char from pair to key
         key[key_len] = '\0';
 
         // Extract the value
@@ -318,31 +335,69 @@ static void parse_post_data(const char *post_data)
         printf("key:  %s\n", key);
         printf("value:  %s\n", value);  */
 
-      
-        parse_key_value(key, value);
+        // parse_key_value_io_116e(key, value);
+        parse_key_value_mx2_inverter(key, value);
 
-       
-
-         // Move to the next key-value pair
+        // Move to the next key-value pair
         pair = next_pair ? next_pair + 1 : NULL;
     }
 
     // Free the mutable buffer
     free(data);
 
-   /*     // Print the final values for debugging
+    /*     // Print the final values for io_116e
+     printf("The new value is:\n");
+     printf("output_cmd   %d\n", io_116e_outputs_ptr->output_cmd);
+     printf("prescale0   %d\n", io_116e_outputs_ptr->out_prescale_0);
+     printf("prescale1   %d\n", io_116e_outputs_ptr->out_prescale_1);
+     printf("prescale2   %d\n", io_116e_outputs_ptr->out_prescale_2);
+     printf("prescale3   %d\n", io_116e_outputs_ptr->out_prescale_3);
+     printf("outupdate    %d\n", io_116e_outputs_ptr->out_update);
+     printf("leds:        %d\n", io_116e_outputs_ptr->leds);
+  */
+
+    // Print the final values for mx_inverter
     printf("The new value is:\n");
-    printf("output_cmd   %d\n", io_116e_outputs_ptr->output_cmd);
-    printf("prescale0   %d\n", io_116e_outputs_ptr->out_prescale_0);
-    printf("prescale1   %d\n", io_116e_outputs_ptr->out_prescale_1);
-    printf("prescale2   %d\n", io_116e_outputs_ptr->out_prescale_2);
-    printf("prescale3   %d\n", io_116e_outputs_ptr->out_prescale_3);
-    printf("outupdate    %d\n", io_116e_outputs_ptr->out_update);
-    printf("leds:        %d\n", io_116e_outputs_ptr->leds);
- */
-    
+    printf("command:   %d\n", mx2_outputs_ptr->command);
+    printf("frequency_ref:   %d\n", mx2_outputs_ptr->frequency_reference);
+    printf("status:   %d\n", mx2_inputs_ptr->status);
+    printf("output_frequency_monitor:   %d\n", mx2_inputs_ptr->output_frequency_monitor);
 }
 
+void redirect_terminal_to_text_file(const char *output_file_name, void (*func)())
+{
+    // Open the output file
+    FILE *output_file = fopen(output_file_name, "w");
+    if (output_file == NULL)
+    {
+        perror("Failed to open file");
+        return;
+    }
+
+    // Redirect stdout to the output.txt file
+    int saved_stdout = dup(fileno(stdout));
+    if (dup2(fileno(output_file), fileno(stdout)) == -1)
+    {
+        perror("Failed to redirect stdout");
+        fclose(output_file);
+        return;
+    }
+
+    func();
+
+    // Restore the original stdout to terminal
+    fflush(stdout);
+    dup2(saved_stdout, fileno(stdout));
+    close(saved_stdout);
+
+    fclose(output_file);
+}
+
+void print_slaveinfo()
+{
+    printf("SOEM (Simple Open EtherCAT Master)\nSlaveinfo\n");
+    slaveinfo("enp0s31f6");
+}
 
 static enum MHD_Result answer_to_connection(void *cls,
                                             struct MHD_Connection *connection,
@@ -365,8 +420,6 @@ static enum MHD_Result answer_to_connection(void *cls,
     return MHD_YES;
 }
 
-
-
 int main(void)
 {
     struct MHD_Daemon *daemon;
@@ -382,36 +435,13 @@ int main(void)
         initialize_ethercat("enp0s31f6");
 
         const char *output_file_name = "output.txt";
-        FILE *output_file = fopen(output_file_name, "w");
-        if (output_file == NULL)
-        {
-            perror("Failed to open file");
-            return 1;
-        }
+        redirect_terminal_to_text_file(output_file_name, print_slaveinfo);
 
-        // Redirect stdout to the output.txt file
-        int saved_stdout = dup(fileno(stdout));
-        if (dup2(fileno(output_file), fileno(stdout)) == -1)
-        {
-            perror("Failed to redirect stdout");
-            return 1;
-        }
-
-        printf("SOEM (Simple Open EtherCAT Master)\nSlaveinfo\n");
-        slaveinfo("enp0s31f6");
-
-        // Restore the original stdout
-        fflush(stdout);
-        dup2(saved_stdout, fileno(stdout));
-        close(saved_stdout);
-
-        fclose(output_file);
-
-        save_sdo_pdo_to_file(output_file_name);
+        // io_116e_outputs_ptr = (io_116e_outputs *)ec_slave[1].outputs;
+        mx2_outputs_ptr = (mx2_outputs *)ec_slave[1].outputs;
+        mx2_inputs_ptr = (mx2_inputs *)ec_slave[1].inputs;
 
         // ethercat_loop();
-
-        io_116e_outputs_ptr = (io_116e_outputs *)ec_slave[1].outputs;
     }
     else
     {
