@@ -146,7 +146,7 @@ int parse_value_or_default(const char *value, int default_value)
     return default_value;
 }
 
-/*void parse_key_value_io_116e(const char *key, const char *value)
+void parse_key_value_io_116e(const char *key, const char *value)
 {
     if (key && value)
     {
@@ -269,9 +269,9 @@ int parse_value_or_default(const char *value, int default_value)
 
             fprintf(stderr, "Unknown key: %s\n", trimmed_key);
     }
-}*/
+}
 
-void parse_key_value_mx2_inverter(const char *key, const char *value)
+/*void parse_key_value_mx2_inverter(const char *key, const char *value)
 {
     if (key && value)
     {
@@ -289,7 +289,7 @@ void parse_key_value_mx2_inverter(const char *key, const char *value)
         else if (strcmp(trimmed_key, "Frequency_0x5010") == 0)
             mx2_outputs_ptr->frequency_reference = parse_value_or_default(trimmed_value, 0);
     }
-}
+}*/
 
 static void parse_post_data(const char *post_data)
 {
@@ -335,8 +335,8 @@ static void parse_post_data(const char *post_data)
         printf("key:  %s\n", key);
         printf("value:  %s\n", value);  */
 
-        // parse_key_value_io_116e(key, value);
-        parse_key_value_mx2_inverter(key, value);
+        parse_key_value_io_116e(key, value);
+        // parse_key_value_mx2_inverter(key, value);
 
         // Move to the next key-value pair
         pair = next_pair ? next_pair + 1 : NULL;
@@ -345,23 +345,28 @@ static void parse_post_data(const char *post_data)
     // Free the mutable buffer
     free(data);
 
-    /*     // Print the final values for io_116e
-     printf("The new value is:\n");
-     printf("output_cmd   %d\n", io_116e_outputs_ptr->output_cmd);
-     printf("prescale0   %d\n", io_116e_outputs_ptr->out_prescale_0);
-     printf("prescale1   %d\n", io_116e_outputs_ptr->out_prescale_1);
-     printf("prescale2   %d\n", io_116e_outputs_ptr->out_prescale_2);
-     printf("prescale3   %d\n", io_116e_outputs_ptr->out_prescale_3);
-     printf("outupdate    %d\n", io_116e_outputs_ptr->out_update);
-     printf("leds:        %d\n", io_116e_outputs_ptr->leds);
-  */
-
-    // Print the final values for mx_inverter
+    // Print the final values for io_116e
     printf("The new value is:\n");
-    printf("command:   %d\n", mx2_outputs_ptr->command);
-    printf("frequency_ref:   %d\n", mx2_outputs_ptr->frequency_reference);
-    printf("status:   %d\n", mx2_inputs_ptr->status);
-    printf("output_frequency_monitor:   %d\n", mx2_inputs_ptr->output_frequency_monitor);
+    printf("output_cmd   %d\n", io_116e_outputs_ptr->output_cmd);
+    printf("prescale0   %d\n", io_116e_outputs_ptr->out_prescale_0);
+    printf("prescale1   %d\n", io_116e_outputs_ptr->out_prescale_1);
+    printf("prescale2   %d\n", io_116e_outputs_ptr->out_prescale_2);
+    printf("prescale3   %d\n", io_116e_outputs_ptr->out_prescale_3);
+    printf("outupdate    %d\n", io_116e_outputs_ptr->out_update);
+    printf("leds:        %d\n", io_116e_outputs_ptr->leds);
+
+    /*  // Print the final values for mx_inverter
+     printf("The new value is:\n");
+     printf("command:   %d\n", mx2_outputs_ptr->command);
+     printf("frequency_ref:   %d\n", mx2_outputs_ptr->frequency_reference);
+     printf("status:   %d\n", mx2_inputs_ptr->status);
+     printf("output_frequency_monitor:   %d\n", mx2_inputs_ptr->output_frequency_monitor); */
+}
+
+void print_slaveinfo()
+{
+    printf("SOEM (Simple Open EtherCAT Master)\nSlaveinfo\n");
+    slaveinfo("enp0s31f6");
 }
 
 void redirect_terminal_to_text_file(const char *output_file_name, void (*func)())
@@ -391,12 +396,6 @@ void redirect_terminal_to_text_file(const char *output_file_name, void (*func)()
     close(saved_stdout);
 
     fclose(output_file);
-}
-
-void print_slaveinfo()
-{
-    printf("SOEM (Simple Open EtherCAT Master)\nSlaveinfo\n");
-    slaveinfo("enp0s31f6");
 }
 
 static enum MHD_Result answer_to_connection(void *cls,
@@ -437,11 +436,13 @@ int main(void)
         const char *output_file_name = "output.txt";
         redirect_terminal_to_text_file(output_file_name, print_slaveinfo);
 
-        // io_116e_outputs_ptr = (io_116e_outputs *)ec_slave[1].outputs;
-        mx2_outputs_ptr = (mx2_outputs *)ec_slave[1].outputs;
-        mx2_inputs_ptr = (mx2_inputs *)ec_slave[1].inputs;
+        save_sdo_pdo_to_file(output_file_name);
 
-        // ethercat_loop();
+        io_116e_outputs_ptr = (io_116e_outputs *)ec_slave[1].outputs;
+        /* mx2_outputs_ptr = (mx2_outputs *)ec_slave[1].outputs;
+        mx2_inputs_ptr = (mx2_inputs *)ec_slave[1].inputs; */
+
+        ethercat_loop();
     }
     else
     {
