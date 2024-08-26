@@ -249,14 +249,45 @@ void ethercat_loop(void)
 
         ec_send_processdata();
         wkc = ec_receive_processdata(EC_TIMEOUTRET);
-        /* If work counter is not as expected - report and continue */
+        /* If work counter is not as expected - report and wait to be the normal value*/
         if (wkc < expectedWKC)
         {
             printf("wkc not increasing wkc=%d expectedWKC=%d\n", wkc, expectedWKC);
             osal_usleep(5000);
-            continue;
-        }
 
+            // Wait until the cable is reconnected and wkc is back to normal
+            while (wkc < expectedWKC)
+            {
+                ec_send_processdata();
+                wkc = ec_receive_processdata(EC_TIMEOUTRET);
+                osal_usleep(5000);
+
+                ec_readstate();
+                for (i = 1; i <= ec_slavecount; i++)
+                {
+                    if (ec_slave[i].state != EC_STATE_OPERATIONAL)
+                    {
+                        printf("Reconnecting Slave %d, current state=0x%2.2x\n", i, ec_slave[i].state);
+
+                        // Attempt to transition the slave back to OPERATIONAL state
+                        ec_slave[i].state = EC_STATE_PRE_OP;
+                        ec_writestate(i);
+                        osal_usleep(10000);
+
+                        ec_slave[i].state = EC_STATE_SAFE_OP;
+                        ec_writestate(i);
+                        osal_usleep(10000);
+
+                        ec_slave[i].state = EC_STATE_OPERATIONAL;
+                        ec_writestate(i);
+                    }
+                }
+                expectedWKC = (ec_group[0].outputsWKC * 2) + ec_group[0].inputsWKC;
+            }
+
+            // Once wkc is normal again, print a message and resume normal operation
+            printf("Cable reconnected, wkc back to normal: %d\n", wkc);
+        }
         osal_usleep(5000);
     }
 
@@ -1048,7 +1079,7 @@ void save_sdo_pdo_to_file(const char *input_file)
         // Check for SDO section start
         // strstr : search fo the first accourance of substring
         if (strstr(line, "CoE Object Description found"))
-        { 
+        {
             in_sdo_section = TRUE;
             in_pdo_section = FALSE;
             continue;
