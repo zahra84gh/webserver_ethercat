@@ -269,7 +269,7 @@ void ethercat_loop(void)
                     {
                         printf("Reconnecting Slave %d, current state=0x%2.2x\n", i, ec_slave[i].state);
 
-                        // Attempt to transition the slave back to OPERATIONAL state
+                        // Ty to get the slave back to OPERATIONAL state
                         ec_slave[i].state = EC_STATE_PRE_OP;
                         ec_writestate(i);
                         osal_usleep(10000);

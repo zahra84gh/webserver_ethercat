@@ -180,6 +180,7 @@
         </div>
     </div>
 
+
     <!-- Script to load and parse text files -->
     <script>
         // load text from a file and display it in an element
@@ -222,11 +223,12 @@
                     const parts = line.trim().split(/\s+/);
                     if (parts.length > 4) {
                         const index = parts[1].split(':')[0];
-                        const name = parts[4];
+                        const nameParts = parts.slice(4); // Get all parts from the 5th element onwards
+                        const name = nameParts.join(' '); 
                         const dataType = parts[3];
 
 
-                        // Create a unique identifier combining name with address and index:sub
+                        
                         const distinctName = `${name}_${index}`;
 
 
