@@ -4,9 +4,23 @@
 #include <stdlib.h>
 #include "ethercat.h"
 
+
+
+#define READY_To_SWITCH_ON 6
+#define ENABLE_OPERATION_CONTRIL_WORD 15
+#define HOMING_OPERATION_MODE 6
+#define HOMING_CONTROL_WORD 31
+#define ENABLE_OPERATION_MODE 1
+#define OPERATION_STATUS_WORD 34359
+#define HOMING_STATUS_WORD 38455
+#define MOVING_CONTROL_WORD 63
+
+
+
+
 int initialize_ethercat(char *ifname);
 
-static int ethercat_loop_counter = 0;
+ //static int ethercat_loop_counter = 0;
 
 void ethercat_loop(void);
 

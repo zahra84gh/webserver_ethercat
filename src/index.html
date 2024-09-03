@@ -196,6 +196,9 @@
                 .catch(error => console.error('Error loading text:', error));
         }
 
+        // Global object to store the mapping
+        const nameToIndexMap = {};
+
         //  parse PDO text and create form elements
         function parsePDOText(text) {
             const lines = text.split('\n');
@@ -223,18 +226,20 @@
                     const parts = line.trim().split(/\s+/);
                     if (parts.length > 4) {
                         const index = parts[1].split(':')[0];
-                        const nameParts = parts.slice(4); // Get all parts from the 5th element onwards
-                        const name = nameParts.join(' '); 
                         const dataType = parts[3];
+                        const index_sub = parts[1];
 
+                        const dataTypeIndex = parts.indexOf(dataType);
+                        const nameParts = parts.slice(dataTypeIndex + 1);
+                        const name = nameParts.join(' ');
 
-                        
                         const distinctName = `${name}_${index}`;
 
-
+                        nameToIndexMap[distinctName] = `${index}:${parts[2]}`; // Store index-subindex mapping
+                        nameToIndexMap[distinctName] = index_sub;
 
                         // Create the form element based on dataType
-                        const createInput = (form, distinctName, dataType) => {
+                        const createInput = (form, distinctName, dataType, index_sub) => {
 
                             const container = document.createElement('div');
                             container.className = 'form-group';
@@ -249,6 +254,9 @@
                             input.id = distinctName;
                             input.name = distinctName;
                             input.className = 'form-input';
+                            input.setAttribute('data_index_sub', index_sub);
+
+
 
                             // Set default value to 0
                             input.value = 0;
@@ -291,23 +299,58 @@
                             form.appendChild(input);
                             form.appendChild(document.createElement('br'));
 
+                            form.appendChild(container);
+
                         };
 
                         if (inOutputSection) {
-                            createInput(outputForm, distinctName, dataType);
+                            createInput(outputForm, distinctName, dataType, index_sub);
                         }
                         if (inInputSection) {
-                            createInput(inputForm, distinctName, dataType);
+                            createInput(inputForm, distinctName, dataType, index_sub);
                         }
                     }
                 }
             });
         }
 
+
+        function fetchAndUpdatePDOInputs() {
+            fetch('/pdo.json')
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error('Network response was not ok: ' + response.statusText);
+                    }
+                    return response.json();
+                })
+                .then(data => {
+                    console.log('Fetched data:', data); 
+
+                    for (const [index_sub, value] of Object.entries(data)) {
+                        const inputElement = document.querySelector(`[data_index_sub = "${index_sub}"]`);
+                        if (inputElement) {
+                            inputElement.value = value;
+                        } else {
+                            console.warn(`Input element with index_sub ="${index_sub}" not found.`);
+                        }
+                    }
+                })
+                .catch(error => console.error('Error fetching PDO data:', error));
+        }
+
+
+
+
+
         // Load PDO and SDO content on page load
         window.onload = function () {
             loadText('pdo.txt', 'pdoText');
             loadText('sdo.txt', 'sdoText');
+
+            fetchAndUpdatePDOInputs(); // Initial fetch
+
+            setInterval(fetchAndUpdatePDOInputs, 100); // update pdo inputs every 0.5 seconds
+
         }
     </script>
 </body>

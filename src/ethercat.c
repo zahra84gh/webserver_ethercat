@@ -1,5 +1,5 @@
 #include "include/slaveinfo.h"
-#include "include/io_116e.h"
+#include "include/main.h"
 
 char IOmap[4096];
 ec_ODlistt ODlist;
@@ -182,6 +182,7 @@ int initialize_ethercat(char *ifname)
     return 0;
 }
 
+static int ethercat_loop_counter = 0;
 void ethercat_loop(void)
 {
     int i, chk;
@@ -189,9 +190,6 @@ void ethercat_loop(void)
     boolean inOP = FALSE;
     int expectedWKC;
     volatile int wkc;
-
-    // io_116e_outputs* io_116_output_ptr = (io_116e_outputs*)ec_slave[1].outputs;
-    // io_116e_inputs* io_116e_input_ptr = (io_116e_inputs*)ec_slave[1].inputs;
 
     printf("ec: ethercat_loop: start\n");
 
@@ -236,23 +234,28 @@ void ethercat_loop(void)
     inOP = TRUE;
 
     ethercat_loop_counter = 0;
+    static int step = 0;
+    int delay_counter = 0;
+    const int delay_loops = 20; //  how many loops to wait before moving to the next step
 
     printf("Start ethercat loop\n");
 
     /* Ethercat cyclic loop */
     while (1)
     {
+
         ethercat_loop_counter++;
 
-        if (ethercat_loop_counter % 200 == 100)
-            printf("ethercat_loop_counter %d slaves %d\n", ethercat_loop_counter, ec_slavecount);
+        if (ethercat_loop_counter % 200 == 10)
+            //  printf("ethercat_loop_counter %d slaves %d\n", ethercat_loop_counter, ec_slavecount);
 
-        ec_send_processdata();
+            ec_send_processdata();
         wkc = ec_receive_processdata(EC_TIMEOUTRET);
         /* If work counter is not as expected - report and wait to be the normal value*/
         if (wkc < expectedWKC)
         {
-            printf("wkc not increasing wkc=%d expectedWKC=%d\n", wkc, expectedWKC);
+            if (ethercat_loop_counter % 200 == 10)
+                printf("wkc not increasing wkc=%d expectedWKC=%d\n", wkc, expectedWKC);
             osal_usleep(5000);
 
             // Wait until the cable is reconnected and wkc is back to normal
@@ -271,7 +274,7 @@ void ethercat_loop(void)
 
                         // Ty to get the slave back to OPERATIONAL state
                         ec_slave[i].state = EC_STATE_PRE_OP;
-                        ec_writestate(i);
+                        ec_writestate(i); // writes the new state (PRE-OP) to the EtherCAT slave
                         osal_usleep(10000);
 
                         ec_slave[i].state = EC_STATE_SAFE_OP;
@@ -286,9 +289,154 @@ void ethercat_loop(void)
             }
 
             // Once wkc is normal again, print a message and resume normal operation
-            printf("Cable reconnected, wkc back to normal: %d\n", wkc);
+            if (ethercat_loop_counter % 400 == 0)
+                printf("Cable reconnected, wkc back to normal: %d\n", wkc);
         }
-        osal_usleep(5000);
+
+
+    // State machine for the motor control
+        switch (step)
+        {
+        case 0:
+
+            festo_motor_outputs_ptr->control_word = READY_To_SWITCH_ON; // 6
+            printf("Step 0: READY_TO_SWITCH_ON.\n");
+            delay_counter = 0;
+            step = 1; // Move to next step
+            break;
+
+        case 1:
+            if (delay_counter >= delay_loops)
+            {
+                festo_motor_outputs_ptr->control_word = ENABLE_OPERATION_CONTRIL_WORD; // 15
+                festo_motor_outputs_ptr->modes_of_operation = ENABLE_OPERATION_MODE;   // 1
+                printf("Step 1: OPERATION_ENABLED.\n");
+                delay_counter = 0;
+                step = 2; // Move to next step
+            }
+            else
+            {
+                delay_counter++;
+            }
+            break;
+
+        case 2:
+            if (delay_counter >= delay_loops)
+            {
+                festo_motor_outputs_ptr->control_word = ENABLE_OPERATION_CONTRIL_WORD; // 15
+                festo_motor_outputs_ptr->modes_of_operation = HOMING_OPERATION_MODE;   // 6
+               // festo_motor_outputs_ptr->profile_velocity = 100;
+                printf("Step 2: HOMING_MODE.\n");
+                delay_counter = 0;
+                step = 3;
+            }
+            else
+            {
+                delay_counter++;
+            }
+            break;
+
+        case 3:
+            if (delay_counter >= delay_loops)
+            {
+                festo_motor_outputs_ptr->control_word = HOMING_CONTROL_WORD; // 31
+                printf("Step 3: HOMING_IS_STARTED.\n");
+                delay_counter = 0;
+                step = 4;
+            }
+            else
+            {
+                delay_counter++;
+            }
+            break;
+
+        case 4:
+            if (delay_counter >= delay_loops)
+            {
+                if (festo_motor_inputs_ptr->status_word == HOMING_STATUS_WORD)
+                {
+                    festo_motor_outputs_ptr->control_word = ENABLE_OPERATION_CONTRIL_WORD; // 15
+                    festo_motor_outputs_ptr->modes_of_operation = ENABLE_OPERATION_MODE;   // 1
+                    printf("Step 4: DEVICE_IS_REFRENCED.\n");
+                    step = 5;
+                }
+                else
+                {
+                    printf("DEVICE IS NOT REFRENCED.\n");
+                }
+                delay_counter = 0;
+            }
+            else
+            {
+                delay_counter++;
+            }
+            break;
+
+        case 5:
+            if (delay_counter >= delay_loops)
+            {
+                if (festo_motor_inputs_ptr->position_actual_value == 0)
+                {
+                    festo_motor_outputs_ptr->target_position = -160000;
+                    festo_motor_outputs_ptr->profile_velocity = 100;
+                    festo_motor_outputs_ptr->target_velocity = 0;
+                    printf("Step 5: TARGET POSITION AND VELOCITY are CONFIGURED.\n");
+                    step = 6;
+                }
+                else
+                {
+                    printf("Step 5 failed: position_actual_value=%d status_word=%d\n",
+                           festo_motor_inputs_ptr->position_actual_value, festo_motor_inputs_ptr->status_word);
+                }
+                delay_counter = 0; // Reset the delay counter
+            }
+            else
+            {
+                delay_counter++;
+            }
+            break;
+
+        case 6:
+            if (delay_counter >= delay_loops)
+            {
+                festo_motor_outputs_ptr->control_word = MOVING_CONTROL_WORD; // 63
+                 printf("DEVICE IS RUNNING..THE ACTUAL POSITION IS: %d \n",
+                festo_motor_inputs_ptr->position_actual_value);
+                delay_counter = 0;
+                step = 7;
+            }
+            else
+            {
+                delay_counter++;
+            }
+            break;
+
+        case 7:
+            if (festo_motor_inputs_ptr->position_actual_value == festo_motor_outputs_ptr->target_position)
+            {
+                printf("ALL STEPS ARE COMPLETED.\n");
+                step = 8;
+            }
+            else
+            {
+              if(ethercat_loop_counter %200 == 10)  printf("TARGET POSITION NOT YET REACHED. RECHECKING ...\n");
+                step = 6; 
+            }
+            break;
+
+             case 8:
+        
+        printf("PROCESS COMPLETED. RESTARTING ....\n");
+       step = 0;
+        delay_counter = 0;
+        break;
+
+        default:
+            printf("INVALID STATE VALUE.\n");
+            break;
+        }
+
+        osal_usleep(10000);
     }
 
     /* Stop ethercat and close socket */

@@ -5,69 +5,214 @@
 char ifbuf[1024];
 OSAL_THREAD_HANDLE thread1;
 
+festo_motor_outputs* festo_motor_outputs_ptr = NULL;
+festo_motor_inputs* festo_motor_inputs_ptr = NULL;
+
+
+int get_pdo_input_value_festo_motor(const char *index_sub)
+{
+    int value = 0;
+
+    if (strcmp(index_sub, "0x6041:0x00") == 0)
+
+        value = festo_motor_inputs_ptr->status_word;
+
+    else if (strcmp(index_sub, "0x6061:0x00") == 0)
+
+        value = festo_motor_inputs_ptr->modes_of_operation_dispaly;
+
+    else if (strcmp(index_sub, "0x6064:0x00") == 0)
+
+        value = festo_motor_inputs_ptr->position_actual_value;
+    else if (strcmp(index_sub, "0x606C:0x00") == 0)
+
+        value = festo_motor_inputs_ptr->velocity_actual_value;
+
+    else if (strcmp(index_sub, "0x6077:0x00") == 0)
+
+        value = festo_motor_inputs_ptr->torque_actual_value;
+
+    // printf("Index: %s, Value: %d\n", index_sub, value);
+
+    return value;
+}
+
 static enum MHD_Result handle_get_request(struct MHD_Connection *connection, const char *url)
 {
+
     const char *file_path;
     struct MHD_Response *response;
     FILE *file;
-    char *file_content;
+    char *file_content = NULL;
     long file_size;
-    int ret;
+    int ret = MHD_NO;
 
+    // Handle request for the main HTML page
     if (strcmp(url, "/") == 0)
     {
         file_path = "src/index.html";
-    }
-    else if (strcmp(url, "/pdo.txt") == 0)
-    {
-        file_path = "pdo.txt";
-    }
-    else if (strcmp(url, "/sdo.txt") == 0)
-    {
-        file_path = "sdo.txt";
-    }
-    else
-    {
-        file_path = NULL;
-    }
-
-    if (file_path)
-    {
         file = fopen(file_path, "r");
         if (file)
         {
-            fseek(file, 0, SEEK_END); // moves the file position indicator to the end of the file
+            fseek(file, 0, SEEK_END); // Move file pointer to the end
             file_size = ftell(file);
-            fseek(file, 0, SEEK_SET); // moves the file position indicator back to the beginning of the file.
+            fseek(file, 0, SEEK_SET); // Move file pointer back to the start
             file_content = malloc(file_size + 1);
             if (file_content)
             {
                 fread(file_content, 1, file_size, file);
-                file_content[file_size] = '\0'; // Null-terminate the string
+                file_content[file_size] = '\0';
                 fclose(file);
 
                 response = MHD_create_response_from_buffer(file_size, file_content, MHD_RESPMEM_MUST_FREE);
-
-                if (strcmp(url, "/index.html") == 0)
+                if (response)
                 {
                     MHD_add_response_header(response, "Content-Type", "text/html");
+                    ret = MHD_queue_response(connection, MHD_HTTP_OK, response);
+                    MHD_destroy_response(response);
                 }
-                else if (strstr(url, ".txt"))
-                {
-                    MHD_add_response_header(response, "Content-Type", "text/plain");
-                }
-
-                ret = MHD_queue_response(connection, MHD_HTTP_OK, response);
-                MHD_destroy_response(response);
-                return ret;
             }
+            else
+            {
+                fclose(file);
+                return MHD_NO;
+            }
+        }
+        else
+        {
+            return MHD_NO;
+        }
+    }
+    // Handle request for /pdo.json
+    else if (strcmp(url, "/pdo.json") == 0)
+    {
+        struct json_object *json_obj = json_object_new_object();
+        if (json_obj)
+        {
+            FILE *pdo_file = fopen("pdo.txt", "r");
+            if (pdo_file)
+            {
+                char line[256];
+                int process_lines = 0; // Flag to start processing lines after "SM3 inputs" header
+
+                while (fgets(line, sizeof(line), pdo_file))
+                {
+                    char *trimmed_line = trim_whitespace(line);
+
+                    if (strstr(trimmed_line, "SM3 inputs"))
+                    {
+                        process_lines = 1; // Start processing lines
+                        continue;
+                    }
+
+                    if (!process_lines)
+                    {
+                        continue;
+                    }
+
+                    if (strstr(trimmed_line, "addr b   index: sub bitl data_type    name") || trimmed_line[0] == '\0')
+                    {
+                        continue; // Skip header lines and empty lines
+                    }
+                    char name[128];
+                    if (sscanf(trimmed_line, "%*s %*x:%*x %*s %*s %127[^\n]", name) != 1)
+                    {
+                        // printf("Skipping line without a valid name: %s\n", trimmed_line);
+                        continue; // Skip to the next line
+                    }
+
+                    if (trimmed_line[0] == '[')
+                    {
+                        unsigned int index, subindex;
+                        char data_type[32];
+                        char name[128];
+                        char index_sub[16];
+
+                        int result = sscanf(trimmed_line, "[%*[^.].%*[^]] ] %x:%x %*s %s %127[^\n]", &index, &subindex, data_type, name);
+                        if (result == 4)
+                        {
+                            sprintf(index_sub, "0x%04X:0x%02X", index, subindex);
+                            // printf("Parsed index_sub: %s\n", index_sub);
+
+                            int value = get_pdo_input_value_festo_motor(index_sub);
+                            json_object_object_add(json_obj, index_sub, json_object_new_int(value));
+                        }
+                        else
+                        {
+                            printf("Failed to parse line: %s\n", trimmed_line);
+                        }
+                    }
+                }
+                fclose(pdo_file);
+            }
+
+            const char *json_str = json_object_to_json_string(json_obj);
+
+            if (json_str)
+            {
+                // printf("JSON string: %s\n", json_str);
+
+                char *json_str_copy = strdup(json_str);
+                char *trimmed_json_str = trim_whitespace(json_str_copy);
+
+                response = MHD_create_response_from_buffer(strlen(trimmed_json_str), (void *)trimmed_json_str, MHD_RESPMEM_PERSISTENT);
+                if (response)
+                {
+                    MHD_add_response_header(response, "Content-Type", "application/json");
+                    ret = MHD_queue_response(connection, MHD_HTTP_OK, response);
+                    MHD_destroy_response(response);
+                }
+            }
+            json_object_put(json_obj); // Free JSON object memory
         }
     }
 
-    const char *error_message = "Invalid request";
-    response = MHD_create_response_from_buffer(strlen(error_message), (void *)error_message, MHD_RESPMEM_PERSISTENT);
-    ret = MHD_queue_response(connection, MHD_HTTP_NOT_FOUND, response);
-    MHD_destroy_response(response);
+    else if (strcmp(url, "/pdo.txt") == 0 || strcmp(url, "/sdo.txt") == 0)
+    {
+        file_path = strcmp(url, "/pdo.txt") == 0 ? "pdo.txt" : "sdo.txt";
+        file = fopen(file_path, "r");
+        if (file)
+        {
+            fseek(file, 0, SEEK_END); // Move file pointer to the end
+            file_size = ftell(file);
+            fseek(file, 0, SEEK_SET); // Move file pointer back to the start
+            file_content = malloc(file_size + 1);
+            if (file_content)
+            {
+                fread(file_content, 1, file_size, file);
+                file_content[file_size] = '\0';
+                fclose(file);
+
+                response = MHD_create_response_from_buffer(file_size, file_content, MHD_RESPMEM_MUST_FREE);
+                if (response)
+                {
+                    MHD_add_response_header(response, "Content-Type", "text/plain");
+                    ret = MHD_queue_response(connection, MHD_HTTP_OK, response);
+                    MHD_destroy_response(response);
+                }
+            }
+            else
+            {
+                fclose(file);
+                return MHD_NO;
+            }
+        }
+        else
+        {
+            return MHD_NO;
+        }
+    }
+
+    else
+    {
+        const char *error_message = "Invalid request";
+        response = MHD_create_response_from_buffer(strlen(error_message), (void *)error_message, MHD_RESPMEM_PERSISTENT);
+        if (response)
+        {
+            ret = MHD_queue_response(connection, MHD_HTTP_NOT_FOUND, response);
+            MHD_destroy_response(response);
+        }
+    }
     return ret;
 }
 
@@ -93,7 +238,6 @@ static enum MHD_Result handle_post_request(struct MHD_Connection *connection, co
     }
     else
     {
-        // Process POST data
         if (post_data)
         {
             parse_post_data(post_data);
@@ -146,7 +290,18 @@ int parse_value_or_default(const char *value, int default_value)
     return default_value;
 }
 
-void parse_key_value_io_116e(const char *key, const char *value)
+void decode_plus_to_space(char *str)
+{
+    for (char *p = str; *p != '\0'; p++)
+    {
+        if (*p == '+')
+        {
+            *p = ' ';
+        }
+    }
+}
+
+/*  void parse_key_value_io_116e(const char *key, const char *value)
 {
     if (key && value)
     {
@@ -158,7 +313,7 @@ void parse_key_value_io_116e(const char *key, const char *value)
         trim_whitespace(trimmed_key);
         trim_whitespace(trimmed_value);
 
-        // Map keys to structure fields
+        // Map keys to pdos
         if (strcmp(trimmed_key, "OUTPUT_CMD_0x7000") == 0)
             io_116e_outputs_ptr->output_cmd = parse_value_or_default(trimmed_value, 0);
         else if (strcmp(trimmed_key, "OUT_PRESCALE_0_0x7001") == 0)
@@ -270,6 +425,7 @@ void parse_key_value_io_116e(const char *key, const char *value)
             fprintf(stderr, "Unknown key: %s\n", trimmed_key);
     }
 }
+ */
 
 /*void parse_key_value_mx2_inverter(const char *key, const char *value)
 {
@@ -283,7 +439,7 @@ void parse_key_value_io_116e(const char *key, const char *value)
         trim_whitespace(trimmed_key);
         trim_whitespace(trimmed_value);
 
-        // Map keys to structure fields
+        // Map keys to pdos
         if (strcmp(trimmed_key, "Command_0x5000") == 0)
             mx2_outputs_ptr->command = parse_value_or_default(trimmed_value, 0);
         else if (strcmp(trimmed_key, "Frequency_0x5010") == 0)
@@ -291,10 +447,42 @@ void parse_key_value_io_116e(const char *key, const char *value)
     }
 }*/
 
+void parse_key_value_festo_motor(const char *key, const char *value)
+{
+    if (key && value)
+    {
+        // Trim whitespace
+        char trimmed_key[256];
+        char trimmed_value[256];
+        strncpy(trimmed_key, key, sizeof(trimmed_key));
+        strncpy(trimmed_value, value, sizeof(trimmed_value));
+        trim_whitespace(trimmed_key);
+        trim_whitespace(trimmed_value);
+
+        // Map keys to pdos
+        if (strcmp(trimmed_key, "Controlword_0x6040") == 0)
+            festo_motor_outputs_ptr->control_word = parse_value_or_default(trimmed_value, 0);
+        else if (strcmp(trimmed_key, "Modes of operation_0x6060") == 0)
+            festo_motor_outputs_ptr->modes_of_operation = parse_value_or_default(trimmed_value, 0);
+        else if (strcmp(trimmed_key, "Target position_0x607A") == 0)
+            festo_motor_outputs_ptr->target_position = parse_value_or_default(trimmed_value, 0);
+        else if (strcmp(trimmed_key, "Profile velocity_0x6081") == 0)
+            festo_motor_outputs_ptr->profile_velocity = parse_value_or_default(trimmed_value, 0);
+        else if (strcmp(trimmed_key, "Target velocity_0x60FF") == 0)
+            festo_motor_outputs_ptr->target_velocity = parse_value_or_default(trimmed_value, 0);
+        else if (strcmp(trimmed_key, "Target torque_0x6071") == 0)
+            festo_motor_outputs_ptr->target_torque = parse_value_or_default(trimmed_value, 0);
+        else if (strcmp(trimmed_key, "Velocity offset_0x60B1") == 0)
+            festo_motor_outputs_ptr->velocity_offset = parse_value_or_default(trimmed_value, 0);
+        else if (strcmp(trimmed_key, "Torque offset_0x60B2") == 0)
+            festo_motor_outputs_ptr->torque_offset = parse_value_or_default(trimmed_value, 0);
+    }
+}
+
 static void parse_post_data(const char *post_data)
 {
 
-    printf("POST Data: %s\n", post_data);
+    // printf("POST Data: %s\n", post_data);
 
     // Create a copy of post_data
     char *data = strdup(post_data);
@@ -303,10 +491,6 @@ static void parse_post_data(const char *post_data)
         perror("strdup");
         return;
     }
-
-    // zero initialize of elements in c code
-    // memset(io_116e_outputs_ptr, 0, sizeof(*io_116e_outputs_ptr));
-    /// memset(mx2_outputs_ptr, 0, sizeof(*mx2_outputs_ptr));
 
     // Parse key-value pairs
     char *pair = data;
@@ -323,6 +507,9 @@ static void parse_post_data(const char *post_data)
         strncpy(key, pair, key_len); // copy the char from pair to key
         key[key_len] = '\0';
 
+        // Decode '+' signs in the key to spaces
+        decode_plus_to_space(key);
+
         // Extract the value
         char *next_pair = strchr(equals + 1, '&');
         size_t value_len = (next_pair != NULL) ? (next_pair - equals - 1) : strlen(equals + 1);
@@ -331,12 +518,13 @@ static void parse_post_data(const char *post_data)
         value[value_len] = '\0';
 
         /* Print debug information
-          printf("Raw key-value pair: %s\n", pair);
+        printf("Raw key-value pair: %s\n", pair);
         printf("key:  %s\n", key);
         printf("value:  %s\n", value);  */
 
-        parse_key_value_io_116e(key, value);
+        // parse_key_value_io_116e(key, value);
         // parse_key_value_mx2_inverter(key, value);
+        parse_key_value_festo_motor(key, value);
 
         // Move to the next key-value pair
         pair = next_pair ? next_pair + 1 : NULL;
@@ -344,23 +532,6 @@ static void parse_post_data(const char *post_data)
 
     // Free the mutable buffer
     free(data);
-
-    // Print the final values for io_116e
-    printf("The new value is:\n");
-    printf("output_cmd   %d\n", io_116e_outputs_ptr->output_cmd);
-    printf("prescale0   %d\n", io_116e_outputs_ptr->out_prescale_0);
-    printf("prescale1   %d\n", io_116e_outputs_ptr->out_prescale_1);
-    printf("prescale2   %d\n", io_116e_outputs_ptr->out_prescale_2);
-    printf("prescale3   %d\n", io_116e_outputs_ptr->out_prescale_3);
-    printf("outupdate    %d\n", io_116e_outputs_ptr->out_update);
-    printf("leds:        %d\n", io_116e_outputs_ptr->leds);
-
-    /*  // Print the final values for mx_inverter
-     printf("The new value is:\n");
-     printf("command:   %d\n", mx2_outputs_ptr->command);
-     printf("frequency_ref:   %d\n", mx2_outputs_ptr->frequency_reference);
-     printf("status:   %d\n", mx2_inputs_ptr->status);
-     printf("output_frequency_monitor:   %d\n", mx2_inputs_ptr->output_frequency_monitor); */
 }
 
 void print_slaveinfo()
@@ -381,6 +552,12 @@ void redirect_terminal_to_text_file(const char *output_file_name, void (*func)()
 
     // Redirect stdout to the output.txt file
     int saved_stdout = dup(fileno(stdout));
+    if (saved_stdout == -1)
+    {
+        perror("Failed to save stdout");
+        fclose(output_file);
+        return;
+    }
     if (dup2(fileno(output_file), fileno(stdout)) == -1)
     {
         perror("Failed to redirect stdout");
@@ -392,10 +569,13 @@ void redirect_terminal_to_text_file(const char *output_file_name, void (*func)()
 
     // Restore the original stdout to terminal
     fflush(stdout);
-    dup2(saved_stdout, fileno(stdout));
+    if (dup2(saved_stdout, fileno(stdout)) == -1)
+    {
+        perror("Failed to restore stdout");
+    }
     close(saved_stdout);
-
     fclose(output_file);
+    
 }
 
 static enum MHD_Result answer_to_connection(void *cls,
@@ -429,18 +609,43 @@ int main(void)
 
     if (TRUE)
     {
+
+     
+
         printf("SOEM (Simple Open EtherCAT Master)\nSimple test\n");
         osal_thread_create(&thread1, 128000, &ecatcheck, NULL);
+
         initialize_ethercat("enp0s31f6");
 
+       
+
+        festo_motor_outputs_ptr = (festo_motor_outputs *)ec_slave[1].outputs;
+        festo_motor_inputs_ptr = (festo_motor_inputs *)ec_slave[1].inputs;
+
+  
+         if (festo_motor_inputs_ptr == NULL) 
+            fprintf(stderr, "Error: Failed to map Festo motor inputs.\n");
+
+
         const char *output_file_name = "output.txt";
+
+
+
         redirect_terminal_to_text_file(output_file_name, print_slaveinfo);
+       
+        sleep(0.5);
+
+
 
         save_sdo_pdo_to_file(output_file_name);
+     sleep(0.5); 
 
-        io_116e_outputs_ptr = (io_116e_outputs *)ec_slave[1].outputs;
+        // io_116e_outputs_ptr = (io_116e_outputs *)ec_slave[1].outputs;
+
         /* mx2_outputs_ptr = (mx2_outputs *)ec_slave[1].outputs;
         mx2_inputs_ptr = (mx2_inputs *)ec_slave[1].inputs; */
+
+        
 
         ethercat_loop();
     }
