@@ -5,9 +5,8 @@
 char ifbuf[1024];
 OSAL_THREAD_HANDLE thread1;
 
-festo_motor_outputs* festo_motor_outputs_ptr = NULL;
-festo_motor_inputs* festo_motor_inputs_ptr = NULL;
-
+festo_motor_outputs *festo_motor_outputs_ptr = NULL;
+festo_motor_inputs *festo_motor_inputs_ptr = NULL;
 
 int get_pdo_input_value_festo_motor(const char *index_sub)
 {
@@ -575,7 +574,77 @@ void redirect_terminal_to_text_file(const char *output_file_name, void (*func)()
     }
     close(saved_stdout);
     fclose(output_file);
-    
+}
+
+void save_sdo_pdo_to_file(const char *input_file)
+{
+    FILE *file = fopen(input_file, "r");
+    if (file == NULL)
+    {
+        perror("Failed to open input file");
+        return;
+    }
+
+    FILE *sdo_file = fopen("sdo.txt", "w");
+    FILE *pdo_file = fopen("pdo.txt", "w");
+
+    if (sdo_file == NULL || pdo_file == NULL)
+    {
+        perror("Failed to open output files");
+        fclose(file);
+        if (sdo_file)
+            fclose(sdo_file);
+        if (pdo_file)
+            fclose(pdo_file);
+        return;
+    }
+
+    char line[1024];
+    boolean in_sdo_section = FALSE;
+    boolean in_pdo_section = FALSE;
+
+    // fget read a one line and store in line
+    while (fgets(line, sizeof(line), file))
+    {
+        // Check for SDO section start
+        // strstr : search fo the first accourance of substring
+        if (strstr(line, "CoE Object Description found"))
+        {
+            in_sdo_section = TRUE;
+            in_pdo_section = FALSE;
+            continue;
+        }
+
+        // Check for PDO section start
+        if (strstr(line, "PDO mapping according to CoE"))
+        {
+            in_pdo_section = TRUE;
+            in_sdo_section = FALSE;
+            continue;
+        }
+
+        // End of SDO section if PDO starts
+        if (in_sdo_section && strstr(line, "PDO mapping according to CoE"))
+        {
+            in_sdo_section = FALSE;
+            in_pdo_section = TRUE;
+            continue;
+        }
+
+        if (in_sdo_section)
+        {
+            fputs(line, sdo_file);
+        }
+
+        if (in_pdo_section)
+        {
+            fputs(line, pdo_file);
+        }
+    }
+
+    fclose(file);
+    fclose(sdo_file);
+    fclose(pdo_file);
 }
 
 static enum MHD_Result answer_to_connection(void *cls,
@@ -610,42 +679,32 @@ int main(void)
     if (TRUE)
     {
 
-     
-
         printf("SOEM (Simple Open EtherCAT Master)\nSimple test\n");
         osal_thread_create(&thread1, 128000, &ecatcheck, NULL);
 
         initialize_ethercat("enp0s31f6");
 
-       
-
         festo_motor_outputs_ptr = (festo_motor_outputs *)ec_slave[1].outputs;
         festo_motor_inputs_ptr = (festo_motor_inputs *)ec_slave[1].inputs;
 
-  
-         if (festo_motor_inputs_ptr == NULL) 
+        if (festo_motor_inputs_ptr == NULL)
             fprintf(stderr, "Error: Failed to map Festo motor inputs.\n");
-
 
         const char *output_file_name = "output.txt";
 
-
-
+printf("Redirect terminal is started. \n");
         redirect_terminal_to_text_file(output_file_name, print_slaveinfo);
+
        
-        sleep(0.5);
+printf("Save pdo and sdo is started. \n");
+       // save_sdo_pdo_to_file(output_file_name);
 
-
-
-        save_sdo_pdo_to_file(output_file_name);
-     sleep(0.5); 
+        
 
         // io_116e_outputs_ptr = (io_116e_outputs *)ec_slave[1].outputs;
 
         /* mx2_outputs_ptr = (mx2_outputs *)ec_slave[1].outputs;
         mx2_inputs_ptr = (mx2_inputs *)ec_slave[1].inputs; */
-
-        
 
         ethercat_loop();
     }

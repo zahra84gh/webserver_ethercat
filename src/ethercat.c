@@ -8,6 +8,7 @@ boolean printSDO = TRUE;
 boolean printMAP = TRUE;
 char usdo[128];
 char hstr[1024];
+boolean inOP;
 
 #define OTYPE_VAR 0x0007
 #define OTYPE_ARRAY 0x0008
@@ -23,17 +24,12 @@ char hstr[1024];
 int initialize_ethercat(char *ifname)
 {
     int i;
-    boolean inOP = FALSE;
+    inOP = FALSE;
     int IO_map_size;
     int device_state;
 
     printf("ec: initialize_ethercat: start\n");
 
-    if (ifname == NULL)
-    {
-        printf("ec: initialize_ethercat: Interface name is NULL\n");
-        return -1;
-    }
     /* Configure Ethercat master and bind socket to ifname */
     if (!ec_init(ifname))
     {
@@ -182,12 +178,39 @@ int initialize_ethercat(char *ifname)
     return 0;
 }
 
+void set_profile_acceleration(uint16_t CiA402Setpoints_index, float profile_acceleration)
+{
+    ec_SDOwrite(1, CiA402Setpoints_index, 0x06, FALSE, sizeof(profile_acceleration), &profile_acceleration, EC_TIMEOUTRXM);
+}
+
+void set_profile_deceleration(uint16_t CiA402Setpoints_index, float profile_deceleration)
+{
+    ec_SDOwrite(1, CiA402Setpoints_index, 0x07, FALSE, sizeof(profile_deceleration), &profile_deceleration, EC_TIMEOUTRXM);
+}
+
+void set_profile_jerk(uint16_t CiA402Setpoints_index, float profile_jerk)
+{
+    ec_SDOwrite(1, CiA402Setpoints_index, 0x09, FALSE, sizeof(profile_jerk), &profile_jerk, EC_TIMEOUTRXM);
+}
+
+void set_position_offeset(uint16_t CiA402Setpoints_index, int64_t position_offset)
+{
+     ec_SDOwrite(1, CiA402Setpoints_index, 0x12, FALSE, sizeof(position_offset), &position_offset, EC_TIMEOUTRXM);
+}
+
+uint64_t get_current_time_ms()
+{
+    struct timespec ts;
+    clock_gettime(CLOCK_MONOTONIC, &ts); // Use CLOCK_MONOTONIC for elapsed time
+    return (uint64_t)(ts.tv_sec) * 1000 + (ts.tv_nsec / 1000000); // Convert to milliseconds
+}
+
 static int ethercat_loop_counter = 0;
 void ethercat_loop(void)
 {
     int i, chk;
     int slave_state;
-    boolean inOP = FALSE;
+    inOP = FALSE;
     int expectedWKC;
     volatile int wkc;
 
@@ -235,10 +258,20 @@ void ethercat_loop(void)
 
     ethercat_loop_counter = 0;
     static int step = 0;
-    int delay_counter = 0;
-    const int delay_loops = 20; //  how many loops to wait before moving to the next step
+
+    set_profile_acceleration(CiA402Setpoints, PROFILE_ACCELERATION_VALUE);
+    set_profile_deceleration(CiA402Setpoints, PROFILE_DECELERATION_VALUE);
+   set_profile_jerk(CiA402Setpoints, PROFILE_JERK_VALUE);
+ 
 
     printf("Start ethercat loop\n");
+
+
+
+ uint64_t start_time_ms = get_current_time_ms();
+    uint64_t current_time_ms;
+    static int loop_counter = 0;
+    bool time_limit_reached = false;
 
     /* Ethercat cyclic loop */
     while (1)
@@ -293,153 +326,180 @@ void ethercat_loop(void)
                 printf("Cable reconnected, wkc back to normal: %d\n", wkc);
         }
 
+       
 
-    // State machine for the motor control
+
+        current_time_ms = get_current_time_ms();
+
+        if (current_time_ms - start_time_ms >= 60000) // 1 min
+        {
+                    time_limit_reached = true; 
+        printf("Time limit of 15 seconds reached.\n");           
+        }
+
+        if (time_limit_reached)
+        {
+        printf("Number of loops completed in 15 seconds: %d\n", loop_counter);
+        break;  
+     }
+
         switch (step)
         {
         case 0:
-
             festo_motor_outputs_ptr->control_word = READY_To_SWITCH_ON; // 6
-            printf("Step 0: READY_TO_SWITCH_ON.\n");
-            delay_counter = 0;
-            step = 1; // Move to next step
+           printf("Step 0: READY_TO_SWITCH_ON.\n");
+            step = 1;
             break;
 
         case 1:
-            if (delay_counter >= delay_loops)
-            {
-                festo_motor_outputs_ptr->control_word = ENABLE_OPERATION_CONTRIL_WORD; // 15
-                festo_motor_outputs_ptr->modes_of_operation = ENABLE_OPERATION_MODE;   // 1
-                printf("Step 1: OPERATION_ENABLED.\n");
-                delay_counter = 0;
-                step = 2; // Move to next step
-            }
-            else
-            {
-                delay_counter++;
-            }
+            printf("Step 1: OPERATION_ENABLED.\n");
+            festo_motor_outputs_ptr->control_word = ENABLE_OPERATION_CONTRIL_WORD; // 15
+            festo_motor_outputs_ptr->modes_of_operation = ENABLE_OPERATION_MODE;   // 1
+            step = 2;                                                             
             break;
 
         case 2:
-            if (delay_counter >= delay_loops)
-            {
-                festo_motor_outputs_ptr->control_word = ENABLE_OPERATION_CONTRIL_WORD; // 15
-                festo_motor_outputs_ptr->modes_of_operation = HOMING_OPERATION_MODE;   // 6
-               // festo_motor_outputs_ptr->profile_velocity = 100;
-                printf("Step 2: HOMING_MODE.\n");
-                delay_counter = 0;
-                step = 3;
-            }
-            else
-            {
-                delay_counter++;
-            }
+            printf("Step 2: HOMING_MODE IS SET.\n");
+            festo_motor_outputs_ptr->control_word = ENABLE_OPERATION_CONTRIL_WORD; // 1
+            festo_motor_outputs_ptr->modes_of_operation = HOMING_OPERATION_MODE;   // 6
+            step = 3;
             break;
 
         case 3:
-            if (delay_counter >= delay_loops)
-            {
-                festo_motor_outputs_ptr->control_word = HOMING_CONTROL_WORD; // 31
-                printf("Step 3: HOMING_IS_STARTED.\n");
-                delay_counter = 0;
-                step = 4;
-            }
-            else
-            {
-                delay_counter++;
-            }
+         if(ethercat_loop_counter % 300 == 0)   printf("Step 3: HOMING_IS_STARTED.\n");
+            festo_motor_outputs_ptr->control_word = HOMING_CONTROL_WORD; // 31
+            step = 4;
             break;
 
         case 4:
-            if (delay_counter >= delay_loops)
+            if (festo_motor_inputs_ptr->status_word == HOMING_STATUS_WORD)
             {
-                if (festo_motor_inputs_ptr->status_word == HOMING_STATUS_WORD)
-                {
-                    festo_motor_outputs_ptr->control_word = ENABLE_OPERATION_CONTRIL_WORD; // 15
-                    festo_motor_outputs_ptr->modes_of_operation = ENABLE_OPERATION_MODE;   // 1
-                    printf("Step 4: DEVICE_IS_REFRENCED.\n");
-                    step = 5;
-                }
-                else
-                {
-                    printf("DEVICE IS NOT REFRENCED.\n");
-                }
-                delay_counter = 0;
+                printf("Step 4: HOMING COMPLETED. CONFIGURING TARGET_1.\n");
+                festo_motor_outputs_ptr->control_word = ENABLE_OPERATION_CONTRIL_WORD; // 15
+                festo_motor_outputs_ptr->modes_of_operation = ENABLE_OPERATION_MODE;   // 1
+                step = 5;
             }
             else
             {
-                delay_counter++;
+               if (ethercat_loop_counter % 400 == 0) printf("Step 4: DEVICE NOT REFERENCED. RETRYING HOMING.\n");
+                step = 3;
             }
             break;
 
         case 5:
-            if (delay_counter >= delay_loops)
-            {
-                if (festo_motor_inputs_ptr->position_actual_value == 0)
+
+           // Timeout check 
+                current_time_ms = get_current_time_ms();
+                if (current_time_ms - start_time_ms >= 60000) // 30 sec timeout
                 {
-                    festo_motor_outputs_ptr->target_position = -160000;
-                    festo_motor_outputs_ptr->profile_velocity = 100;
-                    festo_motor_outputs_ptr->target_velocity = 0;
-                    printf("Step 5: TARGET POSITION AND VELOCITY are CONFIGURED.\n");
-                    step = 6;
+                    time_limit_reached = true;
+                    printf("Time limit of 1 min reached in Step 5.\n");
                 }
-                else
-                {
-                    printf("Step 5 failed: position_actual_value=%d status_word=%d\n",
-                           festo_motor_inputs_ptr->position_actual_value, festo_motor_inputs_ptr->status_word);
-                }
-                delay_counter = 0; // Reset the delay counter
-            }
-            else
-            {
-                delay_counter++;
-            }
+
+          if (time_limit_reached) break; 
+
+          //  printf("Step 5: CONFIGURING TARGET_1.\n");
+            festo_motor_outputs_ptr->control_word = ENABLE_OPERATION_CONTRIL_WORD; // 15
+            festo_motor_outputs_ptr->modes_of_operation = ENABLE_OPERATION_MODE;   // 1
+            festo_motor_outputs_ptr->target_position = TARGET_1;
+            festo_motor_outputs_ptr->profile_velocity = PROFILE_VELOCITY;
+            festo_motor_outputs_ptr->target_velocity = TARGET_VELOCITY;
+           
+          
+            step = 6;
             break;
 
         case 6:
-            if (delay_counter >= delay_loops)
+
+         // Timeout check 
+                current_time_ms = get_current_time_ms();
+                if (current_time_ms - start_time_ms >= 60000) // 30 sec timeout
+                {
+                    time_limit_reached = true;
+                    printf("Time limit of 30 seconds reached in Step 6.\n");
+                }
+
+          if (time_limit_reached) break; 
+
+            //  printf("Step 6: MOVING TO TARGET_1. CURRENT POSITION: %d\n", festo_motor_inputs_ptr->position_actual_value);
+            festo_motor_outputs_ptr->control_word = MOVING_CONTROL_WORD; // 63
+
+            if (festo_motor_inputs_ptr->position_actual_value >= TARGET_1 - TARGET_MARGIN && festo_motor_inputs_ptr->position_actual_value <= TARGET_1 + TARGET_MARGIN)
             {
-                festo_motor_outputs_ptr->control_word = MOVING_CONTROL_WORD; // 63
-                 printf("DEVICE IS RUNNING..THE ACTUAL POSITION IS: %d \n",
-                festo_motor_inputs_ptr->position_actual_value);
-                delay_counter = 0;
+          //      printf("Step 6: TARGET_1 REACHED. CONFIGURING TARGET_2.\n");
                 step = 7;
             }
             else
             {
-                delay_counter++;
+                if (ethercat_loop_counter % 200 == 10)
+                    printf("Step 6: TARGET_1 NOT YET REACHED. CURRENT POSITION: %d\n", festo_motor_inputs_ptr->position_actual_value);
             }
             break;
 
         case 7:
-            if (festo_motor_inputs_ptr->position_actual_value == festo_motor_outputs_ptr->target_position)
+
+         // Timeout check 
+                current_time_ms = get_current_time_ms();
+                if (current_time_ms - start_time_ms >= 60000) // 30 sec timeout
+                {
+                    time_limit_reached = true;
+                    printf("Time limit of 30 seconds reached in Step 9.\n");
+                }
+
+          if (time_limit_reached) break; 
+
+         //   printf("Step 8: CONFIGURING TARGET_2.\n");
+            festo_motor_outputs_ptr->control_word = ENABLE_OPERATION_CONTRIL_WORD; // 15
+            festo_motor_outputs_ptr->modes_of_operation = ENABLE_OPERATION_MODE;   // 1
+            festo_motor_outputs_ptr->target_position = TARGET_2;
+            festo_motor_outputs_ptr->profile_velocity = PROFILE_VELOCITY;
+            festo_motor_outputs_ptr->target_velocity = TARGET_VELOCITY;
+          
+           
+            step = 8;
+            break;
+
+        case 8:
+
+         // Timeout check 
+                current_time_ms = get_current_time_ms();
+                if (current_time_ms - start_time_ms >= 60000) // 30 sec timeout
+                {
+                    time_limit_reached = true;
+                    printf("Time limit of 30 seconds reached in Step 5.\n");
+                }
+
+          if (time_limit_reached) break; 
+
+            //  printf("Step 9: MOVING TO TARGET_2. CURRENT POSITION: %d\n", festo_motor_inputs_ptr->position_actual_value);
+            festo_motor_outputs_ptr->control_word = MOVING_CONTROL_WORD; // 63
+
+            if (festo_motor_inputs_ptr->position_actual_value >= TARGET_2 - TARGET_MARGIN && festo_motor_inputs_ptr->position_actual_value <= TARGET_2 + TARGET_MARGIN)
             {
-                printf("ALL STEPS ARE COMPLETED.\n");
-                step = 8;
+            //    printf("Step 9: TARGET_2 REACHED. RESTARTING LOOP.\n");
+                loop_counter++;
+                step = 5;
             }
             else
             {
-              if(ethercat_loop_counter %200 == 10)  printf("TARGET POSITION NOT YET REACHED. RECHECKING ...\n");
-                step = 6; 
+                if (ethercat_loop_counter % 200 == 10)
+                    printf("Step 9: TARGET_2 NOT YET REACHED. CURRENT POSITION: %d\n", festo_motor_inputs_ptr->position_actual_value);
             }
             break;
 
-             case 8:
-        
-        printf("PROCESS COMPLETED. RESTARTING ....\n");
-       step = 0;
-        delay_counter = 0;
-        break;
 
-        default:
+         default:
             printf("INVALID STATE VALUE.\n");
             break;
         }
 
-        osal_usleep(10000);
+       
     }
 
-    /* Stop ethercat and close socket */
+    // osal_usleep(5000);
+    //  }
+    printf("EtherCAT communication closed after 30 seconds.\n");
+
     ec_close();
 }
 
@@ -447,7 +507,6 @@ OSAL_THREAD_FUNC ecatcheck(void *ptr)
 {
     int slave;
     (void)ptr;
-    boolean inOP;
     volatile int wkc;
     int expectedWKC;
     uint8 currentgroup = 0;
@@ -1192,75 +1251,4 @@ void slaveinfo(char *ifname)
     {
         printf("No socket connection on %s\nExcecute as root\n", ifname);
     }
-}
-
-void save_sdo_pdo_to_file(const char *input_file)
-{
-    FILE *file = fopen(input_file, "r");
-    if (file == NULL)
-    {
-        perror("Failed to open input file");
-        return;
-    }
-
-    FILE *sdo_file = fopen("sdo.txt", "w");
-    FILE *pdo_file = fopen("pdo.txt", "w");
-
-    if (sdo_file == NULL || pdo_file == NULL)
-    {
-        perror("Failed to open output files");
-        fclose(file);
-        if (sdo_file)
-            fclose(sdo_file);
-        if (pdo_file)
-            fclose(pdo_file);
-        return;
-    }
-
-    char line[1024];
-    boolean in_sdo_section = FALSE;
-    boolean in_pdo_section = FALSE;
-
-    // fget read a one line and store in line
-    while (fgets(line, sizeof(line), file))
-    {
-        // Check for SDO section start
-        // strstr : search fo the first accourance of substring
-        if (strstr(line, "CoE Object Description found"))
-        {
-            in_sdo_section = TRUE;
-            in_pdo_section = FALSE;
-            continue;
-        }
-
-        // Check for PDO section start
-        if (strstr(line, "PDO mapping according to CoE"))
-        {
-            in_pdo_section = TRUE;
-            in_sdo_section = FALSE;
-            continue;
-        }
-
-        // End of SDO section if PDO starts
-        if (in_sdo_section && strstr(line, "PDO mapping according to CoE"))
-        {
-            in_sdo_section = FALSE;
-            in_pdo_section = TRUE;
-            continue;
-        }
-
-        if (in_sdo_section)
-        {
-            fputs(line, sdo_file);
-        }
-
-        if (in_pdo_section)
-        {
-            fputs(line, pdo_file);
-        }
-    }
-
-    fclose(file);
-    fclose(sdo_file);
-    fclose(pdo_file);
 }
