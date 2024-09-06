@@ -53,5 +53,5 @@ void parse_key_value_festo_motor(const char *key, const char *value);
 void redirect_terminal_to_text_file(const char *output_file_name, void (*func)());
 void print_slaveinfo();
 void save_sdo_pdo_to_file(const char *output);  
-int get_pdo_input_value_festo_motor(const char *index_sub);
+float get_pdo_input_value_festo_motor(const char *index_sub);
 

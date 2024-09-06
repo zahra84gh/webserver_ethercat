@@ -8,9 +8,9 @@ OSAL_THREAD_HANDLE thread1;
 festo_motor_outputs *festo_motor_outputs_ptr = NULL;
 festo_motor_inputs *festo_motor_inputs_ptr = NULL;
 
-int get_pdo_input_value_festo_motor(const char *index_sub)
+float get_pdo_input_value_festo_motor(const char *index_sub)
 {
-    int value = 0;
+    float value = 0;
 
     if (strcmp(index_sub, "0x6041:0x00") == 0)
 
@@ -691,15 +691,9 @@ int main(void)
             fprintf(stderr, "Error: Failed to map Festo motor inputs.\n");
 
         const char *output_file_name = "output.txt";
-
-printf("Redirect terminal is started. \n");
         redirect_terminal_to_text_file(output_file_name, print_slaveinfo);
 
-       
-printf("Save pdo and sdo is started. \n");
-       // save_sdo_pdo_to_file(output_file_name);
-
-        
+        save_sdo_pdo_to_file(output_file_name);
 
         // io_116e_outputs_ptr = (io_116e_outputs *)ec_slave[1].outputs;
 
