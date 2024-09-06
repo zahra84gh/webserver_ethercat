@@ -21,32 +21,32 @@
 0x10f3      "Diagnosis History"                           [RECORD  maxsub(0x19 / 25)]
     0x00      "SubIndex 000"                                [UNSIGNED8        R_R_R_]      0x19 25
     0x01      "Maximum Messages"                            [UNSIGNED8        R_R_R_]      0x14 20
-    0x02      "Newest Message"                              [UNSIGNED8        R_R_R_]      0x06 6
+    0x02      "Newest Message"                              [UNSIGNED8        R_R_R_]      0x18 24
     0x03      "Newest Acknowledged Message"                 [UNSIGNED8        RWRWRW]      0x00 0
-    0x04      "New Messages Available"                      [BOOLEAN          R_R_R_]      FALSE
+    0x04      "New Messages Available"                      [BOOLEAN          R_R_R_]      TRUE
     0x05      "Flags"                                       [UNSIGNED16       RWRWRW]      0x0001 1
     0x06      "Diagnosis Array"                             [OCTET_STR(160)   R_R_R_]      0xffffff88 0xffffff81 0x00 0xffffffe8 0x02 0x01 0xffffff88 0xffffff81 0xfffffff0 0xfffffffa 0x6d 0x38 0x24 0x09 0x00 0x00 0x06 0x00 0xffffff8f 0x00 
-    0x07      "Diagnosis Array"                             [OCTET_STR(160)   R_R_R_]      0xffffff87 0xffffff80 0x00 0xffffffe8 0x00 0x01 0xffffff87 0xffffff80 0xffffffa4 0x4a 0xffffffc3 0xfffffff3 0x6b 0x07 0x00 0x00 0x06 0x00 0x7c 0x00 
-    0x08      "Diagnosis Array"                             [OCTET_STR(160)   R_R_R_]      0xffffff87 0xffffff80 0x00 0xffffffe8 0x00 0x01 0xffffff87 0xffffff80 0xfffffffc 0x28 0xffffffd8 0x0b 0x6d 0x07 0x00 0x00 0x06 0x00 0xffffff87 0x00 
-    0x09      "Diagnosis Array"                             [OCTET_STR(160)   R_R_R_]      0xffffff87 0xffffff80 0x00 0xffffffe8 0x00 0x01 0xffffff87 0xffffff80 0xffffff96 0x52 0xfffffff5 0x2a 0x6d 0x07 0x00 0x00 0x06 0x00 0x79 0x00 
-    0x0a      "Diagnosis Array"                             [OCTET_STR(160)   R_R_R_]      0xffffff88 0xffffff81 0x00 0xffffffe8 0x02 0x01 0xffffff88 0xffffff81 0xffffff9e 0x74 0x00 0xffffffef 0x6e 0x07 0x00 0x00 0x06 0x00 0xffffff8f 0x00 
-    0x0b      "Diagnosis Array"                             [OCTET_STR(160)   R_R_R_]      0xffffffe8 0xfffffffd 0x00 0xffffffe8 0x00 0x01 0xffffffe8 0xfffffffd 0xffffffa6 0xfffffffd 0x2f 0xffffffe9 0x77 0x07 0x00 0x00 0x06 0x00 0xffffff8f 0x00 
-    0x0c      "Diagnosis Array"                             [OCTET_STR(160)   R_R_R_]      0xffffff87 0xffffff80 0x00 0xffffffe8 0x00 0x01 0xffffff87 0xffffff80 0xffffff8e 0xffffffb9 0xffffff86 0xffffffff 0xffffffc0 0x07 0x00 0x00 0x06 0x00 0x7d 0x00 
-    0x0d      "Diagnosis Array"                             [OCTET_STR(160)   R_R_R_]      0xffffff87 0xffffff80 0x00 0xffffffe8 0x00 0x01 0xffffff87 0xffffff80 0xffffff8e 0xffffffb9 0xffffff86 0xffffffff 0xffffffc0 0x07 0x00 0x00 0x06 0x00 0x7c 0x00 
-    0x0e      "Diagnosis Array"                             [OCTET_STR(160)   R_R_R_]      0xffffff88 0xffffff81 0x00 0xffffffe8 0x02 0x01 0xffffff88 0xffffff81 0xffffffc0 0xffffff9e 0xffffffdb 0x0b 0xffffffc1 0x07 0x00 0x00 0x06 0x00 0xffffff8f 0x00 
-    0x0f      "Diagnosis Array"                             [OCTET_STR(160)   R_R_R_]      0xffffffe8 0xfffffffd 0x00 0xffffffe8 0x00 0x01 0xffffffe8 0xfffffffd 0xffffffae 0xffffffff 0xffffff94 0x69 0x09 0x09 0x00 0x00 0x06 0x00 0xffffff8f 0x00 
-    0x10      "Diagnosis Array"                             [OCTET_STR(160)   R_R_R_]      0xffffff87 0xffffff80 0x00 0xffffffe8 0x00 0x01 0xffffff87 0xffffff80 0x0c 0xffffffc5 0xffffff99 0x58 0x0b 0x09 0x00 0x00 0x06 0x00 0x7d 0x00 
-    0x11      "Diagnosis Array"                             [OCTET_STR(160)   R_R_R_]      0xffffff87 0xffffff80 0x00 0xffffffe8 0x00 0x01 0xffffff87 0xffffff80 0x0c 0xffffffc5 0xffffff99 0x58 0x0b 0x09 0x00 0x00 0x06 0x00 0x7c 0x00 
-    0x12      "Diagnosis Array"                             [OCTET_STR(160)   R_R_R_]      0xffffff87 0xffffff80 0x00 0xffffffe8 0x00 0x01 0xffffff87 0xffffff80 0x66 0xffffffa0 0x6e 0x66 0x0c 0x09 0x00 0x00 0x06 0x00 0xffffff87 0x00 
-    0x13      "Diagnosis Array"                             [OCTET_STR(160)   R_R_R_]      0xffffff87 0xffffff80 0x00 0xffffffe8 0x00 0x01 0xffffff87 0xffffff80 0x64 0x31 0xfffffff3 0xffffff84 0x0c 0x09 0x00 0x00 0x06 0x00 0x79 0x00 
-    0x14      "Diagnosis Array"                             [OCTET_STR(160)   R_R_R_]      0xffffff88 0xffffff81 0x00 0xffffffe8 0x02 0x01 0xffffff88 0xffffff81 0x3a 0x77 0xffffff88 0x3c 0x0d 0x09 0x00 0x00 0x06 0x00 0xffffff8f 0x00 
-    0x15      "Diagnosis Array"                             [OCTET_STR(160)   R_R_R_]      0xffffffe8 0xfffffffd 0x00 0xffffffe8 0x00 0x01 0xffffffe8 0xfffffffd 0x7c 0xffffff90 0xfffffff1 0x01 0x1a 0x09 0x00 0x00 0x06 0x00 0xffffff8f 0x00 
-    0x16      "Diagnosis Array"                             [OCTET_STR(160)   R_R_R_]      0xffffff87 0xffffff80 0x00 0xffffffe8 0x00 0x01 0xffffff87 0xffffff80 0xffffff8c 0x0f 0xffffff89 0x68 0x23 0x09 0x00 0x00 0x06 0x00 0x7d 0x00 
-    0x17      "Diagnosis Array"                             [OCTET_STR(160)   R_R_R_]      0xffffff87 0xffffff80 0x00 0xffffffe8 0x00 0x01 0xffffff87 0xffffff80 0xffffff8c 0x0f 0xffffff89 0x68 0x23 0x09 0x00 0x00 0x06 0x00 0x7c 0x00 
-    0x18      "Diagnosis Array"                             [OCTET_STR(160)   R_R_R_]      0xffffff87 0xffffff80 0x00 0xffffffe8 0x00 0x01 0xffffff87 0xffffff80 0xffffffc4 0xffffff84 0xffffff8c 0xffffff80 0x23 0x09 0x00 0x00 0x06 0x00 0xffffff87 0x00 
+    0x07      "Diagnosis Array"                             [OCTET_STR(160)   R_R_R_]      0xffffffe8 0xfffffffd 0x00 0xffffffe8 0x00 0x01 0xffffffe8 0xfffffffd 0xffffff9e 0x0d 0xfffffffa 0x66 0x49 0x09 0x00 0x00 0x06 0x00 0xffffff8f 0x00 
+    0x08      "Diagnosis Array"                             [OCTET_STR(160)   R_R_R_]      0xffffff87 0xffffff80 0x00 0xffffffe8 0x00 0x01 0xffffff87 0xffffff80 0x50 0xffffff88 0x76 0xffffffad 0x54 0x09 0x00 0x00 0x06 0x00 0x7d 0x00 
+    0x09      "Diagnosis Array"                             [OCTET_STR(160)   R_R_R_]      0xffffff87 0xffffff80 0x00 0xffffffe8 0x00 0x01 0xffffff87 0xffffff80 0x50 0xffffff88 0x76 0xffffffad 0x54 0x09 0x00 0x00 0x06 0x00 0x7c 0x00 
+    0x0a      "Diagnosis Array"                             [OCTET_STR(160)   R_R_R_]      0xffffff87 0xffffff80 0x00 0xffffffe8 0x00 0x01 0xffffff87 0xffffff80 0xffffffe8 0x3a 0xfffffff5 0xffffffc5 0x54 0x09 0x00 0x00 0x06 0x00 0xffffff87 0x00 
+    0x0b      "Diagnosis Array"                             [OCTET_STR(160)   R_R_R_]      0xffffff87 0xffffff80 0x00 0xffffffe8 0x00 0x01 0xffffff87 0xffffff80 0x60 0xffffffc0 0x79 0xffffffe4 0x54 0x09 0x00 0x00 0x06 0x00 0x79 0x00 
+    0x0c      "Diagnosis Array"                             [OCTET_STR(160)   R_R_R_]      0xffffff88 0xffffff81 0x00 0xffffffe8 0x02 0x01 0xffffff88 0xffffff81 0x6c 0x28 0xffffff97 0xffffff9b 0x57 0x09 0x00 0x00 0x06 0x00 0xffffff8f 0x00 
+    0x0d      "Diagnosis Array"                             [OCTET_STR(160)   R_R_R_]      0xffffffe8 0xfffffffd 0x00 0xffffffe8 0x00 0x01 0xffffffe8 0xfffffffd 0xfffffff4 0xffffffaa 0x09 0x14 0x67 0x09 0x00 0x00 0x06 0x00 0xffffff8f 0x00 
+    0x0e      "Diagnosis Array"                             [OCTET_STR(160)   R_R_R_]      0xffffff87 0xffffff80 0x00 0xffffffe8 0x01 0x01 0xffffff87 0xffffff80 0x5c 0x50 0xffffffea 0x6a 0x72 0x09 0x00 0x00 0x06 0x00 0x70 0x00 
+    0x0f      "Diagnosis Array"                             [OCTET_STR(160)   R_R_R_]      0xffffff87 0xffffff80 0x00 0xffffffe8 0x00 0x01 0xffffff87 0xffffff80 0x5c 0x50 0xffffffea 0x6a 0x72 0x09 0x00 0x00 0x06 0x00 0x7d 0x00 
+    0x10      "Diagnosis Array"                             [OCTET_STR(160)   R_R_R_]      0xffffff87 0xffffff80 0x00 0xffffffe8 0x00 0x01 0xffffff87 0xffffff80 0x5c 0x50 0xffffffea 0x6a 0x72 0x09 0x00 0x00 0x06 0x00 0x7c 0x00 
+    0x11      "Diagnosis Array"                             [OCTET_STR(160)   R_R_R_]      0xffffff87 0xffffff80 0x00 0xffffffe8 0x00 0x01 0xffffff87 0xffffff80 0x54 0x5d 0x68 0xffffff83 0x72 0x09 0x00 0x00 0x06 0x00 0xffffff87 0x00 
+    0x12      "Diagnosis Array"                             [OCTET_STR(160)   R_R_R_]      0xffffff88 0xffffff81 0x00 0xffffffe8 0x02 0x01 0xffffff88 0xffffff81 0x58 0x1b 0xffffffc6 0x59 0x7c 0x09 0x00 0x00 0x06 0x00 0xffffff8f 0x00 
+    0x13      "Diagnosis Array"                             [OCTET_STR(160)   R_R_R_]      0xffffffe8 0xfffffffd 0x00 0xffffffe8 0x00 0x01 0xffffffe8 0xfffffffd 0x74 0xffffffde 0x5b 0x73 0x7f 0x09 0x00 0x00 0x06 0x00 0xffffff8f 0x00 
+    0x14      "Diagnosis Array"                             [OCTET_STR(160)   R_R_R_]      0xffffff87 0xffffff80 0x00 0xffffffe8 0x00 0x01 0xffffff87 0xffffff80 0x62 0xffffffc1 0xffffffb2 0xffffff86 0xffffff8a 0x09 0x00 0x00 0x06 0x00 0x7d 0x00 
+    0x15      "Diagnosis Array"                             [OCTET_STR(160)   R_R_R_]      0xffffff87 0xffffff80 0x00 0xffffffe8 0x00 0x01 0xffffff87 0xffffff80 0x62 0xffffffc1 0xffffffb2 0xffffff86 0xffffff8a 0x09 0x00 0x00 0x06 0x00 0x7c 0x00 
+    0x16      "Diagnosis Array"                             [OCTET_STR(160)   R_R_R_]      0xffffff87 0xffffff80 0x00 0xffffffe8 0x00 0x01 0xffffff87 0xffffff80 0xffffffdc 0xfffffff3 0xffffffb2 0xffffff98 0xffffff8a 0x09 0x00 0x00 0x06 0x00 0xffffff87 0x00 
+    0x17      "Diagnosis Array"                             [OCTET_STR(160)   R_R_R_]      0xffffff87 0xffffff80 0x00 0xffffffe8 0x00 0x01 0xffffff87 0xffffff80 0xffffff84 0x75 0x2d 0xffffffbd 0xffffff8a 0x09 0x00 0x00 0x06 0x00 0x79 0x00 
+    0x18      "Diagnosis Array"                             [OCTET_STR(160)   R_R_R_]      0xffffff88 0xffffff81 0x00 0xffffffe8 0x02 0x01 0xffffff88 0xffffff81 0xffffffe8 0x2c 0x77 0xffffffc5 0xffffff8b 0x09 0x00 0x00 0x06 0x00 0xffffff8f 0x00 
     0x19      "Diagnosis Array"                             [OCTET_STR(160)   R_R_R_]      0xffffff87 0xffffff80 0x00 0xffffffe8 0x00 0x01 0xffffff87 0xffffff80 0xffffffda 0x34 0x20 0xffffff9f 0x23 0x09 0x00 0x00 0x06 0x00 0x79 0x00 
 0x10f8      "Timestamp Object"                            [VAR]
-    0x00      "Timestamp Object"                            [UNSIGNED64       R_R_R_]      0x00000948563c5a3a 10206289091130
+    0x00      "Timestamp Object"                            [UNSIGNED64       R_R_R_]      0x0000098c4ba09282 10498168885890
 0x1600      "receive PDO Mapping"                         [RECORD  maxsub(0x10 / 16)]
     0x00      "SubIndex 000"                                [UNSIGNED8        RWR_R_]      0x09 9
     0x01      "receive PDO Mapped Object 001"               [UNSIGNED32       RWR_R_]      0x60400010 1614807056
@@ -285,7 +285,7 @@
     0x24      "P0.101530.0.0_brakeresistorNocCode"          [VISIBLE_STR(296) RWRWRW]      
 0x2105      "AdcCmmtAsMp_v2"                              [RECORD  maxsub(0x0b / 11)]
     0x00      "SubIndex 000"                                [UNSIGNED8        R_R_R_]      0x0b 11
-    0x0b      "P0.1100.0.0_Ain0Scaled"                      [REAL32           R_R_R_]      0.007084
+    0x0b      "P0.1100.0.0_Ain0Scaled"                      [REAL32           R_R_R_]      0.006409
 0x2106      "MotorDeviceInformationEEPROM"                [RECORD  maxsub(0x3e / 62)]
     0x00      "SubIndex 000"                                [UNSIGNED8        R_R_R_]      0x3e 62
     0x01      "P0.710.0.0_productKeyMotor"                  [VISIBLE_STR(120) R_R_R_]      GHQ7B0935XY
@@ -412,8 +412,8 @@
     0x05      "P0.3402.0.0_traceTypeActive"                 [UNSIGNED32       R_R_R_]      0x00000001 1
 0x2110      "TimeManager"                                 [RECORD  maxsub(0x02 / 2)]
     0x00      "SubIndex 000"                                [UNSIGNED8        R_R_R_]      0x02 2
-    0x01      "P0.7534.0.0_actualInternalTime"              [INTEGER64        R_R_R_]      0x000000edb5ffa264 1020960678500
-    0x02      "P0.7535.0.0_syncronizedMicrosoftTime"        [INTEGER64        R_R_R_]      0x08dcce6239c50a21 638612168451099169
+    0x01      "P0.7534.0.0_actualInternalTime"              [INTEGER64        R_R_R_]      0x000000f481dbafe4 1050150678500
+    0x02      "P0.7535.0.0_syncronizedMicrosoftTime"        [INTEGER64        R_R_R_]      0x08dcce62e7c171e1 638612171370099169
 0x2112      "SincosEncoder"                               [RECORD  maxsub(0x2a / 42)]
     0x00      "SubIndex 000"                                [UNSIGNED8        R_R_R_]      0x2a 42
     0x01      "P0.440.0.0_Position"                         [INTEGER64        R_R_R_]      0x0000000000000000 0
@@ -432,7 +432,7 @@
     0x2a      "P0.4420.1.0_EncoderSupplyVoltageMonitori"      [REAL32           RWRWRW]      0.250000
 0x2114      "DCLinkManagement"                            [RECORD  maxsub(0x1f / 31)]
     0x00      "SubIndex 000"                                [UNSIGNED8        R_R_R_]      0x1f 31
-    0x01      "P0.480.0.0_dcVoltage"                        [REAL32           R_R_R_]      326.079437
+    0x01      "P0.480.0.0_dcVoltage"                        [REAL32           R_R_R_]      332.329956
     0x06      "P0.487.0.0_dcLinkUndervoltageLevel"          [UNSIGNED16       RWRWRW]      0x0100 256
     0x07      "P0.488.0.0_dcLinkUndervoltageOptions"        [UNSIGNED8        RWRWRW]      0x01 1
     0x08      "P0.489.0.0_dcLinkOvervoltageWarnLevel"       [UNSIGNED16       RWRWRW]      0x0010 16
@@ -447,7 +447,7 @@
     0x13      "P0.4881.0.0_fastDischargeFailedOptions"      [UNSIGNED8        RWRWRW]      0x01 1
     0x14      "P0.4882.0.0_fastDischargeFailedLevel"        [UNSIGNED16       RWRWRW]      0x1000 4096
     0x15      "P0.4890.0.0_dcLinkOvervoltgageWarnOption"      [UNSIGNED8        RWRWRW]      0x01 1
-    0x16      "P0.56783.0.0_dcVoltageFiltered"              [REAL32           R_R_R_]      325.718445
+    0x16      "P0.56783.0.0_dcVoltageFiltered"              [REAL32           R_R_R_]      332.413239
     0x17      "P0.56798.0.0_dcLinkState"                    [INTEGER32        R_R_R_]      0x00000002 2
     0x18      "P0.56799.0.0_dcVoltageWarnActive"            [REAL32           R_R_R_]      390.000000
     0x19      "P0.56800.0.0_dcVoltageLimitHighActive"       [REAL32           R_R_R_]      400.000000
@@ -457,12 +457,12 @@
     0x1f      "P0.560804.0.0_openRelayOptions"              [UNSIGNED8        RWRWRW]      0x01 1
 0x2115      "MainsMonitor"                                [RECORD  maxsub(0x1b / 27)]
     0x00      "SubIndex 000"                                [UNSIGNED8        R_R_R_]      0x1b 27
-    0x01      "P0.490.0.0_vMainsPeak"                       [REAL32           R_R_R_]      328.084442
-    0x02      "P0.491.0.0_vMainsRMS"                        [REAL32           R_R_R_]      228.047348
-    0x03      "P0.492.0.0_vMainsRectified"                  [REAL32           R_R_R_]      118.273979
+    0x01      "P0.490.0.0_vMainsPeak"                       [REAL32           R_R_R_]      327.588715
+    0x02      "P0.491.0.0_vMainsRMS"                        [REAL32           R_R_R_]      231.640198
+    0x03      "P0.492.0.0_vMainsRectified"                  [REAL32           R_R_R_]      296.358795
     0x04      "P0.493.0.0_vMainsLimitLowUser"               [REAL32           RWRWRW]      80.000000
     0x05      "P0.494.0.0_vMainsLimitHighUser"              [REAL32           RWRWRW]      265.000000
-    0x06      "P0.495.0.0_fMains"                           [REAL32           R_R_R_]      50.018944
+    0x06      "P0.495.0.0_fMains"                           [REAL32           R_R_R_]      49.924793
     0x07      "P0.501.0.0_mainsFaultLevel"                  [UNSIGNED16       RWRWRW]      0x0100 256
     0x08      "P0.502.0.0_mainsFaultOptions"                [UNSIGNED8        RWRWRW]      0x01 1
     0x09      "P0.503.0.0_mainsDropLevel"                   [UNSIGNED16       RWRWRW]      0x0010 16
@@ -480,7 +480,7 @@
     0x1b      "P0.281520.0.0_debugScalingFactor"            [REAL32           RWRWRW]      0.000000
 0x2116      "VoltageMonitorMp"                            [RECORD  maxsub(0x01 / 1)]
     0x00      "SubIndex 000"                                [UNSIGNED8        R_R_R_]      0x01 1
-    0x01      "P0.520.0.0_U24V0"                            [REAL32           R_R_R_]      24.167139
+    0x01      "P0.520.0.0_U24V0"                            [REAL32           R_R_R_]      24.178982
 0x2117      "DataTrace"                                   [RECORD  maxsub(0x0a / 10)]
     0x00      "SubIndex 000"                                [UNSIGNED8        R_R_R_]      0x0a 10
     0x01      "P0.556.0.0_state"                            [UNSIGNED32       R_R_R_]      0x00000000 0
@@ -523,10 +523,10 @@
     0x0c      "P1.585.0.0_controlDifference"                [INTEGER32        R_R_R_]      0x00000000 0
     0x0d      "P1.586.0.0_pulsesPerRevolution"              [UNSIGNED16       RWRWRW]      0x1000 4096
     0x0e      "P1.5810.0.0_pGain"                           [REAL32           RWRWRW]      200.000000
-    0x0f      "P1.586844.0.0_positionInc"                   [UNSIGNED32       R_R_R_]      0xfffe0a68 4294838888
+    0x0f      "P1.586844.0.0_positionInc"                   [UNSIGNED32       R_R_R_]      0xfffe0aa7 4294838951
     0x10      "P1.586846.0.0_zeroOffset"                    [INTEGER64        RWRWRW]      0x0000000000000000 0
     0x11      "P1.586847.0.0_inverseDirection"              [UNSIGNED8        RWRWRW]      0x00 0
-    0x12      "P1.586848.0.0_frequencySetpoint"             [REAL32           R_R_R_]      0.000000
+    0x12      "P1.586848.0.0_frequencySetpoint"             [REAL32           R_R_R_]      19.333118
     0x13      "P1.586849.0.0_encEmuFfRateLimit"             [REAL32           RWRWRW]      50000.000000
 0x211b      "DataTrigger"                                 [RECORD  maxsub(0x0d / 13)]
     0x00      "SubIndex 000"                                [UNSIGNED8        R_R_R_]      0x0d 13
@@ -632,22 +632,22 @@
 0x2127      "ApplicationInformation"                      [RECORD  maxsub(0x04 / 4)]
     0x00      "SubIndex 000"                                [UNSIGNED8        R_R_R_]      0x04 4
     0x01      "P0.900.0.0_projectName"                      [VISIBLE_STR(328) RWRWRW]      
-    0x02      "P0.901.0.0_projectDescription"               [VISIBLE_STR(1288) RWRWRW]      Time:1725612844.702 PACKET slave:1 index:2127.02 error:3
+    0x02      "P0.901.0.0_projectDescription"               [VISIBLE_STR(1288) RWRWRW]      Time:1725613136.656 PACKET slave:1 index:2127.02 error:3
 
-    0x03      "P0.902.0.0_deviceName"                       [VISIBLE_STR(1024) RWRWRW]      Time:1725612844.706 PACKET slave:1 index:2127.03 error:3
+    0x03      "P0.902.0.0_deviceName"                       [VISIBLE_STR(1024) RWRWRW]      Time:1725613136.660 PACKET slave:1 index:2127.03 error:3
 
-    0x04      "P0.903.0.0_deviceDescription"                [VISIBLE_STR(1288) RWRWRW]      Time:1725612844.709 PACKET slave:1 index:2127.04 error:3
+    0x04      "P0.903.0.0_deviceDescription"                [VISIBLE_STR(1288) RWRWRW]      Time:1725613136.664 PACKET slave:1 index:2127.04 error:3
 
  - 
 0x2128      "TemperatureMonitor"                          [RECORD  maxsub(0x24 / 36)]
     0x00      "SubIndex 000"                                [UNSIGNED8        R_R_R_]      0x24 36
-    0x01      "P0.920.0.0_psActTemp"                        [REAL32           R_R_R_]      30.840910
+    0x01      "P0.920.0.0_psActTemp"                        [REAL32           R_R_R_]      31.258411
     0x02      "P0.921.0.0_psStatus"                         [INTEGER32        R_R_R_]      0x00000000 0
     0x03      "P0.922.0.0_psLowWarnLevel"                   [UNSIGNED16       RWRWRW]      0x0010 16
     0x04      "P0.923.0.0_psLowWarnOptions"                 [UNSIGNED8        RWRWRW]      0x01 1
     0x07      "P0.926.0.0_psUpWarnLevel"                    [UNSIGNED16       RWRWRW]      0x0010 16
     0x08      "P0.927.0.0_psUpWarnOptions"                  [UNSIGNED8        RWRWRW]      0x01 1
-    0x0b      "P0.930.0.0_airActTemp"                       [REAL32           R_R_R_]      47.845074
+    0x0b      "P0.930.0.0_airActTemp"                       [REAL32           R_R_R_]      47.983318
     0x0c      "P0.931.0.0_airStatus"                        [INTEGER32        R_R_R_]      0x00000000 0
     0x0d      "P0.932.0.0_airLowWarnLevel"                  [UNSIGNED16       RWRWRW]      0x0010 16
     0x0e      "P0.933.0.0_airLowWarnOptions"                [UNSIGNED8        RWRWRW]      0x01 1
@@ -734,9 +734,9 @@
     0x22      "P0.3220.1.0_ZeroAngleOffset"                 [INTEGER64        R_R_R_]      0x0000000000000000 0
     0x23      "P0.3221.0.0_ZeroOffsetEEPROM"                [INTEGER64        RWRWRW]      0x0000000000000000 0
     0x24      "P0.3221.1.0_ZeroOffsetEEPROM"                [INTEGER64        RWRWRW]      0x0000000000000000 0
-    0x25      "P0.3223.0.0_ZeroOffsetUserConfiguration"      [INTEGER64        RWRWRW]      0xffffffffdfb478c1 -541820735
+    0x25      "P0.3223.0.0_ZeroOffsetUserConfiguration"      [INTEGER64        RWRWRW]      0xffffffffdfb4353a -541838022
     0x26      "P0.3223.1.0_ZeroOffsetUserConfiguration"      [INTEGER64        RWRWRW]      0x0000000000000000 0
-    0x27      "P0.3224.0.0_ZeroOffset"                      [INTEGER64        R_R_R_]      0xffffffffdfb478c1 -541820735
+    0x27      "P0.3224.0.0_ZeroOffset"                      [INTEGER64        R_R_R_]      0xffffffffdfb4353a -541838022
     0x28      "P0.3224.1.0_ZeroOffset"                      [INTEGER64        R_R_R_]      0x0000000000000000 0
     0x29      "P0.3225.0.0_IsReferencedEEPROM"              [UNSIGNED8        R_R_R_]      0x00 0
     0x2a      "P0.3225.1.0_IsReferencedEEPROM"              [UNSIGNED8        R_R_R_]      0x00 0
@@ -750,7 +750,7 @@
     0x32      "P0.3229.1.0_IsZeroAngleOffsetDeterminedU"      [UNSIGNED8        R_R_R_]      0x00 0
     0x33      "P0.3230.0.0_IsZeroAngleOffsetDeterminedO"      [UNSIGNED8        R_R_R_]      0xff 255
     0x34      "P0.3230.1.0_IsZeroAngleOffsetDeterminedO"      [UNSIGNED8        R_R_R_]      0x00 0
-    0x39      "P0.3234.0.0_ElectricalFrequencyFiltered"      [REAL32           R_R_R_]      0.000522
+    0x39      "P0.3234.0.0_ElectricalFrequencyFiltered"      [REAL32           R_R_R_]      -0.004831
     0x3a      "P0.3234.1.0_ElectricalFrequencyFiltered"      [REAL32           R_R_R_]      0.000000
     0x3d      "P0.3236.0.0_compatibleDriveChangeIsPermi"      [UNSIGNED8        RWRWRW]      0x00 0
     0x3e      "P0.3236.1.0_compatibleDriveChangeIsPermi"      [UNSIGNED8        RWRWRW]      0x00 0
@@ -766,21 +766,21 @@
     0x5a      "P0.3250.1.0_autoDetect"                      [UNSIGNED8        RWRWRW]      0x00 0
     0x5b      "P0.3251.0.0_gearboxFactorsIndex"             [UNSIGNED8        RWRWRW]      0x00 0
     0x5c      "P0.3251.1.0_gearboxFactorsIndex"             [UNSIGNED8        RWRWRW]      0x01 1
-    0x5d      "P0.11600.0.0_EncoderPosition"                [INTEGER64        R_R_R_]      0x0000000003ca9900 63609088
+    0x5d      "P0.11600.0.0_EncoderPosition"                [INTEGER64        R_R_R_]      0x0000000003c9da40 63560256
     0x5e      "P0.11600.1.0_EncoderPosition"                [INTEGER64        R_R_R_]      0x0000000000000000 0
-    0x5f      "P0.11601.0.0_UserPosition"                   [INTEGER64        R_R_R_]      0xfffffffffffd0f24 -192732
+    0x5f      "P0.11601.0.0_UserPosition"                   [INTEGER64        R_R_R_]      0xfffffffffff674c9 -625463
     0x60      "P0.11601.1.0_UserPosition"                   [INTEGER64        R_R_R_]      0x0000000000000000 0
     0x61      "P0.11602.0.0_UserVelocity"                   [REAL32           R_R_R_]      0.000000
     0x62      "P0.11602.1.0_UserVelocity"                   [REAL32           R_R_R_]      0.000000
-    0x63      "P0.11603.0.0_UserVelocityFiltered"           [REAL32           R_R_R_]      0.000020
+    0x63      "P0.11603.0.0_UserVelocityFiltered"           [REAL32           R_R_R_]      -0.000006
     0x64      "P0.11603.1.0_UserVelocityFiltered"           [REAL32           R_R_R_]      0.000000
-    0x65      "P0.11604.0.0_ElectricalAngle"                [UNSIGNED32       R_R_R_]      0x7b6e4000 2070822912
+    0x65      "P0.11604.0.0_ElectricalAngle"                [UNSIGNED32       R_R_R_]      0x77bac000 2008727552
     0x66      "P0.11604.1.0_ElectricalAngle"                [UNSIGNED32       R_R_R_]      0x00000000 0
-    0x67      "P0.11605.0.0_ElectricalFrequency"            [REAL32           R_R_R_]      -0.152588
+    0x67      "P0.11605.0.0_ElectricalFrequency"            [REAL32           R_R_R_]      0.000000
     0x68      "P0.11605.1.0_ElectricalFrequency"            [REAL32           R_R_R_]      0.000000
     0x6d      "P0.11608.0.0_ZeroAngleOffsetEEPROM"          [INTEGER64        RWRWRW]      0xfffffffc8673a000 -14924144640
     0x6e      "P0.11608.1.0_ZeroAngleOffsetEEPROM"          [INTEGER64        RWRWRW]      0x0000000000000000 0
-    0x7b      "P0.11615.0.0_MechanicalPosition"             [INTEGER64        R_R_R_]      0x00000000000ddd9d 908701
+    0x7b      "P0.11615.0.0_MechanicalPosition"             [INTEGER64        R_R_R_]      0x00000000000ddae4 908004
     0x7c      "P0.11615.1.0_MechanicalPosition"             [INTEGER64        R_R_R_]      0x0000000000000000 0
     0x7d      "P0.11616.0.0_SelectedEncoder"                [UNSIGNED32       RWRWRW]      0x00000005 5
     0x7e      "P0.11616.1.0_SelectedEncoder"                [UNSIGNED32       RWRWRW]      0x00000007 7
@@ -790,9 +790,9 @@
     0x82      "P0.11618.1.0_TimeConstantVelocityFilter"      [REAL32           RWRWRW]      0.001000
     0x91      "P0.11626.0.0_useZeroAngleOffsetOldTypeLa"      [UNSIGNED8        RWRWRW]      0xff 255
     0x92      "P0.11626.1.0_useZeroAngleOffsetOldTypeLa"      [UNSIGNED8        RWRWRW]      0xff 255
-    0x93      "P0.71500.0.0_userAcceleration"               [REAL32           R_R_R_]      0.935344
+    0x93      "P0.71500.0.0_userAcceleration"               [REAL32           R_R_R_]      -0.000193
     0x94      "P0.71500.1.0_userAcceleration"               [REAL32           R_R_R_]      0.000000
-    0x95      "P0.71501.0.0_userAccelerationFiltered"       [REAL32           R_R_R_]      -0.012505
+    0x95      "P0.71501.0.0_userAccelerationFiltered"       [REAL32           R_R_R_]      -0.000895
     0x96      "P0.71501.1.0_userAccelerationFiltered"       [REAL32           R_R_R_]      0.000000
     0x97      "P0.71502.0.0_timeConstantAccelerationFil"      [REAL32           RWRWRW]      0.010000
     0x98      "P0.71502.1.0_timeConstantAccelerationFil"      [REAL32           RWRWRW]      0.010000
@@ -834,11 +834,11 @@
     0x00      "SubIndex 000"                                [UNSIGNED8        R_R_R_]      0x40 64
     0x01      "P0.1250.0.0_SingleturnResolution"            [UNSIGNED32       R_R_R_]      0x00040000 262144
     0x02      "P0.1251.0.0_MultiturnResolution"             [UNSIGNED32       R_R_R_]      0x00000000 0
-    0x03      "P0.1252.0.0_NativeSingleturnPosition"        [UNSIGNED32       R_R_R_]      0x00032a62 207458
+    0x03      "P0.1252.0.0_NativeSingleturnPosition"        [UNSIGNED32       R_R_R_]      0x0003276a 206698
     0x04      "P0.1253.0.0_NativeMultiturnPosition"         [UNSIGNED32       R_R_R_]      0x00000000 0
-    0x07      "P0.1258.0.0_EncoderPosition"                 [INTEGER32        R_R_R_]      0x03ca9900 63609088
+    0x07      "P0.1258.0.0_EncoderPosition"                 [INTEGER32        R_R_R_]      0x03c9da40 63560256
     0x08      "P0.1259.0.0_CablePropagationTime"            [UNSIGNED32       R_R_R_]      0x00000000 0
-    0x09      "P0.12510.0.0_InternalTemperature"            [UNSIGNED32       R_R_R_]      0x00000c6f 3183
+    0x09      "P0.12510.0.0_InternalTemperature"            [UNSIGNED32       R_R_R_]      0x00000c6d 3181
     0x0a      "P0.12511.0.0_ExternalTemperature"            [UNSIGNED32       R_R_R_]      0x00000000 0
     0x0d      "P0.12514.0.0_EncoderSupplyVoltage"           [REAL32           RWRWRW]      10.000000
     0x11      "P0.125913.0.0_ErrorBits"                     [UNSIGNED16       R_R_R_]      0x0000 0
@@ -866,8 +866,8 @@
     0x40      "P0.101837.1.0_EnDatInstructionSet"           [UNSIGNED16       R_R_R_]      0x0000 0
 0x2133      "OperatingHoursCounter"                       [RECORD  maxsub(0x03 / 3)]
     0x00      "SubIndex 000"                                [UNSIGNED8        R_R_R_]      0x03 3
-    0x02      "P0.1423.0.0_operatingHoursCounter"           [REAL32           R_R_R_]      873954.437500
-    0x03      "P0.14231.0.0_operatingHoursCounterUint"      [UNSIGNED32       R_R_R_]      0x000d55e2 873954
+    0x02      "P0.1423.0.0_operatingHoursCounter"           [REAL32           R_R_R_]      874246.437500
+    0x03      "P0.14231.0.0_operatingHoursCounterUint"      [UNSIGNED32       R_R_R_]      0x000d5706 874246
 0x2136      "EtherCatIdentification"                      [RECORD  maxsub(0x0a / 10)]
     0x00      "SubIndex 000"                                [UNSIGNED8        R_R_R_]      0x0a 10
     0x01      "P0.7600.0.0_explicitDeviceId"                [UNSIGNED16       RWRWRW]      0x0000 0
@@ -930,8 +930,8 @@
     0x54      "P0.101503.2.0_extendedLineSettingIncEnco"      [UNSIGNED32       RWRWRW]      0x00010000 65536
 0x2139      "DiagnosisLogStorage"                         [RECORD  maxsub(0x09 / 9)]
     0x00      "SubIndex 000"                                [UNSIGNED8        R_R_R_]      0x09 9
-    0x02      "P0.100501.0.0_actCounter"                    [UNSIGNED32       R_R_R_]      0x000041d8 16856
-    0x03      "P0.100502.0.0_actOffset"                     [UNSIGNED32       R_R_R_]      0x0000d500 54528
+    0x02      "P0.100501.0.0_actCounter"                    [UNSIGNED32       R_R_R_]      0x000041df 16863
+    0x03      "P0.100502.0.0_actOffset"                     [UNSIGNED32       R_R_R_]      0x0000d6c0 54976
     0x04      "P0.100503.0.0_actFileSize"                   [UNSIGNED32       R_R_R_]      0x0001f3e8 127976
     0x06      "P0.100505.0.0_invalidFileWarnOptions"        [UNSIGNED8        RWRWRW]      0x01 1
     0x08      "P0.100509.0.0_lostMessagesWarnOptions"       [UNSIGNED8        R_R_R_]      0x00 0
@@ -946,9 +946,9 @@
     0x00      "SubIndex 000"                                [UNSIGNED8        R_R_R_]      0x16 22
     0x01      "P0.101400.0.0_voltageSetpoint"               [REAL32           R_R_R_]      10.000000
     0x02      "P0.101400.1.0_voltageSetpoint"               [REAL32           R_R_R_]      0.000000
-    0x03      "P0.101401.0.0_voltageAtController"           [REAL32           R_R_R_]      9.992305
+    0x03      "P0.101401.0.0_voltageAtController"           [REAL32           R_R_R_]      9.991297
     0x04      "P0.101401.1.0_voltageAtController"           [REAL32           R_R_R_]      0.000000
-    0x05      "P0.101402.0.0_voltageAtEncoder"              [REAL32           R_R_R_]      9.991297
+    0x05      "P0.101402.0.0_voltageAtEncoder"              [REAL32           R_R_R_]      9.992305
     0x06      "P0.101402.1.0_voltageAtEncoder"              [REAL32           R_R_R_]      0.000000
     0x07      "P0.101403.0.0_measureAtEncoder"              [UNSIGNED8        R_R_R_]      0x00 0
     0x08      "P0.101403.1.0_measureAtEncoder"              [UNSIGNED8        R_R_R_]      0x00 0
@@ -964,7 +964,7 @@
     0x16      "P0.101410.1.0_controllerMonitoringRefere"      [REAL32           R_R_R_]      0.000000
 0x213d      "GpioController"                              [RECORD  maxsub(0x02 / 2)]
     0x00      "SubIndex 000"                                [UNSIGNED8        R_R_R_]      0x02 2
-    0x01      "P0.10151.0.0_status_x1a"                     [UNSIGNED32       R_R_R_]      0x00c00f04 12586756
+    0x01      "P0.10151.0.0_status_x1a"                     [UNSIGNED32       R_R_R_]      0x00000f04 3844
     0x02      "P0.10152.0.0_status_x1c"                     [UNSIGNED32       R_R_R_]      0x00000000 0
 0x2141      "Exception Handling MP"                       [RECORD  maxsub(0x24 / 36)]
     0x00      "SubIndex 000"                                [UNSIGNED8        R_R_R_]      0x24 36
@@ -1013,14 +1013,14 @@
     0x0f      "P0.101992.0.0_SystemStart_DiagnosisLevel"      [UNSIGNED16       RWRWRW]      0x0004 4
 0x2145      "DiagnosisChannel"                            [RECORD  maxsub(0x0c / 12)]
     0x00      "SubIndex 000"                                [UNSIGNED8        R_R_R_]      0x0c 12
-    0x01      "P0.301.0.0_status"                           [UNSIGNED16       R_R_R_]      0x0000 0
-    0x02      "P0.301.1.0_status"                           [UNSIGNED16       R_R_R_]      0x0000 0
-    0x03      "P0.302.0.0_reaction"                         [UNSIGNED16       R_R_R_]      0x0000 0
-    0x04      "P0.302.1.0_reaction"                         [UNSIGNED16       R_R_R_]      0x0000 0
-    0x09      "P0.103401.0.0_acknowledgeCounter"            [UNSIGNED32       R_R_R_]      0x00000035 53
-    0x0a      "P0.103401.1.0_acknowledgeCounter"            [UNSIGNED32       R_R_R_]      0x00000035 53
-    0x0b      "P0.315.0.0_currentMostSevereError"           [UNSIGNED32       R_R_R_]      0x00000000 0
-    0x0c      "P0.315.1.0_currentMostSevereError"           [UNSIGNED32       R_R_R_]      0x00000000 0
+    0x01      "P0.301.0.0_status"                           [UNSIGNED16       R_R_R_]      0x0100 256
+    0x02      "P0.301.1.0_status"                           [UNSIGNED16       R_R_R_]      0x0104 260
+    0x03      "P0.302.0.0_reaction"                         [UNSIGNED16       R_R_R_]      0x0100 256
+    0x04      "P0.302.1.0_reaction"                         [UNSIGNED16       R_R_R_]      0x0104 260
+    0x09      "P0.103401.0.0_acknowledgeCounter"            [UNSIGNED32       R_R_R_]      0x00000037 55
+    0x0a      "P0.103401.1.0_acknowledgeCounter"            [UNSIGNED32       R_R_R_]      0x00000037 55
+    0x0b      "P0.315.0.0_currentMostSevereError"           [UNSIGNED32       R_R_R_]      0x0804008f 134480015
+    0x0c      "P0.315.1.0_currentMostSevereError"           [UNSIGNED32       R_R_R_]      0x0804008f 134480015
 0x2146      "NikonEncoder"                                [RECORD  maxsub(0x1e / 30)]
     0x00      "SubIndex 000"                                [UNSIGNED8        R_R_R_]      0x1e 30
     0x01      "P0.103800.0.0_nativeSingleturnPosition"      [UNSIGNED32       R_R_R_]      0x00000000 0
@@ -1093,8 +1093,8 @@
     0x09      "P1.29.0.0_defaultBrakeSelection"             [UNSIGNED32       RWRWRW]      0x00000002 2
 0x2151      "IntelligentPowerStageComponent"              [RECORD  maxsub(0x10 / 16)]
     0x00      "SubIndex 000"                                [UNSIGNED8        R_R_R_]      0x10 16
-    0x0a      "P1.39.0.0_iU"                                [REAL32           R_R_R_]      0.001078
-    0x0b      "P1.310.0.0_iV"                               [REAL32           R_R_R_]      0.003949
+    0x0a      "P1.39.0.0_iU"                                [REAL32           R_R_R_]      0.001797
+    0x0b      "P1.310.0.0_iV"                               [REAL32           R_R_R_]      0.002513
     0x0c      "P1.52679.0.0_limitationFilterTime"           [REAL32           RWRWRW]      0.010000
     0x0d      "P1.52680.0.0_vDLimitationActive"             [UNSIGNED8        R_R_R_]      0x00 0
     0x0e      "P1.52681.0.0_vQLimitationActive"             [UNSIGNED8        R_R_R_]      0x00 0
@@ -1119,18 +1119,18 @@
     0x06      "P1.85.0.0_uqRef"                             [REAL32           R_R_R_]      0.000000
     0x07      "P1.86.0.0_iqRef"                             [REAL32           R_R_R_]      0.000000
     0x08      "P1.87.0.0_idRef"                             [REAL32           R_R_R_]      0.000000
-    0x09      "P1.88.0.0_uMax"                              [REAL32           R_R_R_]      133.103271
-    0x0a      "P1.89.0.0_ia"                                [REAL32           R_R_R_]      0.001271
-    0x0b      "P1.810.0.0_ib"                               [REAL32           R_R_R_]      0.000732
-    0x0e      "P1.813.0.0_id"                               [REAL32           R_R_R_]      0.000000
-    0x0f      "P1.814.0.0_iq"                               [REAL32           R_R_R_]      0.004397
+    0x09      "P1.88.0.0_uMax"                              [REAL32           R_R_R_]      132.769989
+    0x0a      "P1.89.0.0_ia"                                [REAL32           R_R_R_]      0.000763
+    0x0b      "P1.810.0.0_ib"                               [REAL32           R_R_R_]      0.002345
+    0x0e      "P1.813.0.0_id"                               [REAL32           R_R_R_]      0.001017
+    0x0f      "P1.814.0.0_iq"                               [REAL32           R_R_R_]      0.003811
     0x14      "P1.819.0.0_syncParamParamIdToIq"             [UNSIGNED8        RWRWRW]      0xff 255
-    0x15      "P1.824.0.0_idDiff"                           [REAL32           R_R_R_]      0.014176
-    0x16      "P1.825.0.0_iqDiff"                           [REAL32           R_R_R_]      0.018697
+    0x15      "P1.824.0.0_idDiff"                           [REAL32           R_R_R_]      0.001652
+    0x16      "P1.825.0.0_iqDiff"                           [REAL32           R_R_R_]      0.004335
 0x2154      "FeedForwardControl"                          [RECORD  maxsub(0x10 / 16)]
     0x00      "SubIndex 000"                                [UNSIGNED8        R_R_R_]      0x10 16
-    0x01      "P1.90.0.0_outputPositionRef"                 [INTEGER64        R_R_R_]      0xfffffffffffd0f24 -192732
-    0x02      "P1.91.0.0_outputVelocityRef"                 [REAL32           R_R_R_]      0.000042
+    0x01      "P1.90.0.0_outputPositionRef"                 [INTEGER64        R_R_R_]      0xfffffffffff674c9 -625463
+    0x02      "P1.91.0.0_outputVelocityRef"                 [REAL32           R_R_R_]      -0.000010
     0x03      "P1.92.0.0_outputAccRef"                      [REAL32           R_R_R_]      0.000000
     0x04      "P1.93.0.0_outputJerkRef"                     [REAL32           R_R_R_]      0.000000
     0x05      "P1.94.0.0_outputTorqueRef"                   [REAL32           R_R_R_]      0.000000
@@ -1149,12 +1149,12 @@
     0x00      "SubIndex 000"                                [UNSIGNED8        R_R_R_]      0x11 17
     0x03      "P1.122.0.0_x0Source"                         [UNSIGNED32       RWRWRW]      0x00000000 0
     0x04      "P1.123.0.0_x1Source"                         [UNSIGNED32       RWRWRW]      0x00000001 1
-    0x09      "P1.128.0.0_outputX0"                         [INTEGER64        R_R_R_]      0xfffffffffffd0f24 -192732
+    0x09      "P1.128.0.0_outputX0"                         [INTEGER64        R_R_R_]      0xfffffffffff6771c -624868
     0x0a      "P1.129.0.0_outputX1"                         [INTEGER64        R_R_R_]      0x0000000000000000 0
-    0x0b      "P1.1210.0.0_outputV0"                        [REAL32           R_R_R_]      0.000050
+    0x0b      "P1.1210.0.0_outputV0"                        [REAL32           R_R_R_]      -0.000015
     0x0c      "P1.1211.0.0_outputV1"                        [REAL32           R_R_R_]      0.000000
-    0x0d      "P1.1212.0.0_output_rhoact"                   [UNSIGNED32       R_R_R_]      0x7b734000 2071150592
-    0x0e      "P1.1213.0.0_output_freqact"                  [REAL32           R_R_R_]      0.007455
+    0x0d      "P1.1212.0.0_output_rhoact"                   [UNSIGNED32       R_R_R_]      0x77b84000 2008563712
+    0x0e      "P1.1213.0.0_output_freqact"                  [REAL32           R_R_R_]      -0.003895
     0x0f      "P1.1214.0.0_synchronizeAllEncoderChannel"      [UNSIGNED8        RWRWRW]      0xff 255
     0x10      "P1.1215.0.0_masterChannelNumber"             [UNSIGNED32       R_R_R_]      0x00000000 0
     0x11      "P1.101733.0.0_primaryReferenceSource"        [UNSIGNED32       RWRWRW]      0x00000000 0
@@ -1163,14 +1163,14 @@
     0x01      "P1.44.0.0_isControlParameterSetInterpola"      [UNSIGNED8        R_R_R_]      0x00 0
 0x2157      "CurrentToTorque"                             [RECORD  maxsub(0x04 / 4)]
     0x00      "SubIndex 000"                                [UNSIGNED8        R_R_R_]      0x04 4
-    0x01      "P1.150.0.0_torqueActMotor"                   [REAL32           R_R_R_]      0.001178
-    0x02      "P1.151.0.0_torqueActDrive"                   [REAL32           R_R_R_]      0.013668
-    0x03      "P1.101362.0.0_forceActDrive"                 [REAL32           R_R_R_]      0.734400
+    0x01      "P1.150.0.0_torqueActMotor"                   [REAL32           R_R_R_]      0.001537
+    0x02      "P1.151.0.0_torqueActDrive"                   [REAL32           R_R_R_]      0.009697
+    0x03      "P1.101362.0.0_forceActDrive"                 [REAL32           R_R_R_]      0.941128
     0x04      "P1.101374.0.0_torqueFilterTime"              [REAL32           RWRWRW]      0.000125
 0x2158      "MotionSequenceControl"                       [RECORD  maxsub(0x19 / 25)]
     0x00      "SubIndex 000"                                [UNSIGNED8        R_R_R_]      0x19 25
-    0x01      "P1.171.0.0_status"                           [UNSIGNED32       R_R_R_]      0x0000000a 10
-    0x02      "P1.172.0.0_activeMotion"                     [UNSIGNED32       R_R_R_]      0x0000000c 12
+    0x01      "P1.171.0.0_status"                           [UNSIGNED32       R_R_R_]      0x00000004 4
+    0x02      "P1.172.0.0_activeMotion"                     [UNSIGNED32       R_R_R_]      0x00000002 2
     0x03      "P1.173.0.0_motionStatus"                     [UNSIGNED32       R_R_R_]      0x00000003 3
     0x0f      "P1.1733.0.0_jobIgnored_because_jobIsNotA"      [UNSIGNED8        RWRWRW]      0x01 1
     0x18      "P1.139.0.0_jobIgnored_because_fwUpdateIn"      [UNSIGNED8        RWRWRW]      0x01 1
@@ -1196,7 +1196,7 @@
     0x05      "P1.224.0.0_scKpv"                            [REAL32           RWRWRW]      0.031684
     0x06      "P1.225.0.0_scKiv"                            [REAL32           RWRWRW]      11.614374
     0x07      "P1.2215.0.0_vDiff"                           [REAL32           R_R_R_]      0.000000
-    0x08      "P1.2216.0.0_vRef"                            [REAL32           R_R_R_]      -0.000028
+    0x08      "P1.2216.0.0_vRef"                            [REAL32           R_R_R_]      -0.000008
     0x09      "P1.2217.0.0_xDiff"                           [INTEGER64        R_R_R_]      0x0000000000000000 0
     0x0a      "P1.2218.0.0_torqueLimitMin"                  [REAL32           R_R_R_]      -18.480000
     0x0b      "P1.2219.0.0_torqueLimitMax"                  [REAL32           R_R_R_]      18.480000
@@ -1239,8 +1239,8 @@
     0x52      "P1.28281.0.0_chopperVoltageOnMin"            [REAL32           R_R_R_]      24.000000
 0x215f      "SetpointValueManager"                        [RECORD  maxsub(0x08 / 8)]
     0x00      "SubIndex 000"                                [UNSIGNED8        R_R_R_]      0x08 8
-    0x01      "P1.290.0.0_outputPosition"                   [INTEGER64        R_R_R_]      0xfffffffffffd0f24 -192732
-    0x02      "P1.291.0.0_outputVelocity"                   [REAL32           R_R_R_]      0.000011
+    0x01      "P1.290.0.0_outputPosition"                   [INTEGER64        R_R_R_]      0xfffffffffff674c9 -625463
+    0x02      "P1.291.0.0_outputVelocity"                   [REAL32           R_R_R_]      0.000036
     0x03      "P1.292.0.0_outputAcceleration"               [REAL32           R_R_R_]      0.000000
     0x04      "P1.293.0.0_outputJerk"                       [REAL32           R_R_R_]      0.000000
     0x05      "P1.294.0.0_outputTorque"                     [REAL32           R_R_R_]      0.000000
@@ -1296,7 +1296,7 @@
     0x08      "P1.437.0.0_discrepancyTime"                  [REAL32           RWRWRW]      0.200000
 0x2166      "MotionMonitor"                               [RECORD  maxsub(0x61 / 97)]
     0x00      "SubIndex 000"                                [UNSIGNED8        R_R_R_]      0x61 97
-    0x01      "P1.460.0.0_state"                            [UNSIGNED32       R_R_R_]      0x00030000 196608
+    0x01      "P1.460.0.0_state"                            [UNSIGNED32       R_R_R_]      0x00030800 198656
     0x02      "P1.461.0.0_releaseMessage"                   [UNSIGNED32       R_R_R_]      0x00000000 0
     0x03      "P1.462.0.0_fexSettlingTime"                  [REAL32           RWRWRW]      0.100000
     0x04      "P1.463.0.0_fexWindow"                        [REAL32           RWRWRW]      0.001000
@@ -1338,7 +1338,7 @@
     0x28      "P1.4639.0.0_slPosLimWarnOptions"             [UNSIGNED8        RWRWRW]      0x01 1
     0x2b      "P1.4642.0.0_feeSettlingTime"                 [REAL32           RWRWRW]      0.100000
     0x2c      "P1.4643.0.0_feeWindow"                       [REAL32           RWRWRW]      0.001000
-    0x2d      "P1.4644.0.0_feeAct"                          [REAL32           R_R_R_]      -0.000019
+    0x2d      "P1.4644.0.0_feeAct"                          [REAL32           R_R_R_]      -0.000063
     0x2e      "P1.4645.0.0_feeErrorLevel"                   [UNSIGNED16       RWRWRW]      0x0002 2
     0x2f      "P1.4646.0.0_feeErrorOptions"                 [UNSIGNED8        RWRWRW]      0x00 0
     0x30      "P1.4660.0.0_vmvMax"                          [REAL32           RWRWRW]      1.700000
@@ -1359,8 +1359,8 @@
     0x40      "P1.4678.0.0_stlPosStrokeLimErrLevel"         [UNSIGNED16       RWRWRW]      0x0100 256
     0x41      "P1.4679.0.0_stlPosStrokeLimErrOptions"       [UNSIGNED8        RWRWRW]      0x01 1
     0x42      "P1.4682.0.0_fexAct"                          [REAL32           R_R_R_]      0.000000
-    0x43      "P1.4683.0.0_fevAct"                          [REAL32           R_R_R_]      -0.000043
-    0x44      "P1.4684.0.0_stlStrokeAct"                    [INTEGER64        R_R_R_]      0x00000000021c366d 35403373
+    0x43      "P1.4683.0.0_fevAct"                          [REAL32           R_R_R_]      -0.000051
+    0x44      "P1.4684.0.0_stlStrokeAct"                    [INTEGER64        R_R_R_]      0x000000000215a0b9 34971833
     0x45      "P1.4685.0.0_rmxDist"                         [INTEGER64        RWRWRW]      0x0000000000000000 0
     0x46      "P1.4686.0.0_rdxReachedInfoLevel"             [UNSIGNED16       RWRWRW]      0x0004 4
     0x47      "P1.4687.0.0_rdxReachedInfoOptions"           [UNSIGNED8        RWRWRW]      0x00 0
@@ -1384,7 +1384,7 @@
     0x59      "P1.101490.0.0_feevError_DiagnosisLevels"      [UNSIGNED16       RWRWRW]      0x0001 1
     0x5a      "P1.101496.0.0_feevSettlingTime"              [REAL32           RWRWRW]      0.100000
     0x5b      "P1.101498.0.0_feevWindow"                    [REAL32           RWRWRW]      0.020000
-    0x5c      "P1.101500.0.0_feevAct"                       [REAL32           R_R_R_]      0.000107
+    0x5c      "P1.101500.0.0_feevAct"                       [REAL32           R_R_R_]      0.000008
     0x5d      "P1.101731.0.0_feaSettlingTime"               [REAL32           RWRWRW]      0.010000
     0x5e      "P1.101735.0.0_feaWindow"                     [REAL32           RWRWRW]      10.000000
     0x5f      "P1.101737.0.0_feaAct"                        [REAL32           R_R_R_]      0.000000
@@ -1502,9 +1502,9 @@
 0x216d      "CiA402Controlword"                           [RECORD  maxsub(0x12 / 18)]
     0x00      "SubIndex 000"                                [UNSIGNED8        R_R_R_]      0x12 18
     0x01      "P1.730.0.0_sdo6040_Controlword"              [UNSIGNED16       RWRWRW]      0x0000 0
-    0x02      "P1.731.0.0_sdo6041_Statusword"               [UNSIGNED16       R_R_R_]      0x8650 34384
+    0x02      "P1.731.0.0_sdo6041_Statusword"               [UNSIGNED16       R_R_R_]      0x8618 34328
     0x05      "P1.734.0.0_sdo6502_SupportedDriveModes"      [UNSIGNED32       R_R_R_]      0x000503ad 328621
-    0x06      "P1.735.0.0_state"                            [UNSIGNED32       R_R_R_]      0x00000000 0
+    0x06      "P1.735.0.0_state"                            [UNSIGNED32       R_R_R_]      0x00000006 6
     0x07      "P1.736.0.0_PPstate"                          [UNSIGNED32       R_R_R_]      0x00000000 0
     0x08      "P1.737.0.0_PVstate"                          [UNSIGNED32       R_R_R_]      0x00000000 0
     0x09      "P1.738.0.0_HMstate"                          [UNSIGNED32       R_R_R_]      0x00000000 0
@@ -1665,12 +1665,12 @@
     0x00      "SubIndex 000"                                [UNSIGNED8        R_R_R_]      0x05 5
     0x01      "P1.9910.0.0_useAnalogInput"                  [UNSIGNED8        RWRWRW]      0xff 255
     0x02      "P1.9911.0.0_parameterSetpoint"               [REAL32           RWRWRW]      0.000000
-    0x03      "P1.9912.0.0_inputValue"                      [REAL32           R_R_R_]      0.007758
+    0x03      "P1.9912.0.0_inputValue"                      [REAL32           R_R_R_]      0.006072
     0x04      "P1.9913.0.0_limitViolationReaction"          [UNSIGNED16       RWRWRW]      0x0010 16
     0x05      "P1.9914.0.0_limitViolationErrorOptions"      [UNSIGNED8        RWRWRW]      0x01 1
 0x217a      "FineInterpolator"                            [RECORD  maxsub(0x0a / 10)]
     0x00      "SubIndex 000"                                [UNSIGNED8        R_R_R_]      0x0a 10
-    0x01      "P1.100.0.0_output_pref"                      [INTEGER64        R_R_R_]      0xfffffffffffe60be -106306
+    0x01      "P1.100.0.0_output_pref"                      [INTEGER64        R_R_R_]      0xfffffffffff6fbd3 -590893
     0x02      "P1.101.0.0_output_vref"                      [REAL32           R_R_R_]      0.000000
     0x03      "P1.102.0.0_output_aref"                      [REAL32           R_R_R_]      0.000000
     0x04      "P1.103.0.0_output_jref"                      [REAL32           R_R_R_]      0.000000
@@ -1787,24 +1787,24 @@
     0x0e      "P1.1312.0.0_dMinLimitUser"                   [REAL32           RWRWRW]      0.000000
 0x2184      "MileageCounter"                              [RECORD  maxsub(0x0b / 11)]
     0x00      "SubIndex 000"                                [UNSIGNED8        R_R_R_]      0x0b 11
-    0x01      "P1.1411.0.0_mileageCounter"                  [INTEGER64        RWRWRW]      0x00000a731a17b3fb 11489475277819
+    0x01      "P1.1411.0.0_mileageCounter"                  [INTEGER64        RWRWRW]      0x00000a7a257c08fd 11519731173629
     0x05      "P1.1417.0.0_warningThreshold"                [INTEGER64        RWRWRW]      0x0000000000000000 0
     0x06      "P1.1419.0.0_warningThresholdReachedLevel"      [UNSIGNED16       RWRWRW]      0x0010 16
     0x07      "P1.14110.0.0_warningThresholdReachedOpti"      [UNSIGNED8        RWRWRW]      0x01 1
     0x08      "P1.14111.0.0_alarmThreshold"                 [INTEGER64        RWRWRW]      0x0000000000000000 0
     0x09      "P1.14113.0.0_alarmThresholdReachedLevel"      [UNSIGNED16       RWRWRW]      0x0010 16
     0x0a      "P1.14114.0.0_alarmThresholdReachedOption"      [UNSIGNED8        RWRWRW]      0x01 1
-    0x0b      "P1.1414.0.0_mileageCounterSinceReset"        [INTEGER64        RWRWRW]      0x00000a731a17b3fb 11489475277819
+    0x0b      "P1.1414.0.0_mileageCounterSinceReset"        [INTEGER64        RWRWRW]      0x00000a7a257c08fd 11519731173629
 0x2185      "ReversePlayCounter"                          [RECORD  maxsub(0x0b / 11)]
     0x00      "SubIndex 000"                                [UNSIGNED8        R_R_R_]      0x0b 11
-    0x01      "P1.1421.0.0_reversePlayCounter"              [INTEGER64        RWRWRW]      0x0000000000006b35 27445
+    0x01      "P1.1421.0.0_reversePlayCounter"              [INTEGER64        RWRWRW]      0x0000000000006b7d 27517
     0x05      "P1.1427.0.0_warningThreshold"                [INTEGER64        RWRWRW]      0x0000000000000000 0
     0x06      "P1.1429.0.0_warningThresholdReachedLevel"      [UNSIGNED16       RWRWRW]      0x0010 16
     0x07      "P1.14210.0.0_warningThresholdReachedOpti"      [UNSIGNED8        RWRWRW]      0x01 1
     0x08      "P1.14211.0.0_alarmThreshold"                 [INTEGER64        RWRWRW]      0x0000000000000000 0
     0x09      "P1.14213.0.0_alarmThresholdReachedLevel"      [UNSIGNED16       RWRWRW]      0x0010 16
     0x0a      "P1.14214.0.0_alarmThresholdReachedOption"      [UNSIGNED8        RWRWRW]      0x01 1
-    0x0b      "P1.1424.0.0_reversePlayCounterSinceReset"      [INTEGER64        RWRWRW]      0x0000000000006b35 27445
+    0x0b      "P1.1424.0.0_reversePlayCounterSinceReset"      [INTEGER64        RWRWRW]      0x0000000000006b7d 27517
 0x2186      "JoggingManager"                              [RECORD  maxsub(0x27 / 39)]
     0x00      "SubIndex 000"                                [UNSIGNED8        R_R_R_]      0x27 39
     0x01      "P1.1510.0.0_slow1Period"                     [REAL32           RWRWRW]      2.000000
@@ -1843,13 +1843,13 @@
     0x00      "SubIndex 000"                                [UNSIGNED8        R_R_R_]      0x1e 30
     0x01      "P1.1555.0.0_CurrentRamp"                     [REAL32           RWRWRW]      1.000000
     0x02      "P1.1556.0.0_torqueScalingFactor"             [REAL32           RWRWRW]      1.000000
-    0x03      "P1.3010.0.0_output_pref"                     [INTEGER64        R_R_R_]      0xfffffffffffe60be -106306
+    0x03      "P1.3010.0.0_output_pref"                     [INTEGER64        R_R_R_]      0xfffffffffff6fbd3 -590893
     0x04      "P1.3011.0.0_output_vref"                     [REAL32           R_R_R_]      0.000000
     0x05      "P1.3012.0.0_output_aref"                     [REAL32           R_R_R_]      0.000000
     0x06      "P1.3013.0.0_output_jref"                     [REAL32           R_R_R_]      0.000000
     0x07      "P1.3014.0.0_output_Mref"                     [REAL32           R_R_R_]      0.000000
     0x08      "P1.3015.0.0_output_iref"                     [REAL32           R_R_R_]      0.000000
-    0x09      "P1.3016.0.0_input_ptarget"                   [INTEGER64        R_R_R_]      0xfffffffffffe60be -106306
+    0x09      "P1.3016.0.0_input_ptarget"                   [INTEGER64        R_R_R_]      0xfffffffffff6fbd3 -590893
     0x0a      "P1.3017.0.0_input_vtarget"                   [REAL32           R_R_R_]      0.000000
     0x0b      "P1.3018.0.0_status"                          [UNSIGNED32       R_R_R_]      0x00000000 0
     0x0c      "P1.30127.0.0_invalidJobParameter"            [UNSIGNED16       RWRWRW]      0x0100 256
@@ -1890,7 +1890,7 @@
     0x06      "P1.10237.0.0_powerOnTorqueLimitSpeed"        [REAL32           RWRWRW]      0.200000
     0x07      "P1.10238.0.0_powerOnIndex"                   [INTEGER32        RWRWRW]      0xffffffff -1
     0x08      "P1.11280018.0.0_powerOnTorqueSlope"          [REAL32           RWRWRW]      0.000000
-    0x09      "P1.112819.0.0_errorActive"                   [UNSIGNED8        R_R_R_]      0x00 0
+    0x09      "P1.112819.0.0_errorActive"                   [UNSIGNED8        R_R_R_]      0xff 255
 0x218f      "DirectionalMotionLock"                       [RECORD  maxsub(0x03 / 3)]
     0x00      "SubIndex 000"                                [UNSIGNED8        R_R_R_]      0x03 3
     0x01      "P1.10351.0.0_requestLock"                    [INTEGER32        RWRWRW]      0x00000000 0
@@ -2026,14 +2026,14 @@
     0x26      "P1.113018.1.0_noOfCaptures"                  [UNSIGNED32       R_R_R_]      0x00000000 0
     0x27      "P1.113019.0.0_noOfErrors"                    [UNSIGNED32       R_R_R_]      0x00000000 0
     0x28      "P1.113019.1.0_noOfErrors"                    [UNSIGNED32       R_R_R_]      0x00000000 0
-    0x29      "P1.113020.0.0_noOfModulos"                   [UNSIGNED32       R_R_R_]      0x00001d24 7460
-    0x2a      "P1.113020.1.0_noOfModulos"                   [UNSIGNED32       R_R_R_]      0x00001d24 7460
+    0x29      "P1.113020.0.0_noOfModulos"                   [UNSIGNED32       R_R_R_]      0x00002276 8822
+    0x2a      "P1.113020.1.0_noOfModulos"                   [UNSIGNED32       R_R_R_]      0x00002276 8822
     0x2b      "P1.113021.0.0_posCaptureInputState"          [UNSIGNED8        R_R_R_]      0x00 0
     0x2c      "P1.113021.1.0_posCaptureInputState"          [UNSIGNED8        R_R_R_]      0x00 0
     0x2d      "P1.113022.0.0_posCaptureModuloState"         [UNSIGNED8        R_R_R_]      0x00 0
     0x2e      "P1.113022.1.0_posCaptureModuloState"         [UNSIGNED8        R_R_R_]      0x00 0
-    0x2f      "P1.113023.0.0_refPositionModulo"             [INTEGER64        R_R_R_]      0x000000025408f578 9999807864
-    0x30      "P1.113023.1.0_refPositionModulo"             [INTEGER64        R_R_R_]      0x000000025408f578 9999807864
+    0x2f      "P1.113023.0.0_refPositionModulo"             [INTEGER64        R_R_R_]      0x0000000254025674 9999373940
+    0x30      "P1.113023.1.0_refPositionModulo"             [INTEGER64        R_R_R_]      0x0000000254025b1c 9999375132
     0x31      "P1.113024.0.0_refPositionOffset"             [INTEGER64        RWRWRW]      0x0000000000000000 0
     0x32      "P1.113024.1.0_refPositionOffset"             [INTEGER64        RWRWRW]      0x0000000000000000 0
     0x33      "P1.113025.0.0_refPositionNew"                [INTEGER64        RWRWRW]      0x0000000000000000 0
@@ -2082,21 +2082,21 @@
     0x07      "P1.1128061.0.0_touchProbeStatus"             [UNSIGNED16       R_R_R_]      0x0000 0
 0x2196      "EtherCatDiagnosis"                           [RECORD  maxsub(0x09 / 9)]
     0x00      "SubIndex 000"                                [UNSIGNED8        R_R_R_]      0x09 9
-    0x01      "P0.7602.0.0_sdo1001_ErrorRegister"           [UNSIGNED8        RWRWRW]      0x00 0
+    0x01      "P0.7602.0.0_sdo1001_ErrorRegister"           [UNSIGNED8        RWRWRW]      0x11 17
     0x02      "P0.43543.0.0_sdo10F1_LocalErrorReaction"      [UNSIGNED32       RWRWRW]      0x00000001 1
     0x03      "P0.43544.0.0_sdo10F1_SyncErrorCounterLim"      [UNSIGNED16       RWRWRW]      0x0004 4
     0x04      "P0.43545.0.0_sdo10F3_MaximumMessages"        [UNSIGNED8        RWRWRW]      0x14 20
-    0x05      "P0.43546.0.0_sdo10F3_NewestMessage"          [UNSIGNED8        RWRWRW]      0x07 7
+    0x05      "P0.43546.0.0_sdo10F3_NewestMessage"          [UNSIGNED8        RWRWRW]      0x18 24
     0x06      "P0.43547.0.0_sdo10F3_NewestAckMessage"       [UNSIGNED8        RWRWRW]      0x00 0
-    0x07      "P0.43548.0.0_sdo10F3_NewMessageAvailable"      [UNSIGNED8        RWRWRW]      0xff 255
+    0x07      "P0.43548.0.0_sdo10F3_NewMessageAvailable"      [UNSIGNED8        RWRWRW]      0x00 0
     0x08      "P0.43549.0.0_sdo10F3_Flags"                  [UNSIGNED16       RWRWRW]      0x0001 1
-    0x09      "P0.43550.0.0_sdo10F8_TimestampObject"        [UNSIGNED64       RWRWRW]      0x0000094bf517608e 10221839147150
+    0x09      "P0.43550.0.0_sdo10F8_TimestampObject"        [UNSIGNED64       RWRWRW]      0x0000098fee139db8 10513779236280
 0x2197      "ModuloController"                            [RECORD  maxsub(0x0f / 15)]
     0x00      "SubIndex 000"                                [UNSIGNED8        R_R_R_]      0x0f 15
     0x01      "P1.113100.0.0_moduloPositionMode"            [UNSIGNED16       RWRWRW]      0x0000 0
     0x03      "P1.113102.0.0_moduloLow"                     [INTEGER64        RWRWRW]      0x0000000000000000 0
-    0x04      "P1.113103.0.0_setPointModulo"                [INTEGER64        R_R_R_]      0xfffffffffffd0f24 -192732
-    0x05      "P1.113104.0.0_actualPositionModulo"          [INTEGER64        R_R_R_]      0xfffffffffffd0a7d -193923
+    0x04      "P1.113103.0.0_setPointModulo"                [INTEGER64        R_R_R_]      0xfffffffffff674c9 -625463
+    0x05      "P1.113104.0.0_actualPositionModulo"          [INTEGER64        R_R_R_]      0xfffffffffff674c9 -625463
     0x06      "P1.113105.0.0_moduloPositionModeActive"      [UNSIGNED16       R_R_R_]      0x0000 0
     0x07      "P1.113106.0.0_moduloHighActive"              [INTEGER64        R_R_R_]      0x0000000000000000 0
     0x08      "P1.113107.0.0_moduloLowActive"               [INTEGER64        R_R_R_]      0x0000000000000000 0
@@ -2296,7 +2296,7 @@
     0x04      "P0.54546.0.0_missingSyncCommunicationpro"      [UNSIGNED8        RWRWRW]      0x01 1
 0x21b0      "ProfiNetDeviceIdentification"                [RECORD  maxsub(0x05 / 5)]
     0x00      "SubIndex 000"                                [UNSIGNED8        R_R_R_]      0x05 5
-    0x01      "P0.11295001.0.0_nameOfStation"               [VISIBLE_STR(1928) RWRWRW]      Time:1725612857.102 PACKET slave:1 index:21b0.01 error:3
+    0x01      "P0.11295001.0.0_nameOfStation"               [VISIBLE_STR(1928) RWRWRW]      Time:1725613149.082 PACKET slave:1 index:21b0.01 error:3
 
     0x02      "P0.11295002.0.0_im1Function"                 [VISIBLE_STR(264) RWRWRW]      
     0x03      "P0.11295003.0.0_im1Location"                 [VISIBLE_STR(184) RWRWRW]      
@@ -6277,17 +6277,17 @@
     0x06      "P0.43553.0.5_sdo10F3_DiagArray2"             [UNSIGNED8        RWRWRW]      0x01 1
     0x07      "P0.43553.0.6_sdo10F3_DiagArray2"             [UNSIGNED8        RWRWRW]      0x87 135
     0x08      "P0.43553.0.7_sdo10F3_DiagArray2"             [UNSIGNED8        RWRWRW]      0x80 128
-    0x09      "P0.43553.0.8_sdo10F3_DiagArray2"             [UNSIGNED8        RWRWRW]      0xfc 252
-    0x0a      "P0.43553.0.9_sdo10F3_DiagArray2"             [UNSIGNED8        RWRWRW]      0x28 40
-    0x0b      "P0.43553.0.10_sdo10F3_DiagArray2"            [UNSIGNED8        RWRWRW]      0xd8 216
-    0x0c      "P0.43553.0.11_sdo10F3_DiagArray2"            [UNSIGNED8        RWRWRW]      0x0b 11
-    0x0d      "P0.43553.0.12_sdo10F3_DiagArray2"            [UNSIGNED8        RWRWRW]      0x6d 109
-    0x0e      "P0.43553.0.13_sdo10F3_DiagArray2"            [UNSIGNED8        RWRWRW]      0x07 7
+    0x09      "P0.43553.0.8_sdo10F3_DiagArray2"             [UNSIGNED8        RWRWRW]      0x50 80
+    0x0a      "P0.43553.0.9_sdo10F3_DiagArray2"             [UNSIGNED8        RWRWRW]      0x88 136
+    0x0b      "P0.43553.0.10_sdo10F3_DiagArray2"            [UNSIGNED8        RWRWRW]      0x76 118
+    0x0c      "P0.43553.0.11_sdo10F3_DiagArray2"            [UNSIGNED8        RWRWRW]      0xad 173
+    0x0d      "P0.43553.0.12_sdo10F3_DiagArray2"            [UNSIGNED8        RWRWRW]      0x54 84
+    0x0e      "P0.43553.0.13_sdo10F3_DiagArray2"            [UNSIGNED8        RWRWRW]      0x09 9
     0x0f      "P0.43553.0.14_sdo10F3_DiagArray2"            [UNSIGNED8        RWRWRW]      0x00 0
     0x10      "P0.43553.0.15_sdo10F3_DiagArray2"            [UNSIGNED8        RWRWRW]      0x00 0
     0x11      "P0.43553.0.16_sdo10F3_DiagArray2"            [UNSIGNED8        RWRWRW]      0x06 6
     0x12      "P0.43553.0.17_sdo10F3_DiagArray2"            [UNSIGNED8        RWRWRW]      0x00 0
-    0x13      "P0.43553.0.18_sdo10F3_DiagArray2"            [UNSIGNED8        RWRWRW]      0x87 135
+    0x13      "P0.43553.0.18_sdo10F3_DiagArray2"            [UNSIGNED8        RWRWRW]      0x7d 125
     0x14      "P0.43553.0.19_sdo10F3_DiagArray2"            [UNSIGNED8        RWRWRW]      0x00 0
 0x228e      "EtherCatDiagnosis_P0.43554.0.0_sdo10F3_D"      [RECORD  maxsub(0x14 / 20)]
     0x00      "SubIndex 000"                                [UNSIGNED8        R_R_R_]      0x14 20
@@ -6299,149 +6299,149 @@
     0x06      "P0.43554.0.5_sdo10F3_DiagArray3"             [UNSIGNED8        RWRWRW]      0x01 1
     0x07      "P0.43554.0.6_sdo10F3_DiagArray3"             [UNSIGNED8        RWRWRW]      0x87 135
     0x08      "P0.43554.0.7_sdo10F3_DiagArray3"             [UNSIGNED8        RWRWRW]      0x80 128
-    0x09      "P0.43554.0.8_sdo10F3_DiagArray3"             [UNSIGNED8        RWRWRW]      0x96 150
-    0x0a      "P0.43554.0.9_sdo10F3_DiagArray3"             [UNSIGNED8        RWRWRW]      0x52 82
-    0x0b      "P0.43554.0.10_sdo10F3_DiagArray3"            [UNSIGNED8        RWRWRW]      0xf5 245
-    0x0c      "P0.43554.0.11_sdo10F3_DiagArray3"            [UNSIGNED8        RWRWRW]      0x2a 42
-    0x0d      "P0.43554.0.12_sdo10F3_DiagArray3"            [UNSIGNED8        RWRWRW]      0x6d 109
-    0x0e      "P0.43554.0.13_sdo10F3_DiagArray3"            [UNSIGNED8        RWRWRW]      0x07 7
+    0x09      "P0.43554.0.8_sdo10F3_DiagArray3"             [UNSIGNED8        RWRWRW]      0x50 80
+    0x0a      "P0.43554.0.9_sdo10F3_DiagArray3"             [UNSIGNED8        RWRWRW]      0x88 136
+    0x0b      "P0.43554.0.10_sdo10F3_DiagArray3"            [UNSIGNED8        RWRWRW]      0x76 118
+    0x0c      "P0.43554.0.11_sdo10F3_DiagArray3"            [UNSIGNED8        RWRWRW]      0xad 173
+    0x0d      "P0.43554.0.12_sdo10F3_DiagArray3"            [UNSIGNED8        RWRWRW]      0x54 84
+    0x0e      "P0.43554.0.13_sdo10F3_DiagArray3"            [UNSIGNED8        RWRWRW]      0x09 9
     0x0f      "P0.43554.0.14_sdo10F3_DiagArray3"            [UNSIGNED8        RWRWRW]      0x00 0
     0x10      "P0.43554.0.15_sdo10F3_DiagArray3"            [UNSIGNED8        RWRWRW]      0x00 0
     0x11      "P0.43554.0.16_sdo10F3_DiagArray3"            [UNSIGNED8        RWRWRW]      0x06 6
     0x12      "P0.43554.0.17_sdo10F3_DiagArray3"            [UNSIGNED8        RWRWRW]      0x00 0
-    0x13      "P0.43554.0.18_sdo10F3_DiagArray3"            [UNSIGNED8        RWRWRW]      0x79 121
+    0x13      "P0.43554.0.18_sdo10F3_DiagArray3"            [UNSIGNED8        RWRWRW]      0x7c 124
     0x14      "P0.43554.0.19_sdo10F3_DiagArray3"            [UNSIGNED8        RWRWRW]      0x00 0
 0x228f      "EtherCatDiagnosis_P0.43555.0.0_sdo10F3_D"      [RECORD  maxsub(0x14 / 20)]
     0x00      "SubIndex 000"                                [UNSIGNED8        R_R_R_]      0x14 20
-    0x01      "P0.43555.0.0_sdo10F3_DiagArray4"             [UNSIGNED8        RWRWRW]      0x88 136
-    0x02      "P0.43555.0.1_sdo10F3_DiagArray4"             [UNSIGNED8        RWRWRW]      0x81 129
+    0x01      "P0.43555.0.0_sdo10F3_DiagArray4"             [UNSIGNED8        RWRWRW]      0x87 135
+    0x02      "P0.43555.0.1_sdo10F3_DiagArray4"             [UNSIGNED8        RWRWRW]      0x80 128
     0x03      "P0.43555.0.2_sdo10F3_DiagArray4"             [UNSIGNED8        RWRWRW]      0x00 0
     0x04      "P0.43555.0.3_sdo10F3_DiagArray4"             [UNSIGNED8        RWRWRW]      0xe8 232
-    0x05      "P0.43555.0.4_sdo10F3_DiagArray4"             [UNSIGNED8        RWRWRW]      0x02 2
+    0x05      "P0.43555.0.4_sdo10F3_DiagArray4"             [UNSIGNED8        RWRWRW]      0x00 0
     0x06      "P0.43555.0.5_sdo10F3_DiagArray4"             [UNSIGNED8        RWRWRW]      0x01 1
-    0x07      "P0.43555.0.6_sdo10F3_DiagArray4"             [UNSIGNED8        RWRWRW]      0x88 136
-    0x08      "P0.43555.0.7_sdo10F3_DiagArray4"             [UNSIGNED8        RWRWRW]      0x81 129
-    0x09      "P0.43555.0.8_sdo10F3_DiagArray4"             [UNSIGNED8        RWRWRW]      0x9e 158
-    0x0a      "P0.43555.0.9_sdo10F3_DiagArray4"             [UNSIGNED8        RWRWRW]      0x74 116
-    0x0b      "P0.43555.0.10_sdo10F3_DiagArray4"            [UNSIGNED8        RWRWRW]      0x00 0
-    0x0c      "P0.43555.0.11_sdo10F3_DiagArray4"            [UNSIGNED8        RWRWRW]      0xef 239
-    0x0d      "P0.43555.0.12_sdo10F3_DiagArray4"            [UNSIGNED8        RWRWRW]      0x6e 110
-    0x0e      "P0.43555.0.13_sdo10F3_DiagArray4"            [UNSIGNED8        RWRWRW]      0x07 7
+    0x07      "P0.43555.0.6_sdo10F3_DiagArray4"             [UNSIGNED8        RWRWRW]      0x87 135
+    0x08      "P0.43555.0.7_sdo10F3_DiagArray4"             [UNSIGNED8        RWRWRW]      0x80 128
+    0x09      "P0.43555.0.8_sdo10F3_DiagArray4"             [UNSIGNED8        RWRWRW]      0xe8 232
+    0x0a      "P0.43555.0.9_sdo10F3_DiagArray4"             [UNSIGNED8        RWRWRW]      0x3a 58
+    0x0b      "P0.43555.0.10_sdo10F3_DiagArray4"            [UNSIGNED8        RWRWRW]      0xf5 245
+    0x0c      "P0.43555.0.11_sdo10F3_DiagArray4"            [UNSIGNED8        RWRWRW]      0xc5 197
+    0x0d      "P0.43555.0.12_sdo10F3_DiagArray4"            [UNSIGNED8        RWRWRW]      0x54 84
+    0x0e      "P0.43555.0.13_sdo10F3_DiagArray4"            [UNSIGNED8        RWRWRW]      0x09 9
     0x0f      "P0.43555.0.14_sdo10F3_DiagArray4"            [UNSIGNED8        RWRWRW]      0x00 0
     0x10      "P0.43555.0.15_sdo10F3_DiagArray4"            [UNSIGNED8        RWRWRW]      0x00 0
     0x11      "P0.43555.0.16_sdo10F3_DiagArray4"            [UNSIGNED8        RWRWRW]      0x06 6
     0x12      "P0.43555.0.17_sdo10F3_DiagArray4"            [UNSIGNED8        RWRWRW]      0x00 0
-    0x13      "P0.43555.0.18_sdo10F3_DiagArray4"            [UNSIGNED8        RWRWRW]      0x8f 143
+    0x13      "P0.43555.0.18_sdo10F3_DiagArray4"            [UNSIGNED8        RWRWRW]      0x87 135
     0x14      "P0.43555.0.19_sdo10F3_DiagArray4"            [UNSIGNED8        RWRWRW]      0x00 0
 0x2290      "EtherCatDiagnosis_P0.43556.0.0_sdo10F3_D"      [RECORD  maxsub(0x14 / 20)]
     0x00      "SubIndex 000"                                [UNSIGNED8        R_R_R_]      0x14 20
-    0x01      "P0.43556.0.0_sdo10F3_DiagArray5"             [UNSIGNED8        RWRWRW]      0xe8 232
-    0x02      "P0.43556.0.1_sdo10F3_DiagArray5"             [UNSIGNED8        RWRWRW]      0xfd 253
+    0x01      "P0.43556.0.0_sdo10F3_DiagArray5"             [UNSIGNED8        RWRWRW]      0x87 135
+    0x02      "P0.43556.0.1_sdo10F3_DiagArray5"             [UNSIGNED8        RWRWRW]      0x80 128
     0x03      "P0.43556.0.2_sdo10F3_DiagArray5"             [UNSIGNED8        RWRWRW]      0x00 0
     0x04      "P0.43556.0.3_sdo10F3_DiagArray5"             [UNSIGNED8        RWRWRW]      0xe8 232
     0x05      "P0.43556.0.4_sdo10F3_DiagArray5"             [UNSIGNED8        RWRWRW]      0x00 0
     0x06      "P0.43556.0.5_sdo10F3_DiagArray5"             [UNSIGNED8        RWRWRW]      0x01 1
-    0x07      "P0.43556.0.6_sdo10F3_DiagArray5"             [UNSIGNED8        RWRWRW]      0xe8 232
-    0x08      "P0.43556.0.7_sdo10F3_DiagArray5"             [UNSIGNED8        RWRWRW]      0xfd 253
-    0x09      "P0.43556.0.8_sdo10F3_DiagArray5"             [UNSIGNED8        RWRWRW]      0xa6 166
-    0x0a      "P0.43556.0.9_sdo10F3_DiagArray5"             [UNSIGNED8        RWRWRW]      0xfd 253
-    0x0b      "P0.43556.0.10_sdo10F3_DiagArray5"            [UNSIGNED8        RWRWRW]      0x2f 47
-    0x0c      "P0.43556.0.11_sdo10F3_DiagArray5"            [UNSIGNED8        RWRWRW]      0xe9 233
-    0x0d      "P0.43556.0.12_sdo10F3_DiagArray5"            [UNSIGNED8        RWRWRW]      0x77 119
-    0x0e      "P0.43556.0.13_sdo10F3_DiagArray5"            [UNSIGNED8        RWRWRW]      0x07 7
+    0x07      "P0.43556.0.6_sdo10F3_DiagArray5"             [UNSIGNED8        RWRWRW]      0x87 135
+    0x08      "P0.43556.0.7_sdo10F3_DiagArray5"             [UNSIGNED8        RWRWRW]      0x80 128
+    0x09      "P0.43556.0.8_sdo10F3_DiagArray5"             [UNSIGNED8        RWRWRW]      0x60 96
+    0x0a      "P0.43556.0.9_sdo10F3_DiagArray5"             [UNSIGNED8        RWRWRW]      0xc0 192
+    0x0b      "P0.43556.0.10_sdo10F3_DiagArray5"            [UNSIGNED8        RWRWRW]      0x79 121
+    0x0c      "P0.43556.0.11_sdo10F3_DiagArray5"            [UNSIGNED8        RWRWRW]      0xe4 228
+    0x0d      "P0.43556.0.12_sdo10F3_DiagArray5"            [UNSIGNED8        RWRWRW]      0x54 84
+    0x0e      "P0.43556.0.13_sdo10F3_DiagArray5"            [UNSIGNED8        RWRWRW]      0x09 9
     0x0f      "P0.43556.0.14_sdo10F3_DiagArray5"            [UNSIGNED8        RWRWRW]      0x00 0
     0x10      "P0.43556.0.15_sdo10F3_DiagArray5"            [UNSIGNED8        RWRWRW]      0x00 0
     0x11      "P0.43556.0.16_sdo10F3_DiagArray5"            [UNSIGNED8        RWRWRW]      0x06 6
     0x12      "P0.43556.0.17_sdo10F3_DiagArray5"            [UNSIGNED8        RWRWRW]      0x00 0
-    0x13      "P0.43556.0.18_sdo10F3_DiagArray5"            [UNSIGNED8        RWRWRW]      0x8f 143
+    0x13      "P0.43556.0.18_sdo10F3_DiagArray5"            [UNSIGNED8        RWRWRW]      0x79 121
     0x14      "P0.43556.0.19_sdo10F3_DiagArray5"            [UNSIGNED8        RWRWRW]      0x00 0
 0x2291      "EtherCatDiagnosis_P0.43557.0.0_sdo10F3_D"      [RECORD  maxsub(0x14 / 20)]
     0x00      "SubIndex 000"                                [UNSIGNED8        R_R_R_]      0x14 20
-    0x01      "P0.43557.0.0_sdo10F3_DiagArray6"             [UNSIGNED8        RWRWRW]      0x87 135
-    0x02      "P0.43557.0.1_sdo10F3_DiagArray6"             [UNSIGNED8        RWRWRW]      0x80 128
+    0x01      "P0.43557.0.0_sdo10F3_DiagArray6"             [UNSIGNED8        RWRWRW]      0x88 136
+    0x02      "P0.43557.0.1_sdo10F3_DiagArray6"             [UNSIGNED8        RWRWRW]      0x81 129
     0x03      "P0.43557.0.2_sdo10F3_DiagArray6"             [UNSIGNED8        RWRWRW]      0x00 0
     0x04      "P0.43557.0.3_sdo10F3_DiagArray6"             [UNSIGNED8        RWRWRW]      0xe8 232
-    0x05      "P0.43557.0.4_sdo10F3_DiagArray6"             [UNSIGNED8        RWRWRW]      0x00 0
+    0x05      "P0.43557.0.4_sdo10F3_DiagArray6"             [UNSIGNED8        RWRWRW]      0x02 2
     0x06      "P0.43557.0.5_sdo10F3_DiagArray6"             [UNSIGNED8        RWRWRW]      0x01 1
-    0x07      "P0.43557.0.6_sdo10F3_DiagArray6"             [UNSIGNED8        RWRWRW]      0x87 135
-    0x08      "P0.43557.0.7_sdo10F3_DiagArray6"             [UNSIGNED8        RWRWRW]      0x80 128
-    0x09      "P0.43557.0.8_sdo10F3_DiagArray6"             [UNSIGNED8        RWRWRW]      0x8e 142
-    0x0a      "P0.43557.0.9_sdo10F3_DiagArray6"             [UNSIGNED8        RWRWRW]      0xb9 185
-    0x0b      "P0.43557.0.10_sdo10F3_DiagArray6"            [UNSIGNED8        RWRWRW]      0x86 134
-    0x0c      "P0.43557.0.11_sdo10F3_DiagArray6"            [UNSIGNED8        RWRWRW]      0xff 255
-    0x0d      "P0.43557.0.12_sdo10F3_DiagArray6"            [UNSIGNED8        RWRWRW]      0xc0 192
-    0x0e      "P0.43557.0.13_sdo10F3_DiagArray6"            [UNSIGNED8        RWRWRW]      0x07 7
+    0x07      "P0.43557.0.6_sdo10F3_DiagArray6"             [UNSIGNED8        RWRWRW]      0x88 136
+    0x08      "P0.43557.0.7_sdo10F3_DiagArray6"             [UNSIGNED8        RWRWRW]      0x81 129
+    0x09      "P0.43557.0.8_sdo10F3_DiagArray6"             [UNSIGNED8        RWRWRW]      0x6c 108
+    0x0a      "P0.43557.0.9_sdo10F3_DiagArray6"             [UNSIGNED8        RWRWRW]      0x28 40
+    0x0b      "P0.43557.0.10_sdo10F3_DiagArray6"            [UNSIGNED8        RWRWRW]      0x97 151
+    0x0c      "P0.43557.0.11_sdo10F3_DiagArray6"            [UNSIGNED8        RWRWRW]      0x9b 155
+    0x0d      "P0.43557.0.12_sdo10F3_DiagArray6"            [UNSIGNED8        RWRWRW]      0x57 87
+    0x0e      "P0.43557.0.13_sdo10F3_DiagArray6"            [UNSIGNED8        RWRWRW]      0x09 9
     0x0f      "P0.43557.0.14_sdo10F3_DiagArray6"            [UNSIGNED8        RWRWRW]      0x00 0
     0x10      "P0.43557.0.15_sdo10F3_DiagArray6"            [UNSIGNED8        RWRWRW]      0x00 0
     0x11      "P0.43557.0.16_sdo10F3_DiagArray6"            [UNSIGNED8        RWRWRW]      0x06 6
     0x12      "P0.43557.0.17_sdo10F3_DiagArray6"            [UNSIGNED8        RWRWRW]      0x00 0
-    0x13      "P0.43557.0.18_sdo10F3_DiagArray6"            [UNSIGNED8        RWRWRW]      0x7d 125
+    0x13      "P0.43557.0.18_sdo10F3_DiagArray6"            [UNSIGNED8        RWRWRW]      0x8f 143
     0x14      "P0.43557.0.19_sdo10F3_DiagArray6"            [UNSIGNED8        RWRWRW]      0x00 0
 0x2292      "EtherCatDiagnosis_P0.43558.0.0_sdo10F3_D"      [RECORD  maxsub(0x14 / 20)]
     0x00      "SubIndex 000"                                [UNSIGNED8        R_R_R_]      0x14 20
-    0x01      "P0.43558.0.0_sdo10F3_DiagArray7"             [UNSIGNED8        RWRWRW]      0x87 135
-    0x02      "P0.43558.0.1_sdo10F3_DiagArray7"             [UNSIGNED8        RWRWRW]      0x80 128
+    0x01      "P0.43558.0.0_sdo10F3_DiagArray7"             [UNSIGNED8        RWRWRW]      0xe8 232
+    0x02      "P0.43558.0.1_sdo10F3_DiagArray7"             [UNSIGNED8        RWRWRW]      0xfd 253
     0x03      "P0.43558.0.2_sdo10F3_DiagArray7"             [UNSIGNED8        RWRWRW]      0x00 0
     0x04      "P0.43558.0.3_sdo10F3_DiagArray7"             [UNSIGNED8        RWRWRW]      0xe8 232
     0x05      "P0.43558.0.4_sdo10F3_DiagArray7"             [UNSIGNED8        RWRWRW]      0x00 0
     0x06      "P0.43558.0.5_sdo10F3_DiagArray7"             [UNSIGNED8        RWRWRW]      0x01 1
-    0x07      "P0.43558.0.6_sdo10F3_DiagArray7"             [UNSIGNED8        RWRWRW]      0x87 135
-    0x08      "P0.43558.0.7_sdo10F3_DiagArray7"             [UNSIGNED8        RWRWRW]      0x80 128
-    0x09      "P0.43558.0.8_sdo10F3_DiagArray7"             [UNSIGNED8        RWRWRW]      0x8e 142
-    0x0a      "P0.43558.0.9_sdo10F3_DiagArray7"             [UNSIGNED8        RWRWRW]      0xb9 185
-    0x0b      "P0.43558.0.10_sdo10F3_DiagArray7"            [UNSIGNED8        RWRWRW]      0x86 134
-    0x0c      "P0.43558.0.11_sdo10F3_DiagArray7"            [UNSIGNED8        RWRWRW]      0xff 255
-    0x0d      "P0.43558.0.12_sdo10F3_DiagArray7"            [UNSIGNED8        RWRWRW]      0xc0 192
-    0x0e      "P0.43558.0.13_sdo10F3_DiagArray7"            [UNSIGNED8        RWRWRW]      0x07 7
+    0x07      "P0.43558.0.6_sdo10F3_DiagArray7"             [UNSIGNED8        RWRWRW]      0xe8 232
+    0x08      "P0.43558.0.7_sdo10F3_DiagArray7"             [UNSIGNED8        RWRWRW]      0xfd 253
+    0x09      "P0.43558.0.8_sdo10F3_DiagArray7"             [UNSIGNED8        RWRWRW]      0xf4 244
+    0x0a      "P0.43558.0.9_sdo10F3_DiagArray7"             [UNSIGNED8        RWRWRW]      0xaa 170
+    0x0b      "P0.43558.0.10_sdo10F3_DiagArray7"            [UNSIGNED8        RWRWRW]      0x09 9
+    0x0c      "P0.43558.0.11_sdo10F3_DiagArray7"            [UNSIGNED8        RWRWRW]      0x14 20
+    0x0d      "P0.43558.0.12_sdo10F3_DiagArray7"            [UNSIGNED8        RWRWRW]      0x67 103
+    0x0e      "P0.43558.0.13_sdo10F3_DiagArray7"            [UNSIGNED8        RWRWRW]      0x09 9
     0x0f      "P0.43558.0.14_sdo10F3_DiagArray7"            [UNSIGNED8        RWRWRW]      0x00 0
     0x10      "P0.43558.0.15_sdo10F3_DiagArray7"            [UNSIGNED8        RWRWRW]      0x00 0
     0x11      "P0.43558.0.16_sdo10F3_DiagArray7"            [UNSIGNED8        RWRWRW]      0x06 6
     0x12      "P0.43558.0.17_sdo10F3_DiagArray7"            [UNSIGNED8        RWRWRW]      0x00 0
-    0x13      "P0.43558.0.18_sdo10F3_DiagArray7"            [UNSIGNED8        RWRWRW]      0x7c 124
+    0x13      "P0.43558.0.18_sdo10F3_DiagArray7"            [UNSIGNED8        RWRWRW]      0x8f 143
     0x14      "P0.43558.0.19_sdo10F3_DiagArray7"            [UNSIGNED8        RWRWRW]      0x00 0
 0x2293      "EtherCatDiagnosis_P0.43559.0.0_sdo10F3_D"      [RECORD  maxsub(0x14 / 20)]
     0x00      "SubIndex 000"                                [UNSIGNED8        R_R_R_]      0x14 20
-    0x01      "P0.43559.0.0_sdo10F3_DiagArray8"             [UNSIGNED8        RWRWRW]      0x88 136
-    0x02      "P0.43559.0.1_sdo10F3_DiagArray8"             [UNSIGNED8        RWRWRW]      0x81 129
+    0x01      "P0.43559.0.0_sdo10F3_DiagArray8"             [UNSIGNED8        RWRWRW]      0x87 135
+    0x02      "P0.43559.0.1_sdo10F3_DiagArray8"             [UNSIGNED8        RWRWRW]      0x80 128
     0x03      "P0.43559.0.2_sdo10F3_DiagArray8"             [UNSIGNED8        RWRWRW]      0x00 0
     0x04      "P0.43559.0.3_sdo10F3_DiagArray8"             [UNSIGNED8        RWRWRW]      0xe8 232
-    0x05      "P0.43559.0.4_sdo10F3_DiagArray8"             [UNSIGNED8        RWRWRW]      0x02 2
+    0x05      "P0.43559.0.4_sdo10F3_DiagArray8"             [UNSIGNED8        RWRWRW]      0x01 1
     0x06      "P0.43559.0.5_sdo10F3_DiagArray8"             [UNSIGNED8        RWRWRW]      0x01 1
-    0x07      "P0.43559.0.6_sdo10F3_DiagArray8"             [UNSIGNED8        RWRWRW]      0x88 136
-    0x08      "P0.43559.0.7_sdo10F3_DiagArray8"             [UNSIGNED8        RWRWRW]      0x81 129
-    0x09      "P0.43559.0.8_sdo10F3_DiagArray8"             [UNSIGNED8        RWRWRW]      0xc0 192
-    0x0a      "P0.43559.0.9_sdo10F3_DiagArray8"             [UNSIGNED8        RWRWRW]      0x9e 158
-    0x0b      "P0.43559.0.10_sdo10F3_DiagArray8"            [UNSIGNED8        RWRWRW]      0xdb 219
-    0x0c      "P0.43559.0.11_sdo10F3_DiagArray8"            [UNSIGNED8        RWRWRW]      0x0b 11
-    0x0d      "P0.43559.0.12_sdo10F3_DiagArray8"            [UNSIGNED8        RWRWRW]      0xc1 193
-    0x0e      "P0.43559.0.13_sdo10F3_DiagArray8"            [UNSIGNED8        RWRWRW]      0x07 7
+    0x07      "P0.43559.0.6_sdo10F3_DiagArray8"             [UNSIGNED8        RWRWRW]      0x87 135
+    0x08      "P0.43559.0.7_sdo10F3_DiagArray8"             [UNSIGNED8        RWRWRW]      0x80 128
+    0x09      "P0.43559.0.8_sdo10F3_DiagArray8"             [UNSIGNED8        RWRWRW]      0x5c 92
+    0x0a      "P0.43559.0.9_sdo10F3_DiagArray8"             [UNSIGNED8        RWRWRW]      0x50 80
+    0x0b      "P0.43559.0.10_sdo10F3_DiagArray8"            [UNSIGNED8        RWRWRW]      0xea 234
+    0x0c      "P0.43559.0.11_sdo10F3_DiagArray8"            [UNSIGNED8        RWRWRW]      0x6a 106
+    0x0d      "P0.43559.0.12_sdo10F3_DiagArray8"            [UNSIGNED8        RWRWRW]      0x72 114
+    0x0e      "P0.43559.0.13_sdo10F3_DiagArray8"            [UNSIGNED8        RWRWRW]      0x09 9
     0x0f      "P0.43559.0.14_sdo10F3_DiagArray8"            [UNSIGNED8        RWRWRW]      0x00 0
     0x10      "P0.43559.0.15_sdo10F3_DiagArray8"            [UNSIGNED8        RWRWRW]      0x00 0
     0x11      "P0.43559.0.16_sdo10F3_DiagArray8"            [UNSIGNED8        RWRWRW]      0x06 6
     0x12      "P0.43559.0.17_sdo10F3_DiagArray8"            [UNSIGNED8        RWRWRW]      0x00 0
-    0x13      "P0.43559.0.18_sdo10F3_DiagArray8"            [UNSIGNED8        RWRWRW]      0x8f 143
+    0x13      "P0.43559.0.18_sdo10F3_DiagArray8"            [UNSIGNED8        RWRWRW]      0x70 112
     0x14      "P0.43559.0.19_sdo10F3_DiagArray8"            [UNSIGNED8        RWRWRW]      0x00 0
 0x2294      "EtherCatDiagnosis_P0.43560.0.0_sdo10F3_D"      [RECORD  maxsub(0x14 / 20)]
     0x00      "SubIndex 000"                                [UNSIGNED8        R_R_R_]      0x14 20
-    0x01      "P0.43560.0.0_sdo10F3_DiagArray9"             [UNSIGNED8        RWRWRW]      0xe8 232
-    0x02      "P0.43560.0.1_sdo10F3_DiagArray9"             [UNSIGNED8        RWRWRW]      0xfd 253
+    0x01      "P0.43560.0.0_sdo10F3_DiagArray9"             [UNSIGNED8        RWRWRW]      0x87 135
+    0x02      "P0.43560.0.1_sdo10F3_DiagArray9"             [UNSIGNED8        RWRWRW]      0x80 128
     0x03      "P0.43560.0.2_sdo10F3_DiagArray9"             [UNSIGNED8        RWRWRW]      0x00 0
     0x04      "P0.43560.0.3_sdo10F3_DiagArray9"             [UNSIGNED8        RWRWRW]      0xe8 232
     0x05      "P0.43560.0.4_sdo10F3_DiagArray9"             [UNSIGNED8        RWRWRW]      0x00 0
     0x06      "P0.43560.0.5_sdo10F3_DiagArray9"             [UNSIGNED8        RWRWRW]      0x01 1
-    0x07      "P0.43560.0.6_sdo10F3_DiagArray9"             [UNSIGNED8        RWRWRW]      0xe8 232
-    0x08      "P0.43560.0.7_sdo10F3_DiagArray9"             [UNSIGNED8        RWRWRW]      0xfd 253
-    0x09      "P0.43560.0.8_sdo10F3_DiagArray9"             [UNSIGNED8        RWRWRW]      0xae 174
-    0x0a      "P0.43560.0.9_sdo10F3_DiagArray9"             [UNSIGNED8        RWRWRW]      0xff 255
-    0x0b      "P0.43560.0.10_sdo10F3_DiagArray9"            [UNSIGNED8        RWRWRW]      0x94 148
-    0x0c      "P0.43560.0.11_sdo10F3_DiagArray9"            [UNSIGNED8        RWRWRW]      0x69 105
-    0x0d      "P0.43560.0.12_sdo10F3_DiagArray9"            [UNSIGNED8        RWRWRW]      0x09 9
+    0x07      "P0.43560.0.6_sdo10F3_DiagArray9"             [UNSIGNED8        RWRWRW]      0x87 135
+    0x08      "P0.43560.0.7_sdo10F3_DiagArray9"             [UNSIGNED8        RWRWRW]      0x80 128
+    0x09      "P0.43560.0.8_sdo10F3_DiagArray9"             [UNSIGNED8        RWRWRW]      0x5c 92
+    0x0a      "P0.43560.0.9_sdo10F3_DiagArray9"             [UNSIGNED8        RWRWRW]      0x50 80
+    0x0b      "P0.43560.0.10_sdo10F3_DiagArray9"            [UNSIGNED8        RWRWRW]      0xea 234
+    0x0c      "P0.43560.0.11_sdo10F3_DiagArray9"            [UNSIGNED8        RWRWRW]      0x6a 106
+    0x0d      "P0.43560.0.12_sdo10F3_DiagArray9"            [UNSIGNED8        RWRWRW]      0x72 114
     0x0e      "P0.43560.0.13_sdo10F3_DiagArray9"            [UNSIGNED8        RWRWRW]      0x09 9
     0x0f      "P0.43560.0.14_sdo10F3_DiagArray9"            [UNSIGNED8        RWRWRW]      0x00 0
     0x10      "P0.43560.0.15_sdo10F3_DiagArray9"            [UNSIGNED8        RWRWRW]      0x00 0
     0x11      "P0.43560.0.16_sdo10F3_DiagArray9"            [UNSIGNED8        RWRWRW]      0x06 6
     0x12      "P0.43560.0.17_sdo10F3_DiagArray9"            [UNSIGNED8        RWRWRW]      0x00 0
-    0x13      "P0.43560.0.18_sdo10F3_DiagArray9"            [UNSIGNED8        RWRWRW]      0x8f 143
+    0x13      "P0.43560.0.18_sdo10F3_DiagArray9"            [UNSIGNED8        RWRWRW]      0x7d 125
     0x14      "P0.43560.0.19_sdo10F3_DiagArray9"            [UNSIGNED8        RWRWRW]      0x00 0
 0x2295      "EtherCatDiagnosis_P0.43561.0.0_sdo10F3_D"      [RECORD  maxsub(0x14 / 20)]
     0x00      "SubIndex 000"                                [UNSIGNED8        R_R_R_]      0x14 20
@@ -6453,17 +6453,17 @@
     0x06      "P0.43561.0.5_sdo10F3_DiagArray10"            [UNSIGNED8        RWRWRW]      0x01 1
     0x07      "P0.43561.0.6_sdo10F3_DiagArray10"            [UNSIGNED8        RWRWRW]      0x87 135
     0x08      "P0.43561.0.7_sdo10F3_DiagArray10"            [UNSIGNED8        RWRWRW]      0x80 128
-    0x09      "P0.43561.0.8_sdo10F3_DiagArray10"            [UNSIGNED8        RWRWRW]      0x0c 12
-    0x0a      "P0.43561.0.9_sdo10F3_DiagArray10"            [UNSIGNED8        RWRWRW]      0xc5 197
-    0x0b      "P0.43561.0.10_sdo10F3_DiagArray10"           [UNSIGNED8        RWRWRW]      0x99 153
-    0x0c      "P0.43561.0.11_sdo10F3_DiagArray10"           [UNSIGNED8        RWRWRW]      0x58 88
-    0x0d      "P0.43561.0.12_sdo10F3_DiagArray10"           [UNSIGNED8        RWRWRW]      0x0b 11
+    0x09      "P0.43561.0.8_sdo10F3_DiagArray10"            [UNSIGNED8        RWRWRW]      0x5c 92
+    0x0a      "P0.43561.0.9_sdo10F3_DiagArray10"            [UNSIGNED8        RWRWRW]      0x50 80
+    0x0b      "P0.43561.0.10_sdo10F3_DiagArray10"           [UNSIGNED8        RWRWRW]      0xea 234
+    0x0c      "P0.43561.0.11_sdo10F3_DiagArray10"           [UNSIGNED8        RWRWRW]      0x6a 106
+    0x0d      "P0.43561.0.12_sdo10F3_DiagArray10"           [UNSIGNED8        RWRWRW]      0x72 114
     0x0e      "P0.43561.0.13_sdo10F3_DiagArray10"           [UNSIGNED8        RWRWRW]      0x09 9
     0x0f      "P0.43561.0.14_sdo10F3_DiagArray10"           [UNSIGNED8        RWRWRW]      0x00 0
     0x10      "P0.43561.0.15_sdo10F3_DiagArray10"           [UNSIGNED8        RWRWRW]      0x00 0
     0x11      "P0.43561.0.16_sdo10F3_DiagArray10"           [UNSIGNED8        RWRWRW]      0x06 6
     0x12      "P0.43561.0.17_sdo10F3_DiagArray10"           [UNSIGNED8        RWRWRW]      0x00 0
-    0x13      "P0.43561.0.18_sdo10F3_DiagArray10"           [UNSIGNED8        RWRWRW]      0x7d 125
+    0x13      "P0.43561.0.18_sdo10F3_DiagArray10"           [UNSIGNED8        RWRWRW]      0x7c 124
     0x14      "P0.43561.0.19_sdo10F3_DiagArray10"           [UNSIGNED8        RWRWRW]      0x00 0
 0x2296      "EtherCatDiagnosis_P0.43562.0.0_sdo10F3_D"      [RECORD  maxsub(0x14 / 20)]
     0x00      "SubIndex 000"                                [UNSIGNED8        R_R_R_]      0x14 20
@@ -6475,105 +6475,105 @@
     0x06      "P0.43562.0.5_sdo10F3_DiagArray11"            [UNSIGNED8        RWRWRW]      0x01 1
     0x07      "P0.43562.0.6_sdo10F3_DiagArray11"            [UNSIGNED8        RWRWRW]      0x87 135
     0x08      "P0.43562.0.7_sdo10F3_DiagArray11"            [UNSIGNED8        RWRWRW]      0x80 128
-    0x09      "P0.43562.0.8_sdo10F3_DiagArray11"            [UNSIGNED8        RWRWRW]      0x0c 12
-    0x0a      "P0.43562.0.9_sdo10F3_DiagArray11"            [UNSIGNED8        RWRWRW]      0xc5 197
-    0x0b      "P0.43562.0.10_sdo10F3_DiagArray11"           [UNSIGNED8        RWRWRW]      0x99 153
-    0x0c      "P0.43562.0.11_sdo10F3_DiagArray11"           [UNSIGNED8        RWRWRW]      0x58 88
-    0x0d      "P0.43562.0.12_sdo10F3_DiagArray11"           [UNSIGNED8        RWRWRW]      0x0b 11
+    0x09      "P0.43562.0.8_sdo10F3_DiagArray11"            [UNSIGNED8        RWRWRW]      0x54 84
+    0x0a      "P0.43562.0.9_sdo10F3_DiagArray11"            [UNSIGNED8        RWRWRW]      0x5d 93
+    0x0b      "P0.43562.0.10_sdo10F3_DiagArray11"           [UNSIGNED8        RWRWRW]      0x68 104
+    0x0c      "P0.43562.0.11_sdo10F3_DiagArray11"           [UNSIGNED8        RWRWRW]      0x83 131
+    0x0d      "P0.43562.0.12_sdo10F3_DiagArray11"           [UNSIGNED8        RWRWRW]      0x72 114
     0x0e      "P0.43562.0.13_sdo10F3_DiagArray11"           [UNSIGNED8        RWRWRW]      0x09 9
     0x0f      "P0.43562.0.14_sdo10F3_DiagArray11"           [UNSIGNED8        RWRWRW]      0x00 0
     0x10      "P0.43562.0.15_sdo10F3_DiagArray11"           [UNSIGNED8        RWRWRW]      0x00 0
     0x11      "P0.43562.0.16_sdo10F3_DiagArray11"           [UNSIGNED8        RWRWRW]      0x06 6
     0x12      "P0.43562.0.17_sdo10F3_DiagArray11"           [UNSIGNED8        RWRWRW]      0x00 0
-    0x13      "P0.43562.0.18_sdo10F3_DiagArray11"           [UNSIGNED8        RWRWRW]      0x7c 124
+    0x13      "P0.43562.0.18_sdo10F3_DiagArray11"           [UNSIGNED8        RWRWRW]      0x87 135
     0x14      "P0.43562.0.19_sdo10F3_DiagArray11"           [UNSIGNED8        RWRWRW]      0x00 0
 0x2297      "EtherCatDiagnosis_P0.43563.0.0_sdo10F3_D"      [RECORD  maxsub(0x14 / 20)]
     0x00      "SubIndex 000"                                [UNSIGNED8        R_R_R_]      0x14 20
-    0x01      "P0.43563.0.0_sdo10F3_DiagArray12"            [UNSIGNED8        RWRWRW]      0x87 135
-    0x02      "P0.43563.0.1_sdo10F3_DiagArray12"            [UNSIGNED8        RWRWRW]      0x80 128
+    0x01      "P0.43563.0.0_sdo10F3_DiagArray12"            [UNSIGNED8        RWRWRW]      0x88 136
+    0x02      "P0.43563.0.1_sdo10F3_DiagArray12"            [UNSIGNED8        RWRWRW]      0x81 129
     0x03      "P0.43563.0.2_sdo10F3_DiagArray12"            [UNSIGNED8        RWRWRW]      0x00 0
     0x04      "P0.43563.0.3_sdo10F3_DiagArray12"            [UNSIGNED8        RWRWRW]      0xe8 232
-    0x05      "P0.43563.0.4_sdo10F3_DiagArray12"            [UNSIGNED8        RWRWRW]      0x00 0
+    0x05      "P0.43563.0.4_sdo10F3_DiagArray12"            [UNSIGNED8        RWRWRW]      0x02 2
     0x06      "P0.43563.0.5_sdo10F3_DiagArray12"            [UNSIGNED8        RWRWRW]      0x01 1
-    0x07      "P0.43563.0.6_sdo10F3_DiagArray12"            [UNSIGNED8        RWRWRW]      0x87 135
-    0x08      "P0.43563.0.7_sdo10F3_DiagArray12"            [UNSIGNED8        RWRWRW]      0x80 128
-    0x09      "P0.43563.0.8_sdo10F3_DiagArray12"            [UNSIGNED8        RWRWRW]      0x66 102
-    0x0a      "P0.43563.0.9_sdo10F3_DiagArray12"            [UNSIGNED8        RWRWRW]      0xa0 160
-    0x0b      "P0.43563.0.10_sdo10F3_DiagArray12"           [UNSIGNED8        RWRWRW]      0x6e 110
-    0x0c      "P0.43563.0.11_sdo10F3_DiagArray12"           [UNSIGNED8        RWRWRW]      0x66 102
-    0x0d      "P0.43563.0.12_sdo10F3_DiagArray12"           [UNSIGNED8        RWRWRW]      0x0c 12
+    0x07      "P0.43563.0.6_sdo10F3_DiagArray12"            [UNSIGNED8        RWRWRW]      0x88 136
+    0x08      "P0.43563.0.7_sdo10F3_DiagArray12"            [UNSIGNED8        RWRWRW]      0x81 129
+    0x09      "P0.43563.0.8_sdo10F3_DiagArray12"            [UNSIGNED8        RWRWRW]      0x58 88
+    0x0a      "P0.43563.0.9_sdo10F3_DiagArray12"            [UNSIGNED8        RWRWRW]      0x1b 27
+    0x0b      "P0.43563.0.10_sdo10F3_DiagArray12"           [UNSIGNED8        RWRWRW]      0xc6 198
+    0x0c      "P0.43563.0.11_sdo10F3_DiagArray12"           [UNSIGNED8        RWRWRW]      0x59 89
+    0x0d      "P0.43563.0.12_sdo10F3_DiagArray12"           [UNSIGNED8        RWRWRW]      0x7c 124
     0x0e      "P0.43563.0.13_sdo10F3_DiagArray12"           [UNSIGNED8        RWRWRW]      0x09 9
     0x0f      "P0.43563.0.14_sdo10F3_DiagArray12"           [UNSIGNED8        RWRWRW]      0x00 0
     0x10      "P0.43563.0.15_sdo10F3_DiagArray12"           [UNSIGNED8        RWRWRW]      0x00 0
     0x11      "P0.43563.0.16_sdo10F3_DiagArray12"           [UNSIGNED8        RWRWRW]      0x06 6
     0x12      "P0.43563.0.17_sdo10F3_DiagArray12"           [UNSIGNED8        RWRWRW]      0x00 0
-    0x13      "P0.43563.0.18_sdo10F3_DiagArray12"           [UNSIGNED8        RWRWRW]      0x87 135
+    0x13      "P0.43563.0.18_sdo10F3_DiagArray12"           [UNSIGNED8        RWRWRW]      0x8f 143
     0x14      "P0.43563.0.19_sdo10F3_DiagArray12"           [UNSIGNED8        RWRWRW]      0x00 0
 0x2298      "EtherCatDiagnosis_P0.43564.0.0_sdo10F3_D"      [RECORD  maxsub(0x14 / 20)]
     0x00      "SubIndex 000"                                [UNSIGNED8        R_R_R_]      0x14 20
-    0x01      "P0.43564.0.0_sdo10F3_DiagArray13"            [UNSIGNED8        RWRWRW]      0x87 135
-    0x02      "P0.43564.0.1_sdo10F3_DiagArray13"            [UNSIGNED8        RWRWRW]      0x80 128
+    0x01      "P0.43564.0.0_sdo10F3_DiagArray13"            [UNSIGNED8        RWRWRW]      0xe8 232
+    0x02      "P0.43564.0.1_sdo10F3_DiagArray13"            [UNSIGNED8        RWRWRW]      0xfd 253
     0x03      "P0.43564.0.2_sdo10F3_DiagArray13"            [UNSIGNED8        RWRWRW]      0x00 0
     0x04      "P0.43564.0.3_sdo10F3_DiagArray13"            [UNSIGNED8        RWRWRW]      0xe8 232
     0x05      "P0.43564.0.4_sdo10F3_DiagArray13"            [UNSIGNED8        RWRWRW]      0x00 0
     0x06      "P0.43564.0.5_sdo10F3_DiagArray13"            [UNSIGNED8        RWRWRW]      0x01 1
-    0x07      "P0.43564.0.6_sdo10F3_DiagArray13"            [UNSIGNED8        RWRWRW]      0x87 135
-    0x08      "P0.43564.0.7_sdo10F3_DiagArray13"            [UNSIGNED8        RWRWRW]      0x80 128
-    0x09      "P0.43564.0.8_sdo10F3_DiagArray13"            [UNSIGNED8        RWRWRW]      0x64 100
-    0x0a      "P0.43564.0.9_sdo10F3_DiagArray13"            [UNSIGNED8        RWRWRW]      0x31 49
-    0x0b      "P0.43564.0.10_sdo10F3_DiagArray13"           [UNSIGNED8        RWRWRW]      0xf3 243
-    0x0c      "P0.43564.0.11_sdo10F3_DiagArray13"           [UNSIGNED8        RWRWRW]      0x84 132
-    0x0d      "P0.43564.0.12_sdo10F3_DiagArray13"           [UNSIGNED8        RWRWRW]      0x0c 12
+    0x07      "P0.43564.0.6_sdo10F3_DiagArray13"            [UNSIGNED8        RWRWRW]      0xe8 232
+    0x08      "P0.43564.0.7_sdo10F3_DiagArray13"            [UNSIGNED8        RWRWRW]      0xfd 253
+    0x09      "P0.43564.0.8_sdo10F3_DiagArray13"            [UNSIGNED8        RWRWRW]      0x74 116
+    0x0a      "P0.43564.0.9_sdo10F3_DiagArray13"            [UNSIGNED8        RWRWRW]      0xde 222
+    0x0b      "P0.43564.0.10_sdo10F3_DiagArray13"           [UNSIGNED8        RWRWRW]      0x5b 91
+    0x0c      "P0.43564.0.11_sdo10F3_DiagArray13"           [UNSIGNED8        RWRWRW]      0x73 115
+    0x0d      "P0.43564.0.12_sdo10F3_DiagArray13"           [UNSIGNED8        RWRWRW]      0x7f 127
     0x0e      "P0.43564.0.13_sdo10F3_DiagArray13"           [UNSIGNED8        RWRWRW]      0x09 9
     0x0f      "P0.43564.0.14_sdo10F3_DiagArray13"           [UNSIGNED8        RWRWRW]      0x00 0
     0x10      "P0.43564.0.15_sdo10F3_DiagArray13"           [UNSIGNED8        RWRWRW]      0x00 0
     0x11      "P0.43564.0.16_sdo10F3_DiagArray13"           [UNSIGNED8        RWRWRW]      0x06 6
     0x12      "P0.43564.0.17_sdo10F3_DiagArray13"           [UNSIGNED8        RWRWRW]      0x00 0
-    0x13      "P0.43564.0.18_sdo10F3_DiagArray13"           [UNSIGNED8        RWRWRW]      0x79 121
+    0x13      "P0.43564.0.18_sdo10F3_DiagArray13"           [UNSIGNED8        RWRWRW]      0x8f 143
     0x14      "P0.43564.0.19_sdo10F3_DiagArray13"           [UNSIGNED8        RWRWRW]      0x00 0
 0x2299      "EtherCatDiagnosis_P0.43565.0.0_sdo10F3_D"      [RECORD  maxsub(0x14 / 20)]
     0x00      "SubIndex 000"                                [UNSIGNED8        R_R_R_]      0x14 20
-    0x01      "P0.43565.0.0_sdo10F3_DiagArray14"            [UNSIGNED8        RWRWRW]      0x88 136
-    0x02      "P0.43565.0.1_sdo10F3_DiagArray14"            [UNSIGNED8        RWRWRW]      0x81 129
+    0x01      "P0.43565.0.0_sdo10F3_DiagArray14"            [UNSIGNED8        RWRWRW]      0x87 135
+    0x02      "P0.43565.0.1_sdo10F3_DiagArray14"            [UNSIGNED8        RWRWRW]      0x80 128
     0x03      "P0.43565.0.2_sdo10F3_DiagArray14"            [UNSIGNED8        RWRWRW]      0x00 0
     0x04      "P0.43565.0.3_sdo10F3_DiagArray14"            [UNSIGNED8        RWRWRW]      0xe8 232
-    0x05      "P0.43565.0.4_sdo10F3_DiagArray14"            [UNSIGNED8        RWRWRW]      0x02 2
+    0x05      "P0.43565.0.4_sdo10F3_DiagArray14"            [UNSIGNED8        RWRWRW]      0x00 0
     0x06      "P0.43565.0.5_sdo10F3_DiagArray14"            [UNSIGNED8        RWRWRW]      0x01 1
-    0x07      "P0.43565.0.6_sdo10F3_DiagArray14"            [UNSIGNED8        RWRWRW]      0x88 136
-    0x08      "P0.43565.0.7_sdo10F3_DiagArray14"            [UNSIGNED8        RWRWRW]      0x81 129
-    0x09      "P0.43565.0.8_sdo10F3_DiagArray14"            [UNSIGNED8        RWRWRW]      0x3a 58
-    0x0a      "P0.43565.0.9_sdo10F3_DiagArray14"            [UNSIGNED8        RWRWRW]      0x77 119
-    0x0b      "P0.43565.0.10_sdo10F3_DiagArray14"           [UNSIGNED8        RWRWRW]      0x88 136
-    0x0c      "P0.43565.0.11_sdo10F3_DiagArray14"           [UNSIGNED8        RWRWRW]      0x3c 60
-    0x0d      "P0.43565.0.12_sdo10F3_DiagArray14"           [UNSIGNED8        RWRWRW]      0x0d 13
+    0x07      "P0.43565.0.6_sdo10F3_DiagArray14"            [UNSIGNED8        RWRWRW]      0x87 135
+    0x08      "P0.43565.0.7_sdo10F3_DiagArray14"            [UNSIGNED8        RWRWRW]      0x80 128
+    0x09      "P0.43565.0.8_sdo10F3_DiagArray14"            [UNSIGNED8        RWRWRW]      0x62 98
+    0x0a      "P0.43565.0.9_sdo10F3_DiagArray14"            [UNSIGNED8        RWRWRW]      0xc1 193
+    0x0b      "P0.43565.0.10_sdo10F3_DiagArray14"           [UNSIGNED8        RWRWRW]      0xb2 178
+    0x0c      "P0.43565.0.11_sdo10F3_DiagArray14"           [UNSIGNED8        RWRWRW]      0x86 134
+    0x0d      "P0.43565.0.12_sdo10F3_DiagArray14"           [UNSIGNED8        RWRWRW]      0x8a 138
     0x0e      "P0.43565.0.13_sdo10F3_DiagArray14"           [UNSIGNED8        RWRWRW]      0x09 9
     0x0f      "P0.43565.0.14_sdo10F3_DiagArray14"           [UNSIGNED8        RWRWRW]      0x00 0
     0x10      "P0.43565.0.15_sdo10F3_DiagArray14"           [UNSIGNED8        RWRWRW]      0x00 0
     0x11      "P0.43565.0.16_sdo10F3_DiagArray14"           [UNSIGNED8        RWRWRW]      0x06 6
     0x12      "P0.43565.0.17_sdo10F3_DiagArray14"           [UNSIGNED8        RWRWRW]      0x00 0
-    0x13      "P0.43565.0.18_sdo10F3_DiagArray14"           [UNSIGNED8        RWRWRW]      0x8f 143
+    0x13      "P0.43565.0.18_sdo10F3_DiagArray14"           [UNSIGNED8        RWRWRW]      0x7d 125
     0x14      "P0.43565.0.19_sdo10F3_DiagArray14"           [UNSIGNED8        RWRWRW]      0x00 0
 0x229a      "EtherCatDiagnosis_P0.43566.0.0_sdo10F3_D"      [RECORD  maxsub(0x14 / 20)]
     0x00      "SubIndex 000"                                [UNSIGNED8        R_R_R_]      0x14 20
-    0x01      "P0.43566.0.0_sdo10F3_DiagArray15"            [UNSIGNED8        RWRWRW]      0xe8 232
-    0x02      "P0.43566.0.1_sdo10F3_DiagArray15"            [UNSIGNED8        RWRWRW]      0xfd 253
+    0x01      "P0.43566.0.0_sdo10F3_DiagArray15"            [UNSIGNED8        RWRWRW]      0x87 135
+    0x02      "P0.43566.0.1_sdo10F3_DiagArray15"            [UNSIGNED8        RWRWRW]      0x80 128
     0x03      "P0.43566.0.2_sdo10F3_DiagArray15"            [UNSIGNED8        RWRWRW]      0x00 0
     0x04      "P0.43566.0.3_sdo10F3_DiagArray15"            [UNSIGNED8        RWRWRW]      0xe8 232
     0x05      "P0.43566.0.4_sdo10F3_DiagArray15"            [UNSIGNED8        RWRWRW]      0x00 0
     0x06      "P0.43566.0.5_sdo10F3_DiagArray15"            [UNSIGNED8        RWRWRW]      0x01 1
-    0x07      "P0.43566.0.6_sdo10F3_DiagArray15"            [UNSIGNED8        RWRWRW]      0xe8 232
-    0x08      "P0.43566.0.7_sdo10F3_DiagArray15"            [UNSIGNED8        RWRWRW]      0xfd 253
-    0x09      "P0.43566.0.8_sdo10F3_DiagArray15"            [UNSIGNED8        RWRWRW]      0x7c 124
-    0x0a      "P0.43566.0.9_sdo10F3_DiagArray15"            [UNSIGNED8        RWRWRW]      0x90 144
-    0x0b      "P0.43566.0.10_sdo10F3_DiagArray15"           [UNSIGNED8        RWRWRW]      0xf1 241
-    0x0c      "P0.43566.0.11_sdo10F3_DiagArray15"           [UNSIGNED8        RWRWRW]      0x01 1
-    0x0d      "P0.43566.0.12_sdo10F3_DiagArray15"           [UNSIGNED8        RWRWRW]      0x1a 26
+    0x07      "P0.43566.0.6_sdo10F3_DiagArray15"            [UNSIGNED8        RWRWRW]      0x87 135
+    0x08      "P0.43566.0.7_sdo10F3_DiagArray15"            [UNSIGNED8        RWRWRW]      0x80 128
+    0x09      "P0.43566.0.8_sdo10F3_DiagArray15"            [UNSIGNED8        RWRWRW]      0x62 98
+    0x0a      "P0.43566.0.9_sdo10F3_DiagArray15"            [UNSIGNED8        RWRWRW]      0xc1 193
+    0x0b      "P0.43566.0.10_sdo10F3_DiagArray15"           [UNSIGNED8        RWRWRW]      0xb2 178
+    0x0c      "P0.43566.0.11_sdo10F3_DiagArray15"           [UNSIGNED8        RWRWRW]      0x86 134
+    0x0d      "P0.43566.0.12_sdo10F3_DiagArray15"           [UNSIGNED8        RWRWRW]      0x8a 138
     0x0e      "P0.43566.0.13_sdo10F3_DiagArray15"           [UNSIGNED8        RWRWRW]      0x09 9
     0x0f      "P0.43566.0.14_sdo10F3_DiagArray15"           [UNSIGNED8        RWRWRW]      0x00 0
     0x10      "P0.43566.0.15_sdo10F3_DiagArray15"           [UNSIGNED8        RWRWRW]      0x00 0
     0x11      "P0.43566.0.16_sdo10F3_DiagArray15"           [UNSIGNED8        RWRWRW]      0x06 6
     0x12      "P0.43566.0.17_sdo10F3_DiagArray15"           [UNSIGNED8        RWRWRW]      0x00 0
-    0x13      "P0.43566.0.18_sdo10F3_DiagArray15"           [UNSIGNED8        RWRWRW]      0x8f 143
+    0x13      "P0.43566.0.18_sdo10F3_DiagArray15"           [UNSIGNED8        RWRWRW]      0x7c 124
     0x14      "P0.43566.0.19_sdo10F3_DiagArray15"           [UNSIGNED8        RWRWRW]      0x00 0
 0x229b      "EtherCatDiagnosis_P0.43567.0.0_sdo10F3_D"      [RECORD  maxsub(0x14 / 20)]
     0x00      "SubIndex 000"                                [UNSIGNED8        R_R_R_]      0x14 20
@@ -6585,17 +6585,17 @@
     0x06      "P0.43567.0.5_sdo10F3_DiagArray16"            [UNSIGNED8        RWRWRW]      0x01 1
     0x07      "P0.43567.0.6_sdo10F3_DiagArray16"            [UNSIGNED8        RWRWRW]      0x87 135
     0x08      "P0.43567.0.7_sdo10F3_DiagArray16"            [UNSIGNED8        RWRWRW]      0x80 128
-    0x09      "P0.43567.0.8_sdo10F3_DiagArray16"            [UNSIGNED8        RWRWRW]      0x8c 140
-    0x0a      "P0.43567.0.9_sdo10F3_DiagArray16"            [UNSIGNED8        RWRWRW]      0x0f 15
-    0x0b      "P0.43567.0.10_sdo10F3_DiagArray16"           [UNSIGNED8        RWRWRW]      0x89 137
-    0x0c      "P0.43567.0.11_sdo10F3_DiagArray16"           [UNSIGNED8        RWRWRW]      0x68 104
-    0x0d      "P0.43567.0.12_sdo10F3_DiagArray16"           [UNSIGNED8        RWRWRW]      0x23 35
+    0x09      "P0.43567.0.8_sdo10F3_DiagArray16"            [UNSIGNED8        RWRWRW]      0xdc 220
+    0x0a      "P0.43567.0.9_sdo10F3_DiagArray16"            [UNSIGNED8        RWRWRW]      0xf3 243
+    0x0b      "P0.43567.0.10_sdo10F3_DiagArray16"           [UNSIGNED8        RWRWRW]      0xb2 178
+    0x0c      "P0.43567.0.11_sdo10F3_DiagArray16"           [UNSIGNED8        RWRWRW]      0x98 152
+    0x0d      "P0.43567.0.12_sdo10F3_DiagArray16"           [UNSIGNED8        RWRWRW]      0x8a 138
     0x0e      "P0.43567.0.13_sdo10F3_DiagArray16"           [UNSIGNED8        RWRWRW]      0x09 9
     0x0f      "P0.43567.0.14_sdo10F3_DiagArray16"           [UNSIGNED8        RWRWRW]      0x00 0
     0x10      "P0.43567.0.15_sdo10F3_DiagArray16"           [UNSIGNED8        RWRWRW]      0x00 0
     0x11      "P0.43567.0.16_sdo10F3_DiagArray16"           [UNSIGNED8        RWRWRW]      0x06 6
     0x12      "P0.43567.0.17_sdo10F3_DiagArray16"           [UNSIGNED8        RWRWRW]      0x00 0
-    0x13      "P0.43567.0.18_sdo10F3_DiagArray16"           [UNSIGNED8        RWRWRW]      0x7d 125
+    0x13      "P0.43567.0.18_sdo10F3_DiagArray16"           [UNSIGNED8        RWRWRW]      0x87 135
     0x14      "P0.43567.0.19_sdo10F3_DiagArray16"           [UNSIGNED8        RWRWRW]      0x00 0
 0x229c      "EtherCatDiagnosis_P0.43568.0.0_sdo10F3_D"      [RECORD  maxsub(0x14 / 20)]
     0x00      "SubIndex 000"                                [UNSIGNED8        R_R_R_]      0x14 20
@@ -6607,39 +6607,39 @@
     0x06      "P0.43568.0.5_sdo10F3_DiagArray17"            [UNSIGNED8        RWRWRW]      0x01 1
     0x07      "P0.43568.0.6_sdo10F3_DiagArray17"            [UNSIGNED8        RWRWRW]      0x87 135
     0x08      "P0.43568.0.7_sdo10F3_DiagArray17"            [UNSIGNED8        RWRWRW]      0x80 128
-    0x09      "P0.43568.0.8_sdo10F3_DiagArray17"            [UNSIGNED8        RWRWRW]      0x8c 140
-    0x0a      "P0.43568.0.9_sdo10F3_DiagArray17"            [UNSIGNED8        RWRWRW]      0x0f 15
-    0x0b      "P0.43568.0.10_sdo10F3_DiagArray17"           [UNSIGNED8        RWRWRW]      0x89 137
-    0x0c      "P0.43568.0.11_sdo10F3_DiagArray17"           [UNSIGNED8        RWRWRW]      0x68 104
-    0x0d      "P0.43568.0.12_sdo10F3_DiagArray17"           [UNSIGNED8        RWRWRW]      0x23 35
+    0x09      "P0.43568.0.8_sdo10F3_DiagArray17"            [UNSIGNED8        RWRWRW]      0x84 132
+    0x0a      "P0.43568.0.9_sdo10F3_DiagArray17"            [UNSIGNED8        RWRWRW]      0x75 117
+    0x0b      "P0.43568.0.10_sdo10F3_DiagArray17"           [UNSIGNED8        RWRWRW]      0x2d 45
+    0x0c      "P0.43568.0.11_sdo10F3_DiagArray17"           [UNSIGNED8        RWRWRW]      0xbd 189
+    0x0d      "P0.43568.0.12_sdo10F3_DiagArray17"           [UNSIGNED8        RWRWRW]      0x8a 138
     0x0e      "P0.43568.0.13_sdo10F3_DiagArray17"           [UNSIGNED8        RWRWRW]      0x09 9
     0x0f      "P0.43568.0.14_sdo10F3_DiagArray17"           [UNSIGNED8        RWRWRW]      0x00 0
     0x10      "P0.43568.0.15_sdo10F3_DiagArray17"           [UNSIGNED8        RWRWRW]      0x00 0
     0x11      "P0.43568.0.16_sdo10F3_DiagArray17"           [UNSIGNED8        RWRWRW]      0x06 6
     0x12      "P0.43568.0.17_sdo10F3_DiagArray17"           [UNSIGNED8        RWRWRW]      0x00 0
-    0x13      "P0.43568.0.18_sdo10F3_DiagArray17"           [UNSIGNED8        RWRWRW]      0x7c 124
+    0x13      "P0.43568.0.18_sdo10F3_DiagArray17"           [UNSIGNED8        RWRWRW]      0x79 121
     0x14      "P0.43568.0.19_sdo10F3_DiagArray17"           [UNSIGNED8        RWRWRW]      0x00 0
 0x229d      "EtherCatDiagnosis_P0.43569.0.0_sdo10F3_D"      [RECORD  maxsub(0x14 / 20)]
     0x00      "SubIndex 000"                                [UNSIGNED8        R_R_R_]      0x14 20
-    0x01      "P0.43569.0.0_sdo10F3_DiagArray18"            [UNSIGNED8        RWRWRW]      0x87 135
-    0x02      "P0.43569.0.1_sdo10F3_DiagArray18"            [UNSIGNED8        RWRWRW]      0x80 128
+    0x01      "P0.43569.0.0_sdo10F3_DiagArray18"            [UNSIGNED8        RWRWRW]      0x88 136
+    0x02      "P0.43569.0.1_sdo10F3_DiagArray18"            [UNSIGNED8        RWRWRW]      0x81 129
     0x03      "P0.43569.0.2_sdo10F3_DiagArray18"            [UNSIGNED8        RWRWRW]      0x00 0
     0x04      "P0.43569.0.3_sdo10F3_DiagArray18"            [UNSIGNED8        RWRWRW]      0xe8 232
-    0x05      "P0.43569.0.4_sdo10F3_DiagArray18"            [UNSIGNED8        RWRWRW]      0x00 0
+    0x05      "P0.43569.0.4_sdo10F3_DiagArray18"            [UNSIGNED8        RWRWRW]      0x02 2
     0x06      "P0.43569.0.5_sdo10F3_DiagArray18"            [UNSIGNED8        RWRWRW]      0x01 1
-    0x07      "P0.43569.0.6_sdo10F3_DiagArray18"            [UNSIGNED8        RWRWRW]      0x87 135
-    0x08      "P0.43569.0.7_sdo10F3_DiagArray18"            [UNSIGNED8        RWRWRW]      0x80 128
-    0x09      "P0.43569.0.8_sdo10F3_DiagArray18"            [UNSIGNED8        RWRWRW]      0xc4 196
-    0x0a      "P0.43569.0.9_sdo10F3_DiagArray18"            [UNSIGNED8        RWRWRW]      0x84 132
-    0x0b      "P0.43569.0.10_sdo10F3_DiagArray18"           [UNSIGNED8        RWRWRW]      0x8c 140
-    0x0c      "P0.43569.0.11_sdo10F3_DiagArray18"           [UNSIGNED8        RWRWRW]      0x80 128
-    0x0d      "P0.43569.0.12_sdo10F3_DiagArray18"           [UNSIGNED8        RWRWRW]      0x23 35
+    0x07      "P0.43569.0.6_sdo10F3_DiagArray18"            [UNSIGNED8        RWRWRW]      0x88 136
+    0x08      "P0.43569.0.7_sdo10F3_DiagArray18"            [UNSIGNED8        RWRWRW]      0x81 129
+    0x09      "P0.43569.0.8_sdo10F3_DiagArray18"            [UNSIGNED8        RWRWRW]      0xe8 232
+    0x0a      "P0.43569.0.9_sdo10F3_DiagArray18"            [UNSIGNED8        RWRWRW]      0x2c 44
+    0x0b      "P0.43569.0.10_sdo10F3_DiagArray18"           [UNSIGNED8        RWRWRW]      0x77 119
+    0x0c      "P0.43569.0.11_sdo10F3_DiagArray18"           [UNSIGNED8        RWRWRW]      0xc5 197
+    0x0d      "P0.43569.0.12_sdo10F3_DiagArray18"           [UNSIGNED8        RWRWRW]      0x8b 139
     0x0e      "P0.43569.0.13_sdo10F3_DiagArray18"           [UNSIGNED8        RWRWRW]      0x09 9
     0x0f      "P0.43569.0.14_sdo10F3_DiagArray18"           [UNSIGNED8        RWRWRW]      0x00 0
     0x10      "P0.43569.0.15_sdo10F3_DiagArray18"           [UNSIGNED8        RWRWRW]      0x00 0
     0x11      "P0.43569.0.16_sdo10F3_DiagArray18"           [UNSIGNED8        RWRWRW]      0x06 6
     0x12      "P0.43569.0.17_sdo10F3_DiagArray18"           [UNSIGNED8        RWRWRW]      0x00 0
-    0x13      "P0.43569.0.18_sdo10F3_DiagArray18"           [UNSIGNED8        RWRWRW]      0x87 135
+    0x13      "P0.43569.0.18_sdo10F3_DiagArray18"           [UNSIGNED8        RWRWRW]      0x8f 143
     0x14      "P0.43569.0.19_sdo10F3_DiagArray18"           [UNSIGNED8        RWRWRW]      0x00 0
 0x229e      "EtherCatDiagnosis_P0.43570.0.0_sdo10F3_D"      [RECORD  maxsub(0x14 / 20)]
     0x00      "SubIndex 000"                                [UNSIGNED8        R_R_R_]      0x14 20
@@ -7358,19 +7358,19 @@
     0x06      "P1.102017.0.0_recordCoggingDiagnostic_Lo"      [UNSIGNED8        RWRWRW]      0x01 1
     0x07      "P1.102019.0.0_recordCoggingDiagnostic_Di"      [UNSIGNED16       RWRWRW]      0x0010 16
 0x603f      "Error Code"                                  [VAR]
-    0x00      "Error Code"                                  [UNSIGNED16       R_R_R_]      0x0000 0
+    0x00      "Error Code"                                  [UNSIGNED16       R_R_R_]      0x8188 33160
 0x6040      "Controlword"                                 [VAR]
     0x00      "Controlword"                                 [UNSIGNED16       RWRWRW]      0x0000 0
 0x6041      "Statusword"                                  [VAR]
-    0x00      "Statusword"                                  [UNSIGNED16       R_R_R_]      0x8650 34384
+    0x00      "Statusword"                                  [UNSIGNED16       R_R_R_]      0x8618 34328
 0x6060      "Modes of operation"                          [VAR]
     0x00      "Modes of operation"                          [INTEGER8         RWRWRW]      0x00 0
 0x6061      "Modes of operation display"                  [VAR]
     0x00      "Modes of operation display"                  [INTEGER8         R_R_R_]      0x00 0
 0x6062      "Position demand value"                       [VAR]
-    0x00      "Position demand value"                       [INTEGER32        R_R_R_]      0xffffffed -19
+    0x00      "Position demand value"                       [INTEGER32        R_R_R_]      0xffffffc2 -62
 0x6064      "Position actual value"                       [VAR]
-    0x00      "Position actual value"                       [INTEGER32        R_R_R_]      0xffffffed -19
+    0x00      "Position actual value"                       [INTEGER32        R_R_R_]      0xffffffc2 -62
 0x6065      "Following error window"                      [VAR]
     0x00      "Following error window"                      [UNSIGNED32       RWRWRW]      0x000003e8 1000
 0x6066      "Following error time out"                    [VAR]
@@ -7404,11 +7404,11 @@
 0x6076      "Motor rated torque"                          [VAR]
     0x00      "Motor rated torque"                          [UNSIGNED32       R_R_R_]      0x00000527 1319
 0x6077      "Torque actual value"                         [VAR]
-    0x00      "Torque actual value"                         [INTEGER16        R_R_R_]      0x0008 8
+    0x00      "Torque actual value"                         [INTEGER16        R_R_R_]      0x0009 9
 0x6078      "Current actual value"                        [VAR]
-    0x00      "Current actual value"                        [INTEGER16        R_R_R_]      0x0002 2
+    0x00      "Current actual value"                        [INTEGER16        R_R_R_]      0x0001 1
 0x6079      "DC link circuit voltage"                     [VAR]
-    0x00      "DC link circuit voltage"                     [UNSIGNED32       R_R_R_]      0x0004fad7 326359
+    0x00      "DC link circuit voltage"                     [UNSIGNED32       R_R_R_]      0x0004f7c1 325569
 0x607a      "Target position"                             [VAR]
     0x00      "Target position"                             [INTEGER32        RWRWRW]      0x00000000 0
 0x607b      "Position range limit"                        [RECORD  maxsub(0x02 / 2)]
@@ -7525,7 +7525,7 @@
     0x11      "17th supported homing method"                [INTEGER8         R_R_R_]      0x25 37
 0x60e4      "Additional position actual value"            [RECORD  maxsub(0x02 / 2)]
     0x00      "SubIndex 000"                                [UNSIGNED8        R_R_R_]      0x02 2
-    0x01      "1st additional position actual value"        [INTEGER32        R_R_R_]      0xffffffed -19
+    0x01      "1st additional position actual value"        [INTEGER32        R_R_R_]      0xffffffc2 -62
     0x02      "2nd additional position actual value"        [INTEGER32        R_R_R_]      0x00000000 0
 0x60e5      "Additional velocity actual value"            [RECORD  maxsub(0x02 / 2)]
     0x00      "SubIndex 000"                                [UNSIGNED8        R_R_R_]      0x02 2
@@ -7572,7 +7572,7 @@
 0x6502      "Supported drive modes"                       [VAR]
     0x00      "Supported drive modes"                       [UNSIGNED32       R_R_R_]      0x000503ad 328621
 0x6503      "Drive catalogue number"                      [VAR]
-    0x00      "Drive catalogue number"                      [VISIBLE_STR(1024) RWRWRW]      Time:1725612892.918 PACKET slave:1 index:6503.00 error:3
+    0x00      "Drive catalogue number"                      [VISIBLE_STR(1024) RWRWRW]      Time:1725613184.908 PACKET slave:1 index:6503.00 error:3
 
  - 
 0x6505      "http drive catalogue address"                [VAR]
